@@ -1,1 +1,1 @@
-If your Mom is not at home or your wife tells you to cook then kitas is there to rescue.
+If your Mom is not at home or your wife tells you to cook, then it really sucks to be you.
