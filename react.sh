@@ -1,6 +1,6 @@
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install dpkg
-sudo apt-get install -y nodejs npm
+sudo apt-get install -y nodejs npm git
 npm config set proxy http://192.168.15.254:3128
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 nvm install v6.11.0
