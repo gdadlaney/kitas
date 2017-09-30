@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.views.generic import UpdateView, ListView
 from django.db import connection
+from kitas.forms import PostForm
+from django.views.decorators.csrf import csrf_protect
+
 
 
 def index(request):
@@ -12,6 +15,27 @@ def menu(request):
 
 def blog(request):
 	return render(request, 'blog.html', {})
+
+def accounts(request):
+	return render(request, 'index.html/#cd-login', {})
+
+@csrf_protect
+def post_form_upload(request):
+	if request.method == 'GET':
+		form = PostForm()
+	else:
+        # A POST request: Handle Form Upload
+		form = PostForm(request.POST) # Bind data from request.POST into a PostForm
+ 
+        # If data is valid, proceeds to create a new post and redirect the user
+		if form.is_valid():
+			email = form.cleaned_data['email']
+			password = form.cleaned_data['password']
+			print(email)
+			print(password)
+			# post = m.Post.objects.create(content=content, created_at=created_at)
+			#return HttpResponseRedirect(reverse('post_detail', kwargs={'post_id': post.id}))
+	return render(request, 'details.html', {'form': form})
 
 def test(request):
 	return HttpResponse("Hello")
@@ -232,3 +256,5 @@ def customers(request):
 		cursor.execute("SELECT name FROM customers")
 		row = cursor.fetchone()
 	return HttpResponse(row)
+
+
