@@ -33,24 +33,135 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  new WOW().init();
 </script>
 <!-- //animation-effect -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
+<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
 </head>
 <body>
-<div class="header head">
+
+
+<!-- Modal -->
+<div id="login" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form class="cd-form PostForm" action="login" method="POST">{% csrf_token %}
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Password</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password" name="password">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="signup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form class="cd-form" action="signup" method="post">{% csrf_token %}
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">Name</label>
+						<input class="full-width has-padding has-border" name="name" id="name" type="text" placeholder="Name">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" name="email" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Password</label>
+						<input class="full-width has-padding has-border" name="password" id="signin-password" type="password"  placeholder="Password">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Confirm Password</label>
+						<input class="full-width has-padding has-border" name="cpassword" id="signin-password" type="password"  placeholder="Confirm Password">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/main.js"></script> <!-- Gem jQuery -->
+
+ <div class="header head">
 	<div class="container">
 		<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
-			<h1><a href="{% static 'index.html' %}"><span>C</span><img src="images/oo.png" alt=""><img src="images/oo.png" alt="">kery</a></h1>
+			<h1><a href="index"><span>KITAS</span></a></h1>
 		</div>
 		<div class="nav-icon">		
-			<a href="{% static '#' %}" class="navicon"></a>
+			<a href="#" class="navicon"></a>
 				<div class="toggle">
 					<ul class="toggle-menu">
-						<li><a  href="{% static 'index.html' %}">Home</a></li>
-						<li><a  href="{% static 'menu.html' %}">Menu</a></li>
-						<li><a class="active"  href="{% static 'blog.html' %}">Blog</a></li>
-						<li><a  href="{% static 'typo.html' %}">Codes</a></li>
-						<li><a  href="{% static 'events.html' %}">Events</a></li>
-						<li><a  href="{% static 'contact.html' %}">Contact</a></li>
+						<li><a class="active" href="index">Home</a></li>
+						<li><a  href="menu">Menu</a></li>
+						<li><a  href="blog.html">Blog</a></li>
+						<li><a  href="typo.html">Codes</a></li>
+						<li><a  href="events.html">Events</a></li>
+						<li><a  href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 			<script>
@@ -62,6 +173,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</script>
 		</div>
 	<div class="clearfix"></div>
+	
+	{% if request.session.user == None  %}
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
+
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
+	{% else %}
+		<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
+		<a href="logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+	{% endif %}
+	{% if abc %}
+		<p style="background: red; color: yellow;">{{ abc }}</p>
+	{% endif %}
 	</div>
 	<!-- start search-->	
 		

@@ -83,9 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
-<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
-<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+
 <!-- start-smoth-scrolling -->
 		<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
@@ -114,15 +112,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
+<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
 </head>
 <body>
 
-<!-- header role="banner" >
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#login" style="z-index: 2;">Log In</button>
 
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signup" style="z-index: 2;">Sign Up</button>
-
-</header> -->
 <!-- Modal -->
 <div id="login" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -134,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h4 class="modal-title">Login</h4>
       </div>
       <div class="modal-body">
-        <form class="cd-form PostForm" method="POST">{% csrf_token %}
+        <form class="cd-form PostForm" action="login" method="POST">{% csrf_token %}
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signin-email">E-mail</label>
 						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
@@ -175,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h4 class="modal-title">Sign Up</h4>
       </div>
       <div class="modal-body">
-        <form class="cd-form">
+        <form class="cd-form" action="signup" method="post">{% csrf_token %}
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signin-email">Name</label>
 						<input class="full-width has-padding has-border" name="name" id="name" type="text" placeholder="Name">
@@ -249,9 +245,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</script>
 		</div>
 	<div class="clearfix"></div>
-	<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
+	
+	{% if request.session.user == None  %}
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
 
-	<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
+	{% else %}
+		<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
+		<a href="logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+	{% endif %}
+	{% if abc %}
+		<p style="background: red; color: yellow;">{{ abc }}</p>
+	{% endif %}
 	</div>
 	<!-- start search-->	
 		<div class="banner">
@@ -260,6 +265,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h4 class="animated wow fadeInTop" data-wow-duration="1000ms" data-wow-delay="500ms">Delicious Food is Here</h4>
 			<a class="scroll down" href="#content-down"><img src="{% static 'images/down.png' %}" alt=""></a>
 		</div>
+
 </div>
 <!--content-->
 <div class="content" id="content-down">

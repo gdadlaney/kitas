@@ -20,22 +20,38 @@ def accounts(request):
 	return render(request, 'index.html/#cd-login', {})
 
 @csrf_protect
-def post_form_upload(request):
-	if request.method == 'GET':
-		form = PostForm()
+def login(request):
+	data = request.POST
+	email = data.get('email')
+	passw = data.get('password')
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT * FROM customers WHERE email='{0}' and password='{1}'".format(email, passw))
+		abc = cursor.fetchone()
+	request.session['user'] = abc[1]
+	return render(request, 'index.html', {})
+
+@csrf_protect
+def signup(request):
+	data = request.POST
+	name = data.get('name')
+	email = data.get('email')
+	passw = data.get('password')
+	passwd = data.get('cpassword')
+	print(name, email, passw, passwd)
+	if (email=="" or  name=="" or passw!=passwd):
+		return HttpResponse("All Fields are compulsory")
 	else:
-        # A POST request: Handle Form Upload
-		form = PostForm(request.POST) # Bind data from request.POST into a PostForm
- 
-        # If data is valid, proceeds to create a new post and redirect the user
-		if form.is_valid():
-			email = form.cleaned_data['email']
-			password = form.cleaned_data['password']
-			print(email)
-			print(password)
-			# post = m.Post.objects.create(content=content, created_at=created_at)
-			#return HttpResponseRedirect(reverse('post_detail', kwargs={'post_id': post.id}))
-	return render(request, 'details.html', {'form': form})
+		with connection.cursor() as cursor:
+			cursor.execute("INSERT INTO customers(name, email, password) values('{0}', '{1}', '{2}')".format(name, email, passw))
+		return HttpResponse("Record Inserted")
+
+def logout(request):
+	if request.session['user'] != None:
+		user = request.session['user']
+	else:
+		user = " "
+	request.session['user']=None
+	return render(request, 'index.html', {"abc":"Thank you, we miss you already "+user})
 
 def test(request):
 	return HttpResponse("Hello")
