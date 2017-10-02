@@ -1,0 +1,264 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>KITAS</title>
+<style type="text/css">
+	#SearchBox {
+background: url(‘images/search_box.png’);
+float: left;
+height: 60px;
+width: 305px;
+}
+#SearchButton {
+float: left;
+height: 60px;
+width: 70px;
+}
+#SearchInput {
+background: none;
+border: none;
+color: #999999;
+font-size: 16px;
+outline: none;
+margin: 20px;
+width: 280px;
+}
+#SearchResults {
+background: #000000;
+display: none;
+overflow: auto;
+position: absolute;
+width: 330px;
+z-index: 99;
+}
+</style>
+{% block extra_js%}
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+{% endblock %}
+
+<script type="text/javascript">
+	$("#SearchInput").focus(function() {
+		if($("#SearchInput").val() == "City Search") {
+		$("#SearchInput").val("");
+		}
+		$("#SearchInput").css("color", "#000000");
+	});
+
+
+	$("#SearchInput").blur(function() {
+		if($("#SearchInput").val() == "") {
+		$("#SearchInput").val("City Search");
+		$("#SearchInput").css("color", "#999999");
+		}
+		$("#SearchResults").slideUp();
+	});
+
+	$("#SearchInput").keydown(function(e) {
+		if(e.which == 8) {
+		SearchText = $("#SearchInput").val().substring(0, $("#SearchInput").val().length-1);
+		}
+		else {
+		SearchText = $("#SearchInput").val() + String.fromCharCode(e.which);
+		}
+	$("#SearchResults").load("ajax.php", { SearchInput: SearchText });
+	$("#SearchResults").slideDown();
+}
+</script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="keywords" content="Cookery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---->
+<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
+<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+	<!-- start-smoth-scrolling -->
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+	<!-- animation-effect -->
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script>
+ new WOW().init();
+</script>
+<!-- //animation-effect -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!-- header role="banner" >
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#login" style="z-index: 2;">Log In</button>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signup" style="z-index: 2;">Sign Up</button>
+
+</header> -->
+<!-- Modal -->
+<div id="login" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form class="cd-form PostForm" action="login" method="POST">{% csrf_token %}
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Password</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password" name="password">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="signup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form class="cd-form" action="signup" method="post">{% csrf_token %}
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">Name</label>
+						<input class="full-width has-padding has-border" name="name" id="name" type="text" placeholder="Name">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" name="email" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Password</label>
+						<input class="full-width has-padding has-border" name="password" id="signin-password" type="password"  placeholder="Password">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Confirm Password</label>
+						<input class="full-width has-padding has-border" name="cpassword" id="signin-password" type="password"  placeholder="Confirm Password">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/main.js"></script> <!-- Gem jQuery -->
+
+ <div class="header">
+	<div class="container">
+		<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
+			<h1><a href="index"><span>KITAS</span></a></h1>
+		</div>
+		<div class="nav-icon">		
+			<a href="#" class="navicon"></a>
+				<div class="toggle">
+					<ul class="toggle-menu">
+						<li><a class="active" href="index">Home</a></li>
+						<li><a  href="menu">Menu</a></li>
+						<li><a  href="blog.html">Blog</a></li>
+						<li><a  href="typo.html">Codes</a></li>
+						<li><a  href="events.html">Events</a></li>
+						<li><a  href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			<script>
+			$('.navicon').on('click', function (e) {
+			  e.preventDefault();
+			  $(this).toggleClass('navicon--active');
+			  $('.toggle').toggleClass('toggle--active');
+			});
+			</script>
+		</div>
+	<div class="clearfix"></div>
+	
+	{% if request.session.user == None  %}
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
+
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
+	{% else %}
+		<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
+		<a href="logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+	{% endif %}
+	{% if abc %}
+		<p style="background: red; color: yellow;">{{ abc }}</p>
+	{% endif %}
+	</div>
