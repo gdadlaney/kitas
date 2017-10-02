@@ -1,1 +1,0 @@
-If your Mom is not at home or your wife tells you to cook, then it really sucks to be you.
