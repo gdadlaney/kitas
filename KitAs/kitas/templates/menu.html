@@ -78,7 +78,7 @@
 	    background-color: #fce4ec ;
 	    float: left;
 	    color: #f48fb1;
-	    width: 15%;
+	    width: 20%;
 	    text-align: center;
 	    padding: 15px 0;
 	    text-transform: uppercase;
@@ -143,6 +143,39 @@
 	<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
 	<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
 	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+	<script>
+angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
+    $scope.names = [
+        {name: 'milk', category: 'dairy', selected: false},
+        {name: 'butter', category: 'dairy', selected: false},
+        {name: 'cheese', category: 'dairy', selected: false},
+        {name: 'potato', category: 'vegetables', selected: false},
+        {name: 'tomato', category: 'vegetables', selected: false},
+        {name: 'onion', category: 'vegetables', selected: false},
+        {name: 'beaf', category: 'meat', selected: false},
+        {name: 'chicken', category: 'meat', selected: false},
+        {name: 'fish', category: 'meat', selected: false},
+        {name: 'mango', category: 'fruits', selected: false},
+        {name: 'apple', category: 'fruits', selected: false},
+        {name: 'pineapple', category: 'fruits', selected: false}
+    ];
+
+    $scope.selection = [];
+
+    $scope.ingre = function ingre(){
+    	return filterFilter($scope.names, { selected: true});
+    };
+
+    $scope.$watch('names|filter:{selected:true}', function(nv){
+    	$scope.selection = nv.map(function (x){
+    		return x.name;
+    	});
+    }, true);
+}]);
+</script>
+
 	</head>
 	<body>
 
@@ -315,60 +348,45 @@
 	    <label class="data" for="tab-3">Meat</label>
 	    <label class="data" for="tab-4">Fruits</label>
 	  </div>
-	  <div class="content">
+	  <div class="content" ng-app="myApp" ng-controller="namesCtrl">
 	  <!-- <form action="ingred" method="post"> -->
 	    <div class="content-dis">
 	      <!-- dairy products here -->
-	    <div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Milk</label>
-		</div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Butter</label>
-		</div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Cheese</label>
-		</div>
+	      <div ng-repeat="x in names | filter: 'dairy'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+		  </div>
+
 	  </div>
 	    <div class="content-dis">
 	      <!-- vegetables product here -->
-	      <div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Flower</label>
+	      <div ng-repeat="x in names | filter: 'vegetables'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
 		  </div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Tomato</label>
-		</div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Potato</label>
-		</div>
+		
 	    </div>
 	    <div class="content-dis">
 	      <!-- meat products here -->
-	      <div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Beaf</label>
+	      <div ng-repeat="x in names | filter: 'meat'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
 		  </div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Chicken</label>
-		</div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Lamb</label>
-		</div>
 	    </div>
 	    <div class="content-dis">
 	      <!-- fruits over here -->
-	      <div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Mango</label>
+	      <div ng-repeat="x in names | filter: 'fruits'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
 		  </div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Apple</label>
-		</div>
-		<div class="checkbox">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]">Banana</label>
-		</div>
-	    </div>
-	    <div>
 	    </div>
 
+	    		
+	    	
 			</div>
+			</div>
+
+			<div ng-app="myApp" ng-controller="namesCtrl">
+				Selected Ingredients:
+	    		<p ng-repeat="y in selection">
+					<span style="background-color: red; color: yellow;">{{ y }}</span>
+				</p>
 			</div>
 			<!-- <p align="center"><input  type="submit" value="Proceed"></p>
 	    </form> -->
