@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import UpdateView, ListView
 from django.db import connection
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect ,csrf_exempt
 
 
 
@@ -55,9 +55,13 @@ def logout(request):
 def test(request):
 	return HttpResponse("Hello")
 
-
+@csrf_exempt
 def test2(request):
 	# from django.db import connection
+
+	arr = request.GET.getlist('data[]')
+	print(arr)
+	return HttpResponse(str(arr))
 
 	user_ingredients_with_qty = {'potato': 20, 'onion': 20, 'flour': 30}
 	# user_ingredients_with_qty = {'potato':None, 'onion':None, 'flour':None}	#for user type 3
