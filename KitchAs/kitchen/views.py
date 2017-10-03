@@ -15,6 +15,9 @@ def menu(request):
 def blog(request):
 	return render(request, 'blog.html', {})
 
+def category(request):
+	return render(request, 'category.html', {})
+
 def accounts(request):
 	return render(request, 'index.html/#cd-login', {})
 
