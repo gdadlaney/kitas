@@ -518,7 +518,7 @@ CREATE TABLE `recipes` (
   `cust_id` int(11) DEFAULT NULL,
   `time_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `servings` varchar(20) DEFAULT NULL,
-  `recipe_time` varchar(20) DEFAULT NULL,
+  `prep_time` varchar(20) DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cust_id` (`cust_id`),
