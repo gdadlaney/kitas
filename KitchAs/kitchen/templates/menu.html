@@ -249,23 +249,23 @@
 
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/main.js"></script> <!-- Gem jQuery -->
+	<script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
 
 	 <div class="header head">
 		<div class="container">
 			<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
-				<h1><a href="index"><span>KITAS</span></a></h1>
+				<h1><a href="/index"><span>KITAS</span></a></h1>
 			</div>
 			<div class="nav-icon">		
 				<a href="#" class="navicon"></a>
 					<div class="toggle">
 						<ul class="toggle-menu">
-							<li><a class="active" href="index">Home</a></li>
-							<li><a  href="menu">Menu</a></li>
-							<li><a  href="blog.html">Blog</a></li>
-							<li><a  href="typo.html">Codes</a></li>
-							<li><a  href="events.html">Events</a></li>
-							<li><a  href="contact.html">Contact</a></li>
+							<li><a class="active" href="/index">Home</a></li>
+							<li><a  href="/menu">Menu</a></li>
+							<li><a  href="/blog">Blog</a></li>
+							<li><a  href="/typo">Codes</a></li>
+							<li><a  href="/events">Events</a></li>
+							<li><a  href="/contact">Contact</a></li>
 						</ul>
 					</div>
 				<script>
@@ -284,7 +284,7 @@
 			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
 		{% else %}
 			<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
-			<a href="logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+			<a href="/logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
 		{% endif %}
 		{% if abc %}
 			<p style="background: red; color: yellow;">{{ abc }}</p>
@@ -341,7 +341,7 @@
 	<!-- <form  action="b">{% csrf_token %}
 		<p align="center" id="newId"><input  type="submit" value="Proceed"></p>
 	</form> -->
-	<a href="b"><button onclick="myFunction()">press</button></a>
+	<a href="/b"><button onclick="myFunction()">press</button></a>
 
 	<script>
 	function myFunction(){	
@@ -359,11 +359,11 @@
 				<div class="footer-head">
 					<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 						<ul class=" in">
-							<li><a href="index">Home</a></li>
-							<li><a  href="menu">Menu</a></li>
-							<li><a  href="blog.html">Blog</a></li>
-							<li><a  href="events.html">Events</a></li>
-							<li><a  href="contact.html">Contact</a></li>
+							<li><a href="/index">Home</a></li>
+							<li><a  href="/menu">Menu</a></li>
+							<li><a  href="/blog">Blog</a></li>
+							<li><a  href="/events">Events</a></li>
+							<li><a  href="/contact">Contact</a></li>
 						</ul>					
 							<span>There are many variations of passages</span>
 					</div>

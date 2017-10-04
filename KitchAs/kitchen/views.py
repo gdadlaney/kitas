@@ -5,6 +5,8 @@ from django.db import connection
 from django.views.decorators.csrf import csrf_protect ,csrf_exempt
 
 
+def page_not_found(request):
+	return render(request, 'page_not_found.html', {"error_message": "The URL that you requested was not found"})
 
 def index(request):
 	return render(request, 'index.html', {})
@@ -13,10 +15,18 @@ def menu(request):
 	return render(request, 'menu.html', {})
 
 def blog(request):
+	# sorted_list = [[['recipe 1', '...'], [['potato', None], ['onion', None], ['flour', None]]], [['recipe 2', '...'], [['potato', 5], ['onion', None]]], [['recipe 3', '...'], [['potato', 25]]]]
+	# return render(request, 'blog.html', {"sorted_list": sorted_list})
 	return render(request, 'blog.html', {})
 
 def category(request):
 	return render(request, 'category.html', {})
+
+def categories(request):
+	return render(request, 'categories.html', {})
+
+def ingredients(request):
+	return render(request, 'ingredients.html', {})
 
 def accounts(request):
 	return render(request, 'index.html/#cd-login', {})
@@ -62,9 +72,9 @@ def test(request):
 def test2(request):
 	# from django.db import connection
 
-	arr = request.GET.getlist('data[]')
-	print(arr)
-	return HttpResponse(str(arr))
+	# arr = request.GET.getlist('data[]')
+	# print(arr)
+	# return HttpResponse(str(arr))
 
 	user_ingredients_with_qty = {'potato': 20, 'onion': 20, 'flour': 30}
 	# user_ingredients_with_qty = {'potato':None, 'onion':None, 'flour':None}	#for user type 3

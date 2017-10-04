@@ -4,16 +4,17 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
 <title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Contact :: w3layouts</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,11 +24,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
-<link href="css/styles.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
 	<!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet"> 
-<script src="js/wow.min.js"></script>
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+<script src="{% static 'js/wow.min.js' %}"></script>
 <script>
  new WOW().init();
 </script>
@@ -38,18 +39,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header head">
 	<div class="container">
 		<div class="logo">
-			<h1><a href="index.html"><span>C</span><img src="images/oo.png" alt=""><img src="images/oo.png" alt="">kery</a></h1>
+			<h1><a href="/index"><span>C</span><img src="{% static 'images/oo.png' %}" alt=""><img src="{% static 'images/oo.png' %}" alt="">kery</a></h1>
 		</div>
 		<div class="nav-icon">		
 			<a href="#" class="navicon"></a>
 				<div class="toggle">
 					<ul class="toggle-menu">
-						<li><a  href="index.html">Home</a></li>
-						<li><a  href="menu.html">Menu</a></li>
-						<li><a   href="blog.html">Blog</a></li>
-						<li><a  href="typo.html">Codes</a></li>
-						<li><a  href="events.html">Events</a></li>
-						<li><a class="active" href="contact.html">Contact</a></li>
+						<li><a  href="/index">Home</a></li>
+						<li><a  href="/menu">Menu</a></li>
+						<li><a   href="/blog">Blog</a></li>
+						<li><a  href="/typo">Codes</a></li>
+						<li><a  href="/events">Events</a></li>
+						<li><a class="active" href="/contact">Contact</a></li>
 					</ul>
 				</div>
 			<script>
@@ -91,7 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					      <p> Richard McClintock</p>
 						  <p>Letraset sheets </p>
 						  <p>ph : +123 859 6050</p>
-						  <p>Email : <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+						  <p>Email : <a href="{% static 'mailto:example@gmail.com' %}">example@gmail.com</a></p>
 					 </div>
 			</div>
 			<div class="col-md-7 contact-para animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -137,11 +138,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-head">
 				<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<ul class=" in">
-						<li><a href="index.html">Home</a></li>
-						<li><a  href="menu.html">Menu</a></li>
-						<li><a  href="blog.html">Blog</a></li>
-						<li><a  href="events.html">Events</a></li>
-						<li><a  href="contact.html">Contact</a></li>
+						<li><a href="/index">Home</a></li>
+						<li><a  href="/menu">Menu</a></li>
+						<li><a  href="/blog">Blog</a></li>
+						<li><a  href="/events">Events</a></li>
+						<li><a  href="/contact">Contact</a></li>
 					</ul>					
 						<span>There are many variations of passages</span>
 				</div>
