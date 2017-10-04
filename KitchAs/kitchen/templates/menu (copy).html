@@ -338,10 +338,36 @@
 		<p ng-repeat="y in selection" style="background-color: red; color: yellow;">
 	 <span ng-bind="y">the content selected:</span>
 	</p>
+	<!-- <form  action="b">{% csrf_token %}
+		<p align="center" id="newId"><input  type="submit" value="Proceed"></p>
+	</form> -->
 	<a href="/b"><button onclick="myFunction()">press</button></a>
 
 	<script>
 	function myFunction(){	
+	// $.get("http://127.0.0.1:8000/kitas/menu/b",
+	// {'data[]':["hi","hello"]});
+	// $.ajax(
+ //        {
+ //        method: "POST",
+ //        url: "{% url 'kitas:menu/' %}",
+ //        processData: false,
+ //        contentType: false,
+ //        //mimeType: "multipart/form-data",
+ //        data: data,
+ //      }).done(function(msg_json_object)
+ //      {
+ //        $('#matchrequest').prop("disabled", false);
+ //        if(msg_json_object.hasOwnProperty('err_msg'))
+ //        {
+ //          toggleMatchError(msg_json_object['err_msg']);
+ //        }
+ //        else
+ //        {
+ //          toggleMatchSuccess(msg_json_object['success_msg']);
+ //        }
+ //      });
+
  		$.get('menu', {"suggestion": "1"}, function(data){ });
 
 	}
