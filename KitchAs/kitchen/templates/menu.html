@@ -249,7 +249,7 @@
 
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/main.js"></script> <!-- Gem jQuery -->
+	<!-- <script src="js/main.js"></script> --> <!-- Gem jQuery -->
 
 	 <div class="header head">
 		<div class="container">
@@ -341,12 +341,15 @@
 	<!-- <form  action="b">{% csrf_token %}
 		<p align="center" id="newId"><input  type="submit" value="Proceed"></p>
 	</form> -->
-	<a href="b"><button onclick="myFunction()">press</button></a>
+	<a href="b/"><button onclick="myFunction()">press</button></a>
 
 	<script>
-	function myFunction(){	
-	$.get("http://127.0.0.1:8000/kitas/menu/b",
-	{'data[]':["hi","hello"]});
+	
+
+	function myFunction()
+	{	
+		// var jsonselection = JSON.stringify($scope.selection);
+	$http.post('localhost:8000/kitas/menu/b',{'key':$.toJSON($scope.selection)});
 	}
 	</script>    
 
@@ -388,7 +391,7 @@
 		</div>		
 		<!--//footer-->
 <script>
-angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
+angular.module('myApp', []).config(function($httpProvider){$httpProvider.defaults.headers.common['X-Requested-With']='XMLHttpRequest';}).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
     $scope.names = [
         {name: 'milk', category: 'dairy', selected: false},
         {name: 'butter', category: 'dairy', selected: false},
@@ -417,7 +420,6 @@ angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  
     }, true);
 
 
-     
 }]);
 </script>
 	</body>
