@@ -1,5 +1,4 @@
 
-
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
@@ -7,7 +6,7 @@
 <title>KITAS</title>
 <style type="text/css">
 	#SearchBox {
-background: url('{% static "images/search_box.png" %}');
+background: url(‘images/search_box.png’);
 float: left;
 height: 60px;
 width: 305px;
@@ -218,23 +217,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
+<script src="js/main.js"></script> <!-- Gem jQuery -->
 
  <div class="header">
 	<div class="container">
 		<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
-			<h1><a href="/index"><span>KITAS</span></a></h1>
+			<h1><a href="index"><span>KITAS</span></a></h1>
 		</div>
 		<div class="nav-icon">		
 			<a href="#" class="navicon"></a>
 				<div class="toggle">
 					<ul class="toggle-menu">
-						<li><a class="active" href="/index">Home</a></li>
-						<li><a  href="/menu">Menu</a></li>
-						<li><a  href="/blog">Blog</a></li>
-						<li><a  href="/typo">Codes</a></li>
-						<li><a  href="/events">Events</a></li>
-						<li><a  href="/contact">Contact</a></li>
+						<li><a class="active" href="index">Home</a></li>
+						<li><a  href="menu">Menu</a></li>
+						<li><a  href="blog.html">Blog</a></li>
+						<li><a  href="typo.html">Codes</a></li>
+						<li><a  href="events.html">Events</a></li>
+						<li><a  href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 			<script>
@@ -253,7 +252,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
 	{% else %}
 		<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
-		<a href="/logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+		<a href="logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
 	{% endif %}
 	{% if abc %}
 		<p style="background: red; color: yellow;">{{ abc }}</p>
@@ -286,13 +285,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="content-mid">
 					
-				<a href="/categories"><div class="col-md-6 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<a href="menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<div class=" hover-fold">
-					  <h4>Category-wise</h4>
+					  <h4>BREAKFAST</h4>
 					  <div class="top">
 						<div class="front face"></div>
 						<div class="back face">
-						<p> Search your favourite meal according to its category!. </p>
+						<p> All happiness depends on a lesiurely breakfast. </p>
 						</div>
 					  </div>
 					  <div class="bottom"></div>
@@ -300,37 +299,83 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- <button type="button" class="btn btn-success">Read More</button> -->
 				</div></a>
 
-				<a href="/ingredients"><div class="col-md-6 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<a href="menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<div class=" hover-fold">
-					  <h4>Ingredient-wise</h4>
+					  <h4>SNACKS</h4>
 					  <div class="top">
 						<div class="front face front1"></div>
 						<div class="back face">
-						<p>Search your favourite meal according to your ingredients!.</p>
+						<p>Ah, look what I found - Snacks.</p>
 						</div>
 					  </div>
 					  <div class="bottom bottom1"></div>
 					</div>
 				</div></a>
-				
+				<a href="menu"><div class="col-md-4 food-grid animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>Dessert</h4>
+					  <div class="top">
+						<div class="front face front2"></div>
+						<div class="back face">
+						<p>Life is short, eat dessert first.</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom2"></div>
+					</div>
+				</div></a>
 				<div class="clearfix"></div>
 			</div>
 			<br><br>
-
+			<a href="menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom"></div>
+					</div>
+				</div></a>
+				<a href="menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
+				<a href="menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
 		</div>
 	</div>
-</div>	
+	
 <!--footer-->
 	<div class="footer">
 		<div class="container">
 			<div class="footer-head">
 				<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<ul class=" in">
-						<li><a href="/index">Home</a></li>
-						<li><a  href="/menu">Menu</a></li>
-						<li><a  href="/blog">Blog</a></li>
-						<li><a  href="/events">Events</a></li>
-						<li><a  href="/contact">Contact</a></li>
+						<li><a href="index">Home</a></li>
+						<li><a  href="menu">Menu</a></li>
+						<li><a  href="blog.html">Blog</a></li>
+						<li><a  href="events.html">Events</a></li>
+						<li><a  href="contact.html">Contact</a></li>
 					</ul>					
 						<span>There are many variations of passages</span>
 				</div>

@@ -133,8 +133,7 @@
 	<!-- //animation-effect -->
 	<link href="{% static 'jquery.multiselect.css' %}" rel="stylesheet" type="text/css">
 	<script src="{% static 'jquery.min.js' %}"></script>
-	<script src="{% static 'jquery.multiselect.js' %}"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="{% static 'jquery.multiselect.js' %}"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -146,7 +145,36 @@
 	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-	
+	<script>
+angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
+    $scope.names = [
+        {name: 'milk', category: 'dairy', selected: false},
+        {name: 'butter', category: 'dairy', selected: false},
+        {name: 'cheese', category: 'dairy', selected: false},
+        {name: 'potato', category: 'vegetables', selected: false},
+        {name: 'tomato', category: 'vegetables', selected: false},
+        {name: 'onion', category: 'vegetables', selected: false},
+        {name: 'beaf', category: 'meat', selected: false},
+        {name: 'chicken', category: 'meat', selected: false},
+        {name: 'fish', category: 'meat', selected: false},
+        {name: 'mango', category: 'fruits', selected: false},
+        {name: 'apple', category: 'fruits', selected: false},
+        {name: 'pineapple', category: 'fruits', selected: false}
+    ];
+
+    $scope.selection = [];
+
+    $scope.ingre = function ingre(){
+    	return filterFilter($scope.names, { selected: true});
+    };
+
+    $scope.$watch('names|filter:{selected:true}', function(nv){
+    	$scope.selection = nv.map(function (x){
+    		return x.name;
+    	});
+    }, true);
+}]);
+</script>
 
 	</head>
 	<body>
@@ -295,7 +323,7 @@
 			
 	</div>
 	<!--content-->
-		<div class="menu" ng-app="myApp" ng-controller="namesCtrl">
+		<div class="menu">
 			<div class="container">
 				<div class="menu-top">
 					<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -305,8 +333,6 @@
 					
 					<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 						<p>Pick the ingredients and we will show you what all you can cook with it.<br>Simple, isn't it?</p>
-						
-	  
 					</div>
 					<div class="clearfix"> </div>
 				</div>			
@@ -322,33 +348,48 @@
 	    <label class="data" for="tab-3">Meat</label>
 	    <label class="data" for="tab-4">Fruits</label>
 	  </div>
-	  <div class="content">
+	  <div class="content" ng-app="myApp" ng-controller="namesCtrl">
 	  <!-- <form action="ingred" method="post"> -->
 	    <div class="content-dis">
 	      <!-- dairy products here -->
 	      <div ng-repeat="x in names | filter: 'dairy'">
-  			<label class="detail"><input type="checkbox" value="" ng-model="x.selected" name="ingre[]"><span ng-bind="x.name"></span></label>
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
 		  </div>
 
 	  </div>
-  		
+	    <div class="content-dis">
+	      <!-- vegetables product here -->
+	      <div ng-repeat="x in names | filter: 'vegetables'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
+		  </div>
+		
+	    </div>
+	    <div class="content-dis">
+	      <!-- meat products here -->
+	      <div ng-repeat="x in names | filter: 'meat'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
+		  </div>
+	    </div>
+	    <div class="content-dis">
+	      <!-- fruits over here -->
+	      <div ng-repeat="x in names | filter: 'fruits'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
+		  </div>
+	    </div>
+
+<p ng-repeat="y in selection">
+	<p ng-bind></p>
+</p>
+	    		
 	    		
 	    	
 			</div>
 			</div>
-		<p ng-repeat="y in selection" style="background-color: red; color: yellow;">
-	 <span ng-bind="y">the content selected:</span>
-	</p>
-	<a href="/b"><button onclick="myFunction()">press</button></a>
 
-	<script>
-	function myFunction(){	
- 		$.get('menu', {"suggestion": "1"}, function(data){ });
-
-	}
-	</script>    
-
-	</div>
+			
+			<!-- <p align="center"><input  type="submit" value="Proceed"></p>
+	    </form> -->
+			</div>
 	
 
 	<!--footer-->
@@ -385,38 +426,6 @@
 			</div>
 		</div>		
 		<!--//footer-->
-<script>
-angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
-    $scope.names = [
-        {name: 'milk', category: 'dairy', selected: false},
-        {name: 'butter', category: 'dairy', selected: false},
-        {name: 'cheese', category: 'dairy', selected: false},
-        {name: 'potato', category: 'vegetables', selected: false},
-        {name: 'tomato', category: 'vegetables', selected: false},
-        {name: 'onion', category: 'vegetables', selected: false},
-        {name: 'beaf', category: 'meat', selected: false},
-        {name: 'chicken', category: 'meat', selected: false},
-        {name: 'fish', category: 'meat', selected: false},
-        {name: 'mango', category: 'fruits', selected: false},
-        {name: 'apple', category: 'fruits', selected: false},
-        {name: 'pineapple', category: 'fruits', selected: false}
-    ];
 
-    $scope.selection = [];
-
-    $scope.ingre = function ingre(){
-    	return filterFilter($scope.names, { selected: true});
-    };
-
-    $scope.$watch('names|filter:{selected:true}', function(nv){
-    	$scope.selection = nv.map(function (x){
-    		return x.name;
-    	});
-    }, true);
-
-
-     
-}]);
-</script>
 	</body>
 	</html>
