@@ -1,0 +1,334 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Blog :: w3layouts</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Cookery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---->
+<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<!-- animation-effect -->
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script>
+ new WOW().init();
+</script>
+<!-- //animation-effect -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+	<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
+	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+	
+
+	</head>
+	<body>
+
+
+	<!-- Modal -->
+	<div id="login" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Login</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form class="cd-form PostForm" action="login" method="POST">{% csrf_token %}
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signin-email">E-mail</label>
+							<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">Password</label>
+							<input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password" name="password">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<input type="checkbox" id="remember-me" checked>
+							<label for="remember-me">Remember me</label>
+						</p>
+
+						<p class="fieldset">
+							<input class="full-width" type="submit" value="Login">
+						</p>
+					</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+	<div id="signup" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Sign Up</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form class="cd-form" action="signup" method="post">{% csrf_token %}
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signin-email">Name</label>
+							<input class="full-width has-padding has-border" name="name" id="name" type="text" placeholder="Name">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signin-email">E-mail</label>
+							<input class="full-width has-padding has-border" name="email" id="signin-email" type="email" placeholder="E-mail">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">Password</label>
+							<input class="full-width has-padding has-border" name="password" id="signin-password" type="password"  placeholder="Password">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">Confirm Password</label>
+							<input class="full-width has-padding has-border" name="cpassword" id="signin-password" type="password"  placeholder="Confirm Password">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<input type="checkbox" id="remember-me" checked>
+							<label for="remember-me">Remember me</label>
+						</p>
+
+						<p class="fieldset">
+							<input class="full-width" type="submit" value="Login">
+						</p>
+					</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
+
+	 <div class="header head">
+		<div class="container">
+			<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<h1><a href="/index"><span>KITAS</span></a></h1>
+			</div>
+			<div class="nav-icon">		
+				<a href="#" class="navicon"></a>
+					<div class="toggle">
+						<ul class="toggle-menu">
+							<li><a class="active" href="/index">Home</a></li>
+							<li><a  href="/menu">Menu</a></li>
+							<li><a  href="/blog">Blog</a></li>
+							<li><a  href="/typo">Codes</a></li>
+							<li><a  href="/events">Events</a></li>
+							<li><a  href="/contact">Contact</a></li>
+						</ul>
+					</div>
+				<script>
+				$('.navicon').on('click', function (e) {
+				  e.preventDefault();
+				  $(this).toggleClass('navicon--active');
+				  $('.toggle').toggleClass('toggle--active');
+				});
+				</script>
+			</div>
+		<div class="clearfix"></div>
+		
+		{% if request.session.user == None  %}
+			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
+
+			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
+		{% else %}
+			<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
+			<a href="/logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+		{% endif %}
+		{% if abc %}
+			<p style="background: red; color: yellow;">{{ abc }}</p>
+		{% endif %}
+		</div>
+		<!-- start search-->	
+			
+	</div>
+	<!-- start search-->	
+		
+</div>
+<!--content-->
+<div class="content" id="content-down">
+	<div class="content-top-top">
+		<div class="container">
+			<div class="content-top">
+				<div class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>About</h3>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<span>There are many variations</span>
+				</div>
+				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<p>There are many variations of food available world wide. Don't Worry though Kitas makes sure you get to enjoy 
+						all of them. Kitas presents you with all the simple recipes across the world. Take your pick - breakfast, snack 							or a tummy filling meal :).</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="content-mid">
+					
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>BREAKFAST</h4>
+					  <div class="top">
+						<div class="front face"></div>
+						<div class="back face">
+						<p> All happiness depends on a lesiurely breakfast. </p>
+						</div>
+					  </div>
+					  <div class="bottom"></div>
+					</div>
+				<!-- <button type="button" class="btn btn-success">Read More</button> -->
+				</div></a>
+
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>SNACKS</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>Ah, look what I found - Snacks.</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>Dessert</h4>
+					  <div class="top">
+						<div class="front face front2"></div>
+						<div class="back face">
+						<p>Life is short, eat dessert first.</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom2"></div>
+					</div>
+				</div></a>
+				<div class="clearfix"></div>
+			</div>
+			<br><br>
+			<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom"></div>
+					</div>
+				</div></a>
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
+		</div>
+	</div>
+</div>	
+<!--footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-head">
+				<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<ul class=" in">
+						<li><a href="/index">Home</a></li>
+						<li><a  href="/menu">Menu</a></li>
+						<li><a  href="/blog">Blog</a></li>
+						<li><a  href="/events">Events</a></li>
+						<li><a  href="/contact">Contact</a></li>
+					</ul>					
+						<span>There are many variations of passages</span>
+				</div>
+				<div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h2>Follow Us</h2>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+					<ul class="social-ic">
+						<li><a href="{% static '#' %}"><i></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic"></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic1"></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic2"></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic3"></i></a></li>
+					</ul>
+
+				</div>
+			<div class="clearfix"> </div>
+					
+			</div>
+			<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2016 Cookery . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		</div>
+	</div>		
+	<!--//footer-->
+
+</body>
+</html>
+

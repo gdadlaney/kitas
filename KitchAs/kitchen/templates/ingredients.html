@@ -1,4 +1,4 @@
-		<!--A Design by W3layouts 
+	<!--A Design by W3layouts 
 	Author: W3layout
 	Author URL: http://w3layouts.com
 	License: Creative Commons Attribution 3.0 Unported
@@ -353,32 +353,32 @@ angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  
 	    <div class="content-dis">
 	      <!-- dairy products here -->
 	      <div ng-repeat="x in names | filter: 'dairy'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
 		  </div>
 
 	  </div>
 	    <div class="content-dis">
 	      <!-- vegetables product here -->
 	      <div ng-repeat="x in names | filter: 'vegetables'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
 		  </div>
 		
 	    </div>
 	    <div class="content-dis">
 	      <!-- meat products here -->
 	      <div ng-repeat="x in names | filter: 'meat'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
 		  </div>
 	    </div>
 	    <div class="content-dis">
 	      <!-- fruits over here -->
 	      <div ng-repeat="x in names | filter: 'fruits'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]" ng-model="x.selected"><span ng-bind="x.name"></span></label>
 		  </div>
 	    </div>
 
 <p ng-repeat="y in selection">
-	{{ y }}
+	<p ng-bind></p>
 </p>
 	    		
 	    		

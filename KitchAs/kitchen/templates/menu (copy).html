@@ -1,4 +1,4 @@
-		<!--A Design by W3layouts 
+	<!--A Design by W3layouts 
 	Author: W3layout
 	Author URL: http://w3layouts.com
 	License: Creative Commons Attribution 3.0 Unported
@@ -145,36 +145,7 @@
 	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-	<script>
-angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
-    $scope.names = [
-        {name: 'milk', category: 'dairy', selected: false},
-        {name: 'butter', category: 'dairy', selected: false},
-        {name: 'cheese', category: 'dairy', selected: false},
-        {name: 'potato', category: 'vegetables', selected: false},
-        {name: 'tomato', category: 'vegetables', selected: false},
-        {name: 'onion', category: 'vegetables', selected: false},
-        {name: 'beaf', category: 'meat', selected: false},
-        {name: 'chicken', category: 'meat', selected: false},
-        {name: 'fish', category: 'meat', selected: false},
-        {name: 'mango', category: 'fruits', selected: false},
-        {name: 'apple', category: 'fruits', selected: false},
-        {name: 'pineapple', category: 'fruits', selected: false}
-    ];
-
-    $scope.selection = [];
-
-    $scope.ingre = function ingre(){
-    	return filterFilter($scope.names, { selected: true});
-    };
-
-    $scope.$watch('names|filter:{selected:true}', function(nv){
-    	$scope.selection = nv.map(function (x){
-    		return x.name;
-    	});
-    }, true);
-}]);
-</script>
+	
 
 	</head>
 	<body>
@@ -323,7 +294,7 @@ angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  
 			
 	</div>
 	<!--content-->
-		<div class="menu">
+		<div class="menu" ng-app="myApp" ng-controller="namesCtrl">
 			<div class="container">
 				<div class="menu-top">
 					<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -333,6 +304,8 @@ angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  
 					
 					<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 						<p>Pick the ingredients and we will show you what all you can cook with it.<br>Simple, isn't it?</p>
+						
+	  
 					</div>
 					<div class="clearfix"> </div>
 				</div>			
@@ -348,48 +321,59 @@ angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  
 	    <label class="data" for="tab-3">Meat</label>
 	    <label class="data" for="tab-4">Fruits</label>
 	  </div>
-	  <div class="content" ng-app="myApp" ng-controller="namesCtrl">
+	  <div class="content">
 	  <!-- <form action="ingred" method="post"> -->
 	    <div class="content-dis">
 	      <!-- dairy products here -->
 	      <div ng-repeat="x in names | filter: 'dairy'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+  			<label class="detail"><input type="checkbox" value="" ng-model="x.selected" name="ingre[]"><span ng-bind="x.name"></span></label>
 		  </div>
 
 	  </div>
-	    <div class="content-dis">
-	      <!-- vegetables product here -->
-	      <div ng-repeat="x in names | filter: 'vegetables'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
-		  </div>
-		
-	    </div>
-	    <div class="content-dis">
-	      <!-- meat products here -->
-	      <div ng-repeat="x in names | filter: 'meat'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
-		  </div>
-	    </div>
-	    <div class="content-dis">
-	      <!-- fruits over here -->
-	      <div ng-repeat="x in names | filter: 'fruits'">
-  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
-		  </div>
-	    </div>
-
-<p ng-repeat="y in selection">
-	{{ y }}
-</p>
-	    		
+  		
 	    		
 	    	
 			</div>
 			</div>
+		<p ng-repeat="y in selection" style="background-color: red; color: yellow;">
+	 <span ng-bind="y">the content selected:</span>
+	</p>
+	<!-- <form  action="b">{% csrf_token %}
+		<p align="center" id="newId"><input  type="submit" value="Proceed"></p>
+	</form> -->
+	<a href="/b"><button onclick="myFunction()">press</button></a>
 
-			
-			<!-- <p align="center"><input  type="submit" value="Proceed"></p>
-	    </form> -->
-			</div>
+	<script>
+	function myFunction(){	
+	// $.get("http://127.0.0.1:8000/kitas/menu/b",
+	// {'data[]':["hi","hello"]});
+	// $.ajax(
+ //        {
+ //        method: "POST",
+ //        url: "{% url 'kitas:menu/' %}",
+ //        processData: false,
+ //        contentType: false,
+ //        //mimeType: "multipart/form-data",
+ //        data: data,
+ //      }).done(function(msg_json_object)
+ //      {
+ //        $('#matchrequest').prop("disabled", false);
+ //        if(msg_json_object.hasOwnProperty('err_msg'))
+ //        {
+ //          toggleMatchError(msg_json_object['err_msg']);
+ //        }
+ //        else
+ //        {
+ //          toggleMatchSuccess(msg_json_object['success_msg']);
+ //        }
+ //      });
+
+ 		$.get('menu', {"suggestion": "1"}, function(data){ });
+
+	}
+	</script>    
+
+	</div>
 	
 
 	<!--footer-->
@@ -426,6 +410,38 @@ angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  
 			</div>
 		</div>		
 		<!--//footer-->
+<script>
+angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
+    $scope.names = [
+        {name: 'milk', category: 'dairy', selected: false},
+        {name: 'butter', category: 'dairy', selected: false},
+        {name: 'cheese', category: 'dairy', selected: false},
+        {name: 'potato', category: 'vegetables', selected: false},
+        {name: 'tomato', category: 'vegetables', selected: false},
+        {name: 'onion', category: 'vegetables', selected: false},
+        {name: 'beaf', category: 'meat', selected: false},
+        {name: 'chicken', category: 'meat', selected: false},
+        {name: 'fish', category: 'meat', selected: false},
+        {name: 'mango', category: 'fruits', selected: false},
+        {name: 'apple', category: 'fruits', selected: false},
+        {name: 'pineapple', category: 'fruits', selected: false}
+    ];
 
+    $scope.selection = [];
+
+    $scope.ingre = function ingre(){
+    	return filterFilter($scope.names, { selected: true});
+    };
+
+    $scope.$watch('names|filter:{selected:true}', function(nv){
+    	$scope.selection = nv.map(function (x){
+    		return x.name;
+    	});
+    }, true);
+
+
+     
+}]);
+</script>
 	</body>
 	</html>
