@@ -1,0 +1,431 @@
+		<!--A Design by W3layouts 
+	Author: W3layout
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+	-->
+	{% load staticfiles %}
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<title>KITAS</title>
+
+
+	<style type="text/css">
+	/*	* {
+	  margin: 0;
+	  padding: 0;
+	}*/
+	/*html {
+	  background-color: #0f606d;
+	}*/
+
+	/*h1 {
+	  font-size: 35px;
+	  text-align: center;
+	  padding: 4% 0px;
+	  letter-spacing: 1px;
+	}*/
+	.main input[type=radio] {
+		display: none;
+	}
+	#tab-1:checked ~ .tab label:nth-child(1),
+	#tab-2:checked ~ .tab label:nth-child(2),
+	#tab-3:checked ~ .tab label:nth-child(3),
+	#tab-4:checked ~ .tab label:nth-child(4) {
+		background-color: #ffff8d  ;
+	  box-shadow: none;
+	}
+	.content > div {
+		display: none;
+	}
+	#tab-1:checked ~ .content div:nth-child(1),
+	#tab-2:checked ~ .content div:nth-child(2),
+	#tab-3:checked ~ .content div:nth-child(3),
+	#tab-4:checked ~ .content div:nth-child(4)  {
+		display: block;
+	}
+	.main {
+	  margin-top: 0;
+	  margin: 0 auto;
+	  max-width: 800px;
+	  border: 1px solid rgba(0, 0, 0, 0.2);
+	}
+	.tab {
+	  overflow: hidden;
+	}
+	.data {
+	    font-size: 18px;
+	    cursor: pointer;
+	    background-color: #ff6f00 ;
+	    float: left;
+	    color: #cddc39;
+	    width: 25%;
+	    text-align: center;
+	    padding: 15px 0;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    letter-spacing: 2px;
+	    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+	    user-select: none;
+	    -webkit-user-select: none;
+	  }
+
+	.detail {
+		margin: 1px;
+	    font-size: 18px;
+	    cursor: pointer;
+	    background-color: #fce4ec ;
+	    float: left;
+	    color: #f48fb1;
+	    width: 20%;
+	    text-align: center;
+	    padding: 15px 0;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    letter-spacing: 2px;
+	    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+	    user-select: none;
+	    -webkit-user-select: none;
+	  }
+	.content {
+	  background-color: #ffe0b2;
+	  min-height: 250px;
+	  > div {
+	    padding: 30px;
+	    line-height: 1.5;
+	    font-size: 17px;
+	  }
+	}
+
+	</style>
+
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<!-- Custom Theme files -->
+	<!--theme-style-->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+	<!--//theme-style-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Cookery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!---->
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+	<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+	<!-- animation-effect -->
+	<link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+	<script src="{% static 'js/wow.min.js' %}"></script>
+	<script>
+	 new WOW().init();
+	</script>
+	<script type="text/javascript">
+		
+		$('#langOpt').multiselect({
+	    columns: 1,
+	    placeholder: 'Select Languages',
+	    search: true
+	});
+	</script>
+	<!-- //animation-effect -->
+	<link href="{% static 'jquery.multiselect.css' %}" rel="stylesheet" type="text/css">
+	<script src="{% static 'jquery.min.js' %}"></script>
+	<script src="{% static 'jquery.multiselect.js' %}"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+	<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
+	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+	<script>
+angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
+    $scope.names = [
+        {name: 'milk', category: 'dairy', selected: false},
+        {name: 'butter', category: 'dairy', selected: false},
+        {name: 'cheese', category: 'dairy', selected: false},
+        {name: 'potato', category: 'vegetables', selected: false},
+        {name: 'tomato', category: 'vegetables', selected: false},
+        {name: 'onion', category: 'vegetables', selected: false},
+        {name: 'beaf', category: 'meat', selected: false},
+        {name: 'chicken', category: 'meat', selected: false},
+        {name: 'fish', category: 'meat', selected: false},
+        {name: 'mango', category: 'fruits', selected: false},
+        {name: 'apple', category: 'fruits', selected: false},
+        {name: 'pineapple', category: 'fruits', selected: false}
+    ];
+
+    $scope.selection = [];
+
+    $scope.ingre = function ingre(){
+    	return filterFilter($scope.names, { selected: true});
+    };
+
+    $scope.$watch('names|filter:{selected:true}', function(nv){
+    	$scope.selection = nv.map(function (x){
+    		return x.name;
+    	});
+    }, true);
+}]);
+</script>
+
+	</head>
+	<body>
+
+
+	<!-- Modal -->
+	<div id="login" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Login</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form class="cd-form PostForm" action="login" method="POST">{% csrf_token %}
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signin-email">E-mail</label>
+							<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">Password</label>
+							<input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password" name="password">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<input type="checkbox" id="remember-me" checked>
+							<label for="remember-me">Remember me</label>
+						</p>
+
+						<p class="fieldset">
+							<input class="full-width" type="submit" value="Login">
+						</p>
+					</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+	<div id="signup" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Sign Up</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form class="cd-form" action="signup" method="post">{% csrf_token %}
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signin-email">Name</label>
+							<input class="full-width has-padding has-border" name="name" id="name" type="text" placeholder="Name">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signin-email">E-mail</label>
+							<input class="full-width has-padding has-border" name="email" id="signin-email" type="email" placeholder="E-mail">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">Password</label>
+							<input class="full-width has-padding has-border" name="password" id="signin-password" type="password"  placeholder="Password">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">Confirm Password</label>
+							<input class="full-width has-padding has-border" name="cpassword" id="signin-password" type="password"  placeholder="Confirm Password">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<input type="checkbox" id="remember-me" checked>
+							<label for="remember-me">Remember me</label>
+						</p>
+
+						<p class="fieldset">
+							<input class="full-width" type="submit" value="Login">
+						</p>
+					</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
+
+	 <div class="header head">
+		<div class="container">
+			<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<h1><a href="/index"><span>KITAS</span></a></h1>
+			</div>
+			<div class="nav-icon">		
+				<a href="#" class="navicon"></a>
+					<div class="toggle">
+						<ul class="toggle-menu">
+							<li><a class="active" href="/index">Home</a></li>
+							<li><a  href="/menu">Menu</a></li>
+							<li><a  href="/blog">Blog</a></li>
+							<li><a  href="/typo">Codes</a></li>
+							<li><a  href="/events">Events</a></li>
+							<li><a  href="/contact">Contact</a></li>
+						</ul>
+					</div>
+				<script>
+				$('.navicon').on('click', function (e) {
+				  e.preventDefault();
+				  $(this).toggleClass('navicon--active');
+				  $('.toggle').toggleClass('toggle--active');
+				});
+				</script>
+			</div>
+		<div class="clearfix"></div>
+		
+		{% if request.session.user == None  %}
+			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
+
+			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
+		{% else %}
+			<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
+			<a href="/logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+		{% endif %}
+		{% if abc %}
+			<p style="background: red; color: yellow;">{{ abc }}</p>
+		{% endif %}
+		</div>
+		<!-- start search-->	
+			
+	</div>
+	<!--content-->
+		<div class="menu">
+			<div class="container">
+				<div class="menu-top">
+					<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<h3>Menu</h3>
+						
+					</div>
+					
+					<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<p>Pick the ingredients and we will show you what all you can cook with it.<br>Simple, isn't it?</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>			
+				</div>
+				<div class="main">
+	  <input type="radio" id="tab-1" name="show" checked/>
+	  <input type="radio" id="tab-2" name="show" />
+	  <input type="radio" id="tab-3" name="show" />
+	  <input type="radio" id="tab-4" name="show" />
+	  <div class="tab">
+	    <label class="data" for="tab-1">Dairy</label>
+	    <label class="data" for="tab-2">Vegetables</label>
+	    <label class="data" for="tab-3">Meat</label>
+	    <label class="data" for="tab-4">Fruits</label>
+	  </div>
+	  <div class="content" ng-app="myApp" ng-controller="namesCtrl">
+	  <!-- <form action="ingred" method="post"> -->
+	    <div class="content-dis">
+	      <!-- dairy products here -->
+	      <div ng-repeat="x in names | filter: 'dairy'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+		  </div>
+
+	  </div>
+	    <div class="content-dis">
+	      <!-- vegetables product here -->
+	      <div ng-repeat="x in names | filter: 'vegetables'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+		  </div>
+		
+	    </div>
+	    <div class="content-dis">
+	      <!-- meat products here -->
+	      <div ng-repeat="x in names | filter: 'meat'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+		  </div>
+	    </div>
+	    <div class="content-dis">
+	      <!-- fruits over here -->
+	      <div ng-repeat="x in names | filter: 'fruits'">
+  			<label class="detail"><input type="checkbox" value="" name="ingre[]"><span ng-bind="x.name"></span></label>
+		  </div>
+	    </div>
+
+<p ng-repeat="y in selection">
+	{{ y }}
+</p>
+	    		
+	    		
+	    	
+			</div>
+			</div>
+
+			
+			<!-- <p align="center"><input  type="submit" value="Proceed"></p>
+	    </form> -->
+			</div>
+	
+
+	<!--footer-->
+		<div class="footer">
+			<div class="container">
+				<div class="footer-head">
+					<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<ul class=" in">
+							<li><a href="/index">Home</a></li>
+							<li><a  href="/menu">Menu</a></li>
+							<li><a  href="/blog">Blog</a></li>
+							<li><a  href="/events">Events</a></li>
+							<li><a  href="/contact">Contact</a></li>
+						</ul>					
+							<span>There are many variations of passages</span>
+					</div>
+					<div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<h2>Follow Us</h2>
+						<label><i class="glyphicon glyphicon-menu-up"></i></label>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+						<ul class="social-ic">
+							<li><a href="#"><i></i></a></li>
+							<li><a href="#"><i class="ic"></i></a></li>
+							<li><a href="#"><i class="ic1"></i></a></li>
+							<li><a href="#"><i class="ic2"></i></a></li>
+							<li><a href="#"><i class="ic3"></i></a></li>
+						</ul>
+
+					</div>
+				<div class="clearfix"> </div>
+						
+				</div>
+				<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2016 Cookery . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+			</div>
+		</div>		
+		<!--//footer-->
+
+	</body>
+	</html>

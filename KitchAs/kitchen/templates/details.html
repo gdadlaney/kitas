@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>details</title>
+</head>
+<body>
+<form action="details" method="post">{% csrf_token %}
+{{ form.as_p}}
+<input type="submit" value="Submit" />	
+</form>
+</body>
+</html>

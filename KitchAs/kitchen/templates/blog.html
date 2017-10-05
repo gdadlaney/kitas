@@ -1,0 +1,109 @@
+{% extends "template.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<!--content-->
+	<div class="blog">
+		<div class="container">
+			<div class="menu-top">
+					<div class="col-md-4 menu-left">
+						<h3>Blog</h3>
+						<label><i class="glyphicon glyphicon-menu-up"></i></label>
+						<span>There are many variations</span>
+					</div>
+					<div class="col-md-8 menu-right">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour , or randomised words which don't look even slightly believable.There are many variations by injected humour. There are many variations of passages of Lorem Ipsum available.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form by injected humour , or randomised words</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			<div class="col-md-9 blog-header">
+				<div class=" blog-head">
+					{% for recipe_list in sorted_list %}
+						<div class="col-md-4 blog-top">
+							<div class="blog-in">
+								<a href="/single"><img class="img-responsive" src="{% static 'images/bl.jpg' %}" alt=" "></a>
+								<div class="blog-grid">
+									<h3><a href="/single">{{ recipe_list.0.0 }}</a></h3>
+									<div class="date">
+										<span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>22.08.2014</span>
+										<a href="/single" class="comments"><i class="glyphicon glyphicon-comment"></i>24</a>
+										<div class="clearfix"> </div>
+									</div>
+									<p>{{ recipe_list.0.1 }}</p>
+									<p>
+										{% for ingredient_list in recipe_list.1 %}
+											{{ ingredient_list.0 }}
+											{% if ingredient_list.1 is not None %}
+												: {{ ingredient_list.1 }} missing
+											{% endif %}
+											<br>
+										{% endfor %}
+									</p>
+									<div class="more">						
+										<a class="link link-yaku" href="/single">
+											<span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
+										</a>
+									</div>
+								</div>					
+							</div>
+						</div>
+					{% endfor %}
+
+		
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-3 categories-grid">
+				<div class="search-in animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h4>Search</h4>
+						<div class="search">
+						<form>
+							<input type="text" placeholder="Search" required="" >
+							<input type="submit" value="" >
+						</form>
+						</div>
+				</div>
+					<div class="grid-categories animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<h4>Categories</h4>
+						<ul class="popular">
+							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Breakfast</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Lunch</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dinner</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dessert</a></li>
+							
+						</ul>
+					</div>
+					<div class="blog-bottom animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+							<h4>Recent Posts</h4>
+								<div class="product-go">
+									<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo.jpg' %}" alt=""></a>
+									<div class="grid-product">
+										<a href="/single" class="elit">Consectetuer adipiscing</a>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+									</div>
+								<div class="clearfix"> </div>
+								</div>
+								<div class="product-go">
+									<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo1.jpg' %}" alt=""></a>
+									<div class="grid-product">
+										<a href="/single" class="elit">Consectetuer adipiscing</a>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+									</div>
+								<div class="clearfix"> </div>
+								</div>
+								<div class="product-go">
+									<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo2.jpg' %}" alt=""></a>
+									<div class="grid-product">
+										<a href="/single" class="elit">Consectetuer adipiscing</a>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+									</div>
+								<div class="clearfix"> </div>
+								</div>
+							</div>
+
+				</div>
+		<div class="clearfix"> </div>
+		</div>
+	</div>
+<!--//content-->
+{% endblock %}
