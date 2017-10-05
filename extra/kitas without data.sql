@@ -279,7 +279,7 @@ CREATE TABLE `customers` (
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +288,6 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'admin','admin@kitas.com','admin');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,7 +413,7 @@ CREATE TABLE `ingr_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -423,7 +422,6 @@ CREATE TABLE `ingr_categories` (
 
 LOCK TABLES `ingr_categories` WRITE;
 /*!40000 ALTER TABLE `ingr_categories` DISABLE KEYS */;
-INSERT INTO `ingr_categories` VALUES (1,'Dairy'),(2,'Vegetables'),(3,'Fruits'),(4,'Meats'),(5,'Grains'),(6,'Spices'),(1000,'Others');
 /*!40000 ALTER TABLE `ingr_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,7 +440,7 @@ CREATE TABLE `ingredients` (
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
   CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`category`) REFERENCES `ingr_categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -451,7 +449,6 @@ CREATE TABLE `ingredients` (
 
 LOCK TABLES `ingredients` WRITE;
 /*!40000 ALTER TABLE `ingredients` DISABLE KEYS */;
-INSERT INTO `ingredients` VALUES (1,'wheat flour','aata',5),(2,'flour','maida',5),(3,'ghee','ghee',1000),(4,'oil',NULL,1000),(5,'puffed rice','bhel',1000),(6,'potato',NULL,2),(7,'onion',NULL,2),(8,'tomato',NULL,2),(9,'coriander leaves',NULL,2),(10,'cumin',NULL,6),(11,'green chillies',NULL,6),(12,'black pepper',NULL,6),(13,'tamarind',NULL,6),(14,'jaggery',NULL,6),(15,NULL,'besan',5),(16,'red pepper',NULL,6),(17,'salt',NULL,6),(18,NULL,'garam masala',6),(19,'paprika',NULL,6),(20,'spinach',NULL,2);
 /*!40000 ALTER TABLE `ingredients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -466,7 +463,7 @@ CREATE TABLE `rec_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -475,7 +472,6 @@ CREATE TABLE `rec_categories` (
 
 LOCK TABLES `rec_categories` WRITE;
 /*!40000 ALTER TABLE `rec_categories` DISABLE KEYS */;
-INSERT INTO `rec_categories` VALUES (1,'Breads'),(2,'Snacks'),(3,'Vegetables'),(4,'Lentils'),(5,'Rice'),(6,'Fish'),(7,'Chicken'),(8,'Lamb and Beef'),(9,'Desserts'),(10,'This and That'),(1000,'Others');
 /*!40000 ALTER TABLE `rec_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +501,6 @@ CREATE TABLE `rec_ingredients` (
 
 LOCK TABLES `rec_ingredients` WRITE;
 /*!40000 ALTER TABLE `rec_ingredients` DISABLE KEYS */;
-INSERT INTO `rec_ingredients` VALUES (1,'1 cup','Whole wheat flour (or 1/3 white + 2/3 whole wheat)','150g',1),(1,'1/2 cup','Water',NULL,NULL),(2,'1 cup','Whole wheat flour','150g',1),(2,NULL,'Ghee',NULL,3),(2,NULL,'Water',NULL,NULL),(3,'1 packet','Bhel mix or Sev',NULL,4),(3,'2','2 Mashed boiled potatoes (mashed coarsely and then salted)','2',6),(3,'1/2 cup','Chopped fresh coriander leaves (a.k.a Chinese parsley)','75g',9),(3,'3 tsp','Freshly roasted and ground cumin','15g',10),(3,'to taste','Green chilies',NULL,11),(3,'1-2 tsp','Freshly ground black pepper','5g',12),(3,'to taste','Tamarind',NULL,13),(3,'to taste','Jaggery (or Brown Sugar)',NULL,14),(3,'1 cup','Chopped onions.','150g',7),(4,'1/2 cup','Besan','75g',15),(4,'1 cup','Warm water',NULL,NULL),(4,'1/4 tsp','Red pepper','1g',16),(4,'3/4 tsp','Salt','3g',17),(4,'1/2 tsp','Garam Masala','2g',18),(4,'(optional)','paprika',NULL,19),(4,'1','1 Small onion','1',7),(4,'1','1 Potato','1',6),(4,NULL,'A few spinach leaves ',NULL,20),(4,NULL,'Oil for deep frying',NULL,4);
 /*!40000 ALTER TABLE `rec_ingredients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -530,7 +525,7 @@ CREATE TABLE `recipes` (
   KEY `category` (`category`),
   CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customers` (`id`),
   CONSTRAINT `recipes_ibfk_2` FOREIGN KEY (`category`) REFERENCES `rec_categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -539,7 +534,6 @@ CREATE TABLE `recipes` (
 
 LOCK TABLES `recipes` WRITE;
 /*!40000 ALTER TABLE `recipes` DISABLE KEYS */;
-INSERT INTO `recipes` VALUES (1,'CHAPATI (PHULKA)','Put flour in a large bowl with half the water. Blend the two together until it holds.  Beat and knead well until it forms a compact ball.<br><br>Knead dough until it is smooth and elastic.  Set aside for 30 minutes.<br><br>Knead and divide dough into 4 to 6 parts.  Roll each ball into a tortilla like flat, about 1/8\" thick.  Heat an ungreased skillet. <br><br>Put phulka on it, and let it cook for about 1 minute (The top should just start to look dry and small bubbles should just start to form). <br><br>Turn and cook the second side for 2/3 minutes until small bubbles form. <br><br>Turn again and cook the first side pressed lightly with a towel.  It should puff.  Serve warm (maybe slightly buttered).<br> ',1,'2017-10-05 18:13:27','serves 4, 1-2 for each',NULL,1),(2,'PARATHA','Make chappati dough.  Divide into 6 parts and make balls.  Flatten and roll each. <br><br>Spread ghee over them and fold.  Roll again. <br><br>Heat the paratha on a griddle like you would a chappati, but spread some ghee over the top side.  Turn and spread ghee on the other side. Fry until the bottom is crisp and golden, then turn and fry the remaining side. <br><br>Repeat with all six. <br><br>Serve at once, since they lose crispness if stored.<br>',1,'2017-10-05 18:13:27',NULL,NULL,1),(3,'BHEL','First boil the potatoes, mash them, salt them, and add pepper to taste. Add some coriander leaves too. <br><br>Roast the cumin and grind it.<br><br>Dissolve about 4 Tbsp of tamarind concentrate in 1 cup of hot water, and let it simmer and thicken gradually.  Dissolve the jaggery (or sugar) until the sauce becomes tart and slightly sweet.  (You may add some salt<br>and ground red paprika, if you want to.) The sauce should be of a consistency slightly thinner than maple syrup.  Pour into a serving container (like a creamer).  Mix the puffed rice and sev/bhel mix in a large bowl. <br><br>On a plate, serve the rice-bhel mixture, add the potatoes, then the onions, chilies, and then dust the cumin powder over it.  Next pour on the sauce and top with the coriander garnish. (Add salt/pepper to<br>taste). <br><br>Mix the ingredients on the plate and eat. <br>',1,'2017-10-05 18:13:27',NULL,NULL,2),(4,'PAKORAS (SAVORY FRITTERS)','In a bowl put the besan and half the water, and stir until it becomes a thick batter.  Beat hard for 5 minutes.  gradually add the rest of the water, and leave to swell for 30 minutes.  Add salt, pepper and Garam Masala and beat again. <br><br>Wash peel and slice the onion and potatoes.  Wash and pat dry the spinach leaves. <br><br>Heat oil until smoking hot, dip the vegetables in the batter and deep fry until golden brown. <br><br>Serve hot. <br>',1,'2017-10-05 18:13:27',NULL,NULL,2);
 /*!40000 ALTER TABLE `recipes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -552,4 +546,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-06  0:36:50
+-- Dump completed on 2017-10-02 23:20:37

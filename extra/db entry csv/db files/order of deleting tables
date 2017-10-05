@@ -1,0 +1,9 @@
+cust_fav, cust_activity
+
+rec_ingredients, cust_ingredients
+
+recipes, ingredients
+
+rec_categories, ingr_categories
+
+customers

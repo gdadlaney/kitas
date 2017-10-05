@@ -1,0 +1,21 @@
+id	name_english	name_hindi	category
+1	wheat flour	aata	5
+2	flour	maida	5
+3	ghee	ghee	1000
+4	oil	NULL	1000
+5	puffed rice	bhel	1000
+6	potato	NULL	2
+7	onion	NULL	2
+8	tomato	NULL	2
+9	coriander leaves	NULL	2
+10	cumin	NULL	6
+11	green chillies	NULL	6
+12	black pepper	NULL	6
+13	tamarind	NULL	6
+14	jaggery	NULL	6
+15	NULL	besan	5
+16	red pepper	NULL	6
+17	salt	NULL	6
+18	NULL	garam masala	6
+19	paprika	NULL	6
+20	spinach	NULL	2
