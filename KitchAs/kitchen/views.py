@@ -31,6 +31,22 @@ def ingredients(request):
 def accounts(request):
 	return render(request, 'index.html/#cd-login', {})
 
+
+def addIngredient(request):
+	return render(request, 'pingredients.html', {})
+
+
+@csrf_protect
+def listUp(request):
+	data = request.POST
+	ingre = data.get('ingre')
+	qty = data.get('qty')
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT id FROM ingredients WHERE name_english={0} or name_hindi={1}".format(ingre, ingre))
+		abc = cursor.fetchone()
+		cursor.execute("INSERT INTO cust_ingredients VALUES({0}, {1}, {2})".format(request.session['id'], abc[0], qty))
+	return render(request, 'pingredients.html', {})
+
 @csrf_protect
 def login(request):
 	data = request.POST
@@ -39,6 +55,7 @@ def login(request):
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT * FROM customers WHERE email='{0}' and password='{1}'".format(email, passw))
 		abc = cursor.fetchone()
+	request.session['id'] = abc[0]
 	request.session['user'] = abc[1]
 	return render(request, 'index.html', {})
 

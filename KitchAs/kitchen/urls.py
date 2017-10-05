@@ -13,7 +13,8 @@ urlpatterns = [
 	url(r'^login$', views.login, name='login'),
 	url(r'^categories$', views.categories, name='categories'),
 	url(r'^ingredients$', views.ingredients, name='ingredients'),
-
+	url(r'^list$', views.addIngredient, name="addIngredient"),
+	url(r'^listUp$', views.listUp, name="listUp"),
 	#url(r'^', views.index, name='index'),
 	url(r'^', views.page_not_found, name='page_not_found'),
 ]
