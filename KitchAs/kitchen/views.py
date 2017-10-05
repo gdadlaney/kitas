@@ -62,9 +62,9 @@ def test(request):
 def test2(request):
 	# from django.db import connection
 
-	arr = request.GET.getlist('data[]')
-	print(arr)
-	return HttpResponse(str(arr))
+	# arr = request.GET.getlist('data[]')
+	# print(arr)
+	# return HttpResponse(str(arr))
 
 	user_ingredients_with_qty = {'potato': 20, 'onion': 20, 'flour': 30}
 	# user_ingredients_with_qty = {'potato':None, 'onion':None, 'flour':None}	#for user type 3
