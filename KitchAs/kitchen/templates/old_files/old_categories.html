@@ -1,11 +1,14 @@
-
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 {% load staticfiles %}
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Codes :: w3layouts</title>
+<title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Blog :: w3layouts</title>
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -21,17 +24,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
-
 <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
-	<!-- animation-effect -->
+<!-- animation-effect -->
 <link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
 <script src="{% static 'js/wow.min.js' %}"></script>
 <script>
  new WOW().init();
 </script>
 <!-- //animation-effect -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -181,166 +183,117 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
 		{% else %}
-			<div class="dropdown" style="float: right; margin-right: 30px;">
-  			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
-  			<span class="caret"></span></button>
-  			<ul class="dropdown-menu" >
-    			<li style="width: 20px;"><a href="/pantry">My Pantry</a></li>
-    			<li style="width: 20px;"><a href="/list">Add Ingredients</a></li>
-    			<li style="width: 20px;"><a href="/recipe">Add Recipe</a></li>
-  				<li style="width: 20px;"><a href="/logout">Log Out</a></li>
-  			</ul>
-		</div>
+			<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
+			<a href="/logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
 		{% endif %}
 		{% if abc %}
 			<p style="background: red; color: yellow;">{{ abc }}</p>
 		{% endif %}
 		</div>
+		<!-- start search-->	
+			
+	</div>
 	<!-- start search-->	
 		
 </div>
-	<!--content-->
-	<div class="menu">
+<!--content-->
+<div class="content" id="content-down">
+	<div class="content-top-top">
 		<div class="container">
-			<div class="page">
-				<div class="menu-top">
-				<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<h3>Short Codes</h3>
+			<div class="content-top">
+				<div class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>About</h3>
 					<label><i class="glyphicon glyphicon-menu-up"></i></label>
 					<span>There are many variations</span>
 				</div>
-				<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour , or randomised words which don't look even slightly believable.There are many variations by injected humour. There are many variations of passages of Lorem Ipsum available.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form by injected humour , or randomised words</p>
+				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<p>There are many variations of food available world wide. Don't Worry though Kitas makes sure you get to enjoy 
+						all of them. Kitas presents you with all the simple recipes across the world. Take your pick - breakfast, snack 							or a tummy filling meal :).</p>
 				</div>
 				<div class="clearfix"> </div>
-				</div>
+			</div>
+			<div class="content-mid">
+					
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>BREAKFAST</h4>
+					  <div class="top">
+						<div class="front face"></div>
+						<div class="back face">
+						<p> All happiness depends on a lesiurely breakfast. </p>
+						</div>
+					  </div>
+					  <div class="bottom"></div>
+					</div>
+				<!-- <button type="button" class="btn btn-success">Read More</button> -->
+				</div></a>
 
-        	</div>
-        </div>
-        <form align="center" style="margin-top: 0px;" method="post" action="listUp">
-		  <div class="form-group col-xs-4">{% csrf_token %}
-		    <label>Ingredients:</label>
-		    <input type="text" class="form-control" name="ingre" id="ingre">
-		  </div>
-		  <div class="form-group col-xs-4">
-		    <label>Quantity:</label>
-		    <input type="text" class="form-control" name="qty" id="qty">
-		  </div><br>
-		  <button type="submit" class="btn btn-default col-xs-4">Submit</button>
-		</form>
-    </div>
-       <!-- seems good for admin
-	 <div class="page-header">
-        <h3>Tables</h3>
-      </div>
-  
-  <div class="bs-example" data-example-id="simple-table">
-    <table class="table">
-      <caption>Optional table caption.</caption>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
-
-
-	<!--Contextual classes-->
-	<!-- 
-  <div class="bs-example" data-example-id="contextual-table" style="border: 1px solid #eee">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Column heading</th>
-          <th>Column heading</th>
-          <th>Column heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="active">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="success">
-          <th scope="row">3</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="info">
-          <th scope="row">5</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="warning">
-          <th scope="row">7</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="danger">
-          <th scope="row">9</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
-	<!--//Contextual classes-->
-	
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>SNACKS</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>Ah, look what I found - Snacks.</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>Dessert</h4>
+					  <div class="top">
+						<div class="front face front2"></div>
+						<div class="back face">
+						<p>Life is short, eat dessert first.</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom2"></div>
+					</div>
+				</div></a>
+				<div class="clearfix"></div>
+			</div>
+			<br><br>
+			<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom"></div>
+					</div>
+				</div></a>
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
+				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<div class=" hover-fold">
+					  <h4>FOOD</h4>
+					  <div class="top">
+						<div class="front face front1"></div>
+						<div class="back face">
+						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+						</div>
+					  </div>
+					  <div class="bottom bottom1"></div>
+					</div>
+				</div></a>
+		</div>
+	</div>
+</div>	
 <!--footer-->
 	<div class="footer">
 		<div class="container">
@@ -360,11 +313,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<label><i class="glyphicon glyphicon-menu-up"></i></label>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
 					<ul class="social-ic">
-						<li><a href="#"><i></i></a></li>
-						<li><a href="#"><i class="ic"></i></a></li>
-						<li><a href="#"><i class="ic1"></i></a></li>
-						<li><a href="#"><i class="ic2"></i></a></li>
-						<li><a href="#"><i class="ic3"></i></a></li>
+						<li><a href="{% static '#' %}"><i></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic"></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic1"></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic2"></i></a></li>
+						<li><a href="{% static '#' %}"><i class="ic3"></i></a></li>
 					</ul>
 
 				</div>
@@ -375,5 +328,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>		
 	<!--//footer-->
+
 </body>
 </html>
+

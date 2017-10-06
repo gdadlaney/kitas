@@ -249,7 +249,7 @@ DROP TABLE IF EXISTS `cust_ingredients`;
 CREATE TABLE `cust_ingredients` (
   `cust_id` int(11) DEFAULT NULL,
   `ingr_id` int(11) DEFAULT NULL,
-  `qty` int(11) DEFAULT NULL,
+  `qty` varchar(40) DEFAULT NULL,
   KEY `cust_id` (`cust_id`),
   KEY `ingr_id` (`ingr_id`),
   CONSTRAINT `cust_ingredients_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customers` (`id`),
@@ -399,7 +399,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('uykw7rc5shy9g5k1kfnolbrqwlrf57ov','Njk2MzY3MGU0M2U2MjkxZDQxYTJhZjdkZDgzMGRlNGY5OWJjZTU2MTp7InVzZXIiOm51bGx9','2017-10-16 14:54:59.931339');
+INSERT INTO `django_session` VALUES ('32ijnc3dlbl48m18bnwtzgqquok9l2yv','NzJiMDI5MTUwOWQ5NmYxODU3ZTI3YTQzZDdjYzNhODgzZGJmNDBhYzp7InVzZXIiOiJhZG1pbiIsImlkIjoxfQ==','2017-10-20 11:59:14.737980'),('uykw7rc5shy9g5k1kfnolbrqwlrf57ov','Njk2MzY3MGU0M2U2MjkxZDQxYTJhZjdkZDgzMGRlNGY5OWJjZTU2MTp7InVzZXIiOm51bGx9','2017-10-16 14:54:59.931339');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,4 +552,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-06  0:36:50
+-- Dump completed on 2017-10-06 17:40:33

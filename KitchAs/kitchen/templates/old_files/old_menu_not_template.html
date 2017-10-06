@@ -1,3 +1,4 @@
+
 	<!--A Design by W3layouts 
 	Author: W3layout
 	Author URL: http://w3layouts.com
@@ -100,7 +101,7 @@
 
 	</style>
 
-	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" /> -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="{% static 'js/jquery.min.js' %}"></script>
 	<!-- Custom Theme files -->
@@ -133,22 +134,28 @@
 	<!-- //animation-effect -->
 	<link href="{% static 'jquery.multiselect.css' %}" rel="stylesheet" type="text/css">
 	<script src="{% static 'jquery.min.js' %}"></script>
-	<script src="{% static 'jquery.multiselect.js' %}"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <script src="{% static 'jquery.multiselect.js' %}"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 	<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
 	<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
 	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 	</head>
 	<body>
+
+	<!-- jQuery first, then Tether, then Bootstrap JS. -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 
 	<!-- Modal -->
@@ -249,23 +256,23 @@
 
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
+	<!-- <script src="js/main.js"></script> --> <!-- Gem jQuery -->
 
 	 <div class="header head">
 		<div class="container">
 			<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
-				<h1><a href="/index"><span>KITAS</span></a></h1>
+				<h1><a href="index"><span>KITAS</span></a></h1>
 			</div>
 			<div class="nav-icon">		
 				<a href="#" class="navicon"></a>
 					<div class="toggle">
 						<ul class="toggle-menu">
-							<li><a class="active" href="/index">Home</a></li>
-							<li><a  href="/menu">Menu</a></li>
-							<li><a  href="/blog">Blog</a></li>
-							<li><a  href="/typo">Codes</a></li>
-							<li><a  href="/events">Events</a></li>
-							<li><a  href="/contact">Contact</a></li>
+							<li><a class="active" href="index">Home</a></li>
+							<li><a  href="menu">Menu</a></li>
+							<li><a  href="blog.html">Blog</a></li>
+							<li><a  href="typo.html">Codes</a></li>
+							<li><a  href="events.html">Events</a></li>
+							<li><a  href="contact.html">Contact</a></li>
 						</ul>
 					</div>
 				<script>
@@ -284,7 +291,7 @@
 			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
 		{% else %}
 			<p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p>
-			<a href="/logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
+			<a href="logout"><button type="submit" class="btn btn-info btn-md"  style="z-index: 1; float: right;">Log Out</button></a>	
 		{% endif %}
 		{% if abc %}
 			<p style="background: red; color: yellow;">{{ abc }}</p>
@@ -293,88 +300,87 @@
 		<!-- start search-->	
 			
 	</div>
+	
 	<!--content-->
-		<div class="menu" ng-app="myApp" ng-controller="namesCtrl">
-			<div class="container">
-				<div class="menu-top">
-					<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<h3>Menu</h3>
-						
-					</div>
+	<div class="menu" ng-app="myApp" ng-controller="namesCtrl">
+		<div class="container">
+			<div class="menu-top">
+				<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>Menu</h3>
 					
-					<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<p>Pick the ingredients and we will show you what all you can cook with it.<br>Simple, isn't it?</p>
-						
-	  
-					</div>
-					<div class="clearfix"> </div>
-				</div>			
 				</div>
-				<div class="main">
-	  <input type="radio" id="tab-1" name="show" checked/>
-	  <input type="radio" id="tab-2" name="show" />
-	  <input type="radio" id="tab-3" name="show" />
-	  <input type="radio" id="tab-4" name="show" />
-	  <div class="tab">
-	    <label class="data" for="tab-1">Dairy</label>
-	    <label class="data" for="tab-2">Vegetables</label>
-	    <label class="data" for="tab-3">Meat</label>
-	    <label class="data" for="tab-4">Fruits</label>
-	  </div>
-	  <div class="content">
-	  <!-- <form action="ingred" method="post"> -->
-	    <div class="content-dis">
-	      <!-- dairy products here -->
-	      <div ng-repeat="x in names | filter: 'dairy'">
-  			<label class="detail"><input type="checkbox" value="" ng-model="x.selected" name="ingre[]"><span ng-bind="x.name"></span></label>
-		  </div>
+				
+				<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<p>Pick the ingredients and we will show you what all you can cook with it.<br>Simple, isn't it?</p>
+					
+  
+				</div>
+				<div class="clearfix"> </div>
+			</div>			
+		</div>
 
-	  </div>
-  		
-	    		
-	    	
+		<form action="/b" method="post">
+			<div id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="card">
+					<div class="card-header" role="tab" id="headingOne">
+						<h5 class="mb-0">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Dairy
+							</a>
+						</h5>
+					</div>
+
+					<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+						<div class="card-block">
+							<input type="checkbox" name="ingr[]" value="milk">Milk<br>
+							<input type="checkbox" name="ingr[]" value="butter">Butter<br>
+							<input type="checkbox" name="ingr[]" value="cheese">Cheese<br>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" role="tab" id="headingTwo">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Vegetables
+							</a>
+						</h5>
+					</div>
+					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="card-block">
+							<input type="checkbox" name="ingr[]" value="potato">Potato<br>
+							<input type="checkbox" name="ingr[]" value="onion">Onion<br>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" role="tab" id="headingThree">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								Meats
+							</a>
+						</h5>
+					</div>
+					<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+						<div class="card-block">
+							<input type="checkbox" name="ingr[]" value="chicken">Chicken<br>
+							<input type="checkbox" name="ingr[]" value="beef">Beef<br>
+						</div>
+					</div>
+				</div>
 			</div>
-			</div>
-		<p ng-repeat="y in selection" style="background-color: red; color: yellow;">
-	 <span ng-bind="y">the content selected:</span>
-	</p>
-	<!-- <form  action="b">{% csrf_token %}
-		<p align="center" id="newId"><input  type="submit" value="Proceed"></p>
-	</form> -->
-	<a href="/b"><button onclick="myFunction()">press</button></a>
+			<input type="submit" value="Submit">
+		</form>
 
-	<script>
-	function myFunction(){	
-	// $.get("http://127.0.0.1:8000/kitas/menu/b",
-	// {'data[]':["hi","hello"]});
-	// $.ajax(
- //        {
- //        method: "POST",
- //        url: "{% url 'kitas:menu/' %}",
- //        processData: false,
- //        contentType: false,
- //        //mimeType: "multipart/form-data",
- //        data: data,
- //      }).done(function(msg_json_object)
- //      {
- //        $('#matchrequest').prop("disabled", false);
- //        if(msg_json_object.hasOwnProperty('err_msg'))
- //        {
- //          toggleMatchError(msg_json_object['err_msg']);
- //        }
- //        else
- //        {
- //          toggleMatchSuccess(msg_json_object['success_msg']);
- //        }
- //      });
-
- 		$.get('menu', {"suggestion": "1"}, function(data){ });
-
-	}
-	</script>    
+		<script>
+		function myFunction()
+		{	
+			// var jsonselection = JSON.stringify($scope.selection);
+		$http.post('localhost:8000/kitas/menu/b',{'key':$.toJSON($scope.selection)});
+		}
+		</script>    
 
 	</div>
-	
 
 	<!--footer-->
 		<div class="footer">
@@ -382,11 +388,11 @@
 				<div class="footer-head">
 					<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 						<ul class=" in">
-							<li><a href="/index">Home</a></li>
-							<li><a  href="/menu">Menu</a></li>
-							<li><a  href="/blog">Blog</a></li>
-							<li><a  href="/events">Events</a></li>
-							<li><a  href="/contact">Contact</a></li>
+							<li><a href="index">Home</a></li>
+							<li><a  href="menu">Menu</a></li>
+							<li><a  href="blog.html">Blog</a></li>
+							<li><a  href="events.html">Events</a></li>
+							<li><a  href="contact.html">Contact</a></li>
 						</ul>					
 							<span>There are many variations of passages</span>
 					</div>
@@ -411,7 +417,7 @@
 		</div>		
 		<!--//footer-->
 <script>
-angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
+angular.module('myApp', []).config(function($httpProvider){$httpProvider.defaults.headers.common['X-Requested-With']='XMLHttpRequest';}).controller('namesCtrl', ['$scope', 'filterFilter',  function myApp($scope, filterFilter) {
     $scope.names = [
         {name: 'milk', category: 'dairy', selected: false},
         {name: 'butter', category: 'dairy', selected: false},
@@ -440,8 +446,7 @@ angular.module('myApp', []).controller('namesCtrl', ['$scope', 'filterFilter',  
     }, true);
 
 
-     
 }]);
 </script>
 	</body>
-	</html>
+</html>
