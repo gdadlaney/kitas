@@ -34,8 +34,43 @@ def accounts(request):
 
 
 def addIngredient(request):
+
 	return render(request, 'pingredients.html', {})
 
+
+def recipe(request):
+	return render(request, 'recipe.html', {})
+
+def subRecipe(request):
+	data = request.POST
+	name = data.get('name')
+	pt = data.get('pt')
+	servings = data.get('servings')
+	directions = data.get('directions')
+	category = data.get('category')
+		# get the ingredients id from the input 
+		# and insert in recipe
+	# with connection.cursor as cursor:
+	# 	cursor.execute("SELECT id FROM ingredients WHERE ")
+	# 	cursor.execute("INSERT INTO recipes ")
+
+
+
+def pantry(request):
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT ingr_id, qty FROM cust_ingredients WHERE cust_id={0}".format(request.session['id']))
+		list_ingredient = list(cursor.fetchall())
+
+		for i in range(list_ingredient.__len__()):
+			list_ingredient[i] = list(list_ingredient[i])
+		i = 0
+		print(list_ingredient)
+		for i in range(list_ingredient.__len__()):
+			cursor.execute("SELECT name_english FROM ingredients WHERE id={0}".format(list_ingredient[i][0]))
+			name = cursor.fetchone()
+			list_ingredient[i][1] = name[0]
+		print(list_ingredient)
+		return render(request, 'pantry.html', {'list_ingredient':list_ingredient})
 
 @csrf_protect
 def listUp(request):
@@ -43,7 +78,7 @@ def listUp(request):
 	ingre = data.get('ingre')
 	qty = data.get('qty')
 	with connection.cursor() as cursor:
-		cursor.execute("SELECT id FROM ingredients WHERE name_english={0} or name_hindi={1}".format(ingre, ingre))
+		cursor.execute("SELECT id FROM ingredients WHERE name_english='{0}' or name_hindi='{1}'".format(ingre, ingre))
 		abc = cursor.fetchone()
 		cursor.execute("INSERT INTO cust_ingredients VALUES({0}, {1}, {2})".format(request.session['id'], abc[0], qty))
 	return render(request, 'pingredients.html', {})

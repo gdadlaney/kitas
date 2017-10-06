@@ -1,0 +1,34 @@
+{% extends "template.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+	<div class="leave" align="center">
+			<h3>We would love to have your recipe!</h3>
+				<form action="/subrecipe" method="post">
+					<div class="single-grid wow fadeInLeft animated" data-wow-delay=".5s">
+						
+							<input type="text" value="Name" name="name" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Name';}">
+						
+							<input type="text" value="Preparation Time" name="pt" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Preparation Time';}">
+
+							
+							<input type="text" value="Ingredients" name="ingredient" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Ingredient';}">
+							
+							<!-- yaha quantity ka box -->
+
+							<input type="text" value="Servings" name="servings" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Servings';}">
+						
+							<textarea value=" " name="directions" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Directions';}">Directions</textarea>
+
+							<input type="text" value="Category" name="category" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Category';}">
+						<label class="hvr-rectangle-out">
+								<input type="submit" value="Submit">
+						</label>						
+				</div>
+				</form>
+	</div>
+
+
+
+{% endblock %}
