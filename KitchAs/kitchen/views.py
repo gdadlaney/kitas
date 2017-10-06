@@ -12,13 +12,6 @@ def page_not_found(request):
 def index(request):
 	return render(request, 'index.html', {})
 
-def menu(request):
-	return render(request, 'menu.html', {})
-
-def menu2(request):
-	return render(request, 'menu2.html', {})
-
-@csrf_exempt
 def blog(request):
 	return render(request, 'blog.html', {})
 
@@ -113,6 +106,7 @@ def test2(request):
 	for ingr in ingr_list:
 		user_ingredients_with_qty.setdefault(ingr)
 
+	print(user_ingredients_with_qty)
 	#user_ingredients_with_qty = {'potato': 20, 'onion': 20, 'flour': 30}
 	# user_ingredients_with_qty = {'potato':None, 'onion':None, 'flour':None}	#for user type 3
 
