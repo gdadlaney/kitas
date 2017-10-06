@@ -15,9 +15,11 @@ def index(request):
 def menu(request):
 	return render(request, 'menu.html', {})
 
+def menu2(request):
+	return render(request, 'menu2.html', {})
+
+@csrf_exempt
 def blog(request):
-	# sorted_list = [[['recipe 1', '...'], [['potato', None], ['onion', None], ['flour', None]]], [['recipe 2', '...'], [['potato', 5], ['onion', None]]], [['recipe 3', '...'], [['potato', 25]]]]
-	# return render(request, 'blog.html', {"sorted_list": sorted_list})
 	return render(request, 'blog.html', {})
 
 def category(request):
@@ -43,9 +45,9 @@ def listUp(request):
 	ingre = data.get('ingre')
 	qty = data.get('qty')
 	with connection.cursor() as cursor:
-		cursor.execute("SELECT id FROM ingredients WHERE name_english={0} or name_hindi={1}".format(ingre, ingre))
+		cursor.execute("SELECT id FROM ingredients WHERE name_english='{0}' or name_hindi='{1}'".format(ingre, ingre))
 		abc = cursor.fetchone()
-		cursor.execute("INSERT INTO cust_ingredients VALUES({0}, {1}, {2})".format(request.session['id'], abc[0], qty))
+		cursor.execute("INSERT INTO cust_ingredients VALUES({0}, {1}, '{2}')".format(request.session['id'], abc[0], qty))
 	return render(request, 'pingredients.html', {})
 
 @csrf_protect
@@ -93,6 +95,7 @@ def test2(request):
 	# print (request.POST['data1'])
 	# print (request.body)
 	# return HttpResponse(request.body)
+	"""
 	arr = request.body.decode("utf-8")
 	body = json.loads(arr)
 	print (body)
@@ -101,9 +104,16 @@ def test2(request):
 	arr = request.GET.getlist('data[]')
 	print(arr)
 	return HttpResponse(str(arr))
-
+	"""
 	
-	user_ingredients_with_qty = {'potato': 20, 'onion': 20, 'flour': 30}
+	data = request.POST
+	ingr_list = data.getlist('ingr[]')
+	print(ingr_list)
+	user_ingredients_with_qty = {}
+	for ingr in ingr_list:
+		user_ingredients_with_qty.setdefault(ingr)
+
+	#user_ingredients_with_qty = {'potato': 20, 'onion': 20, 'flour': 30}
 	# user_ingredients_with_qty = {'potato':None, 'onion':None, 'flour':None}	#for user type 3
 
 	user_ingredients = list(user_ingredients_with_qty.keys())
@@ -304,10 +314,12 @@ def test2(request):
 	"""
 
 	#return render(request, 'blog.html', {'sorted_list': sorted_list, 'recipe_details':recipe_details, 'recipe_ingredients':rec_ingredients})
-	#return HttpResponse(str(sorted_list))
+	return HttpResponse(str(sorted_list))
 
 	#[[('recipe 1', '...'), [['potato', None], ['onion', None], ['flour', None]]], [('recipe 2', '...'), [['potato', 5], ['onion', None]]], [('recipe 3', '...'), [['potato', 25]]]]
-	return render(request, 'blog.html', {"sorted_list": sorted_list})
+	
+
+	#return render(request, 'blog.html', {"sorted_list": sorted_list})
 
 
 def customers(request):
