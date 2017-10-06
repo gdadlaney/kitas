@@ -1,6 +1,7 @@
-
+{% extends "template.html" %}
 {% load staticfiles %}
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,131 +113,149 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<input class="full-width has-padding has-border" name="email" id="signin-email" type="email" placeholder="E-mail">
 							<span class="cd-error-message">Error message here!</span>
 						</p>
-
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signin-password">Password</label>
-							<input class="full-width has-padding has-border" name="password" id="signin-password" type="password"  placeholder="Password">
-							<span class="cd-error-message">Error message here!</span>
-						</p>
-
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signin-password">Confirm Password</label>
-							<input class="full-width has-padding has-border" name="cpassword" id="signin-password" type="password"  placeholder="Confirm Password">
-							<span class="cd-error-message">Error message here!</span>
-						</p>
-
-						<p class="fieldset">
-							<input type="checkbox" id="remember-me" checked>
-							<label for="remember-me">Remember me</label>
-						</p>
-
-						<p class="fieldset">
-							<input class="full-width" type="submit" value="Login">
-						</p>
-					</form>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-
-
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="{% static 'js/main.js' %}"></script> <!-- Gem jQuery -->
-
-	 <div class="header head">
-		<div class="container">
-			<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
-				<h1><a href="/index"><span>KITAS</span></a></h1>
-			</div>
-			<div class="nav-icon">		
-				<a href="#" class="navicon"></a>
-					<div class="toggle">
-						<ul class="toggle-menu">
-							<li><a class="active" href="/index">Home</a></li>
-							<li><a  href="/menu">Menu</a></li>
-							<li><a  href="/blog">Blog</a></li>
-							<li><a  href="/typo">Codes</a></li>
-							<li><a  href="/events">Events</a></li>
-							<li><a  href="/contact">Contact</a></li>
-						</ul>
-					</div>
-				<script>
-				$('.navicon').on('click', function (e) {
-				  e.preventDefault();
-				  $(this).toggleClass('navicon--active');
-				  $('.toggle').toggleClass('toggle--active');
-				});
-				</script>
-			</div>
-		<div class="clearfix"></div>
-		
-		{% if request.session.user == None  %}
-			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
-
-			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
-		{% else %}
-			<div class="dropdown" style="float: right; margin-right: 30px;">
-  			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
-  			<span class="caret"></span></button>
-  			<ul class="dropdown-menu" >
-    			<li style="width: 20px;"><a href="#">MyPantry</a></li>
-    			<li style="width: 20px;"><a href="/list">Add Ingredients</a></li>
-    			<li style="width: 20px;"><a href="#">Add Recipe</a></li>
-  				<li style="width: 20px;"><a href="/logout">Log Out</a></li>
-  			</ul>
-		</div>
-		{% endif %}
-		{% if abc %}
-			<p style="background: red; color: yellow;">{{ abc }}</p>
-		{% endif %}
-		</div>
-	<!-- start search-->	
-		
-</div>
-
-<!--content-->
+=======
 {% block content %}
-{% endblock %}
-<!--//content-->
-	
-<!--footer-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-head">
-				<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<ul class=" in">
-						<li><a href="/index">Home</a></li>
-						<li><a  href="/menu">Menu</a></li>
-						<li><a  href="/blog">Blog</a></li>
-						<li><a  href="/events">Events</a></li>
-						<li><a  href="/contact">Contact</a></li>
-					</ul>					
-						<span>There are many variations of passages</span>
-				</div>
-				<div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<h2>Follow Us</h2>
-					<label><i class="glyphicon glyphicon-menu-up"></i></label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
-					<ul class="social-ic">
-						<li><a href="#"><i></i></a></li>
-						<li><a href="#"><i class="ic"></i></a></li>
-						<li><a href="#"><i class="ic1"></i></a></li>
-						<li><a href="#"><i class="ic2"></i></a></li>
-						<li><a href="#"><i class="ic3"></i></a></li>
-					</ul>
+>>>>>>> 23d7420e1680dd45a744fb430fba28a6f725ef95
 
+	<!--content-->
+	<div class="menu">
+		<div class="container">
+			<div class="page">
+				<div class="menu-top">
+				<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>Short Codes</h3>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<span>There are many variations</span>
 				</div>
-			<div class="clearfix"> </div>
-					
-			</div>
-			<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2016 Cookery . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-		</div>
-	</div>		
-	<!--//footer-->
-</body>
-</html>
+				<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour , or randomised words which don't look even slightly believable.There are many variations by injected humour. There are many variations of passages of Lorem Ipsum available.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form by injected humour , or randomised words</p>
+				</div>
+				<div class="clearfix"> </div>
+				</div>
+
+        	</div>
+        </div>
+        <form align="center" style="margin-top: 0px;" method="post" action="listUp">
+		  <div class="form-group col-xs-4">{% csrf_token %}
+		    <label>Ingredients:</label>
+		    <input type="text" class="form-control" name="ingre" id="ingre">
+		  </div>
+		  <div class="form-group col-xs-4">
+		    <label>Quantity:</label>
+		    <input type="text" class="form-control" name="qty" id="qty">
+		  </div><br>
+		  <button type="submit" class="btn btn-default col-xs-4">Submit</button>
+		</form>
+    </div>
+       <!-- seems good for admin
+	 <div class="page-header">
+        <h3>Tables</h3>
+      </div>
+  
+  <div class="bs-example" data-example-id="simple-table">
+    <table class="table">
+      <caption>Optional table caption.</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+
+	<!--Contextual classes-->
+	<!-- 
+  <div class="bs-example" data-example-id="contextual-table" style="border: 1px solid #eee">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Column heading</th>
+          <th>Column heading</th>
+          <th>Column heading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="active">
+          <th scope="row">1</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="success">
+          <th scope="row">3</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="info">
+          <th scope="row">5</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="warning">
+          <th scope="row">7</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="danger">
+          <th scope="row">9</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+	<!--//Contextual classes-->
+	{% endblock %}
