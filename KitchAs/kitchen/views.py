@@ -39,50 +39,73 @@ def addIngredient(request):
 		return render(request, 'index.html', {})
 	else:
 		with connection.cursor() as cursor:
-		cursor.execute("SELECT name_english FROM ingredients")
-		list_ingre = cursor.fetchall()
+			cursor.execute("SELECT name_english FROM ingredients")
+			list_ingre = cursor.fetchall()
 		return render(request, 'pingredients.html', {'list_ingre':list_ingre})
 
 
-
+@csrf_protect
 def recipe(request):
 	if request.session['user']==None:
 		return render(request, 'index.html', {})
 	else:
-		return render(request, 'recipe.html', {})
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT name_english FROM ingredients")
+			list_ingre = cursor.fetchall()	
+		return render(request, 'recipe.html', {'list_ingre':list_ingre})
 
+@csrf_protect
 def subRecipe(request):
-	data = request.POST
-	name = data.get('name')
-	pt = data.get('pt')
-	servings = data.get('servings')
-	directions = data.get('directions')
-	category = data.get('category')
-		# get the ingredients id from the input 
-		# and insert in recipe
-	# with connection.cursor as cursor:
-	# 	cursor.execute("SELECT id FROM ingredients WHERE ")
-	# 	cursor.execute("INSERT INTO recipes ")
+	if request.session['user']==None:
+		return render(request, 'index.html', {})
+	else:
+		data = request.POST
+		name = data.get('name')
+		pt = data.get('pt')
+		ingre = data.getlist('ingre[]')
+		servings = data.get('servings')
+		directions = data.get('directions')
+		category = data.get('category')
+		# with connection.cursor() as cursor:
+		print(ingre)
+			
+			# ingre = list(ingre)
+			# for i in range(ingre.__len__()):
+			# 	ingre[i] = list(ingre[i])
+			# i=0
+			# for i in range(ingre.__len__()):
+			# 	cursor.execute("SELECT id FROM ingredients WHERE name_english='{0}' or name_hindi='{1}'".format(ingre[i], ingre[i]))
+			# 	abc = cursor.fetchone()
+			# 	cursor.execute("INSERT INTO recipes (name,directions,cust_id,servings,prep_time,category) VALUES('{0}', '{1}', {2}, '{3}', '{4}', {5})".format(name,directions,request.session['id'],servings,pt,category))#abc[0], qty))
+			# 	cursor.execute("SELECT id FROM recipes WHERE name='{0}'".format(name))
+			# 	xyz = cursor.fetchone()
+			# 	cursor.execute("INSERT INTO rec_ingredients VALUES({0}, '{1}', '{2}', '{3}', {4})".format(xyz[0],qty,ingre[i],qty,abc[0]))
 
+			# get the ingredients id from the input 
+			# and insert in recipe
+		# with connection.cursor as cursor:
+		# 	cursor.execute("SELECT id FROM ingredients WHERE ")
+		# 	cursor.execute("INSERT INTO recipes ")
+		return render(request, 'recipe.html', {})
 
 
 def pantry(request):
 	if request.session['user']==None:
 		return render(request, 'index.html', {})
 	else:
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT ingr_id, qty FROM cust_ingredients WHERE cust_id={0}".format(request.session['id']))
-		list_ingredient = list(cursor.fetchall())
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT ingr_id, qty FROM cust_ingredients WHERE cust_id={0}".format(request.session['id']))
+			list_ingredient = list(cursor.fetchall())
 
-		for i in range(list_ingredient.__len__()):
-			list_ingredient[i] = list(list_ingredient[i])
-		i = 0
-		print(list_ingredient)
-		for i in range(list_ingredient.__len__()):
-			cursor.execute("SELECT name_english FROM ingredients WHERE id={0}".format(list_ingredient[i][0]))
-			name = cursor.fetchone()
-			list_ingredient[i][0] = name[0]
-		print(list_ingredient)
+			for i in range(list_ingredient.__len__()):
+				list_ingredient[i] = list(list_ingredient[i])
+			i = 0
+			print(list_ingredient)
+			for i in range(list_ingredient.__len__()):
+				cursor.execute("SELECT name_english FROM ingredients WHERE id={0}".format(list_ingredient[i][0]))
+				name = cursor.fetchone()
+				list_ingredient[i][0] = name[0]
+			print(list_ingredient)
 		return render(request, 'pantry.html', {'list_ingredient':list_ingredient})
 
 
@@ -100,7 +123,7 @@ def listUp(request):
 			cursor.execute("SELECT id FROM ingredients WHERE name_english='{0}' or name_hindi='{1}'".format(ingre, ingre))
 			abc = cursor.fetchone()
 			cursor.execute("INSERT INTO cust_ingredients VALUES({0}, {1}, '{2}')".format(request.session['id'], abc[0], qty))
-	    return render(request, 'pingredients.html', {})
+		return render(request, 'pingredients.html', {})
 
 
 def breads(request):
