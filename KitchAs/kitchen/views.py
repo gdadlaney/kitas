@@ -30,7 +30,10 @@ def accounts(request):
 
 def addIngredient(request):
 
-	return render(request, 'pingredients.html', {})
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT name_english FROM ingredients")
+		list_ingre = cursor.fetchall()
+	return render(request, 'pingredients.html', {'list_ingre':list_ingre})
 
 
 def recipe(request):
@@ -63,7 +66,7 @@ def pantry(request):
 		for i in range(list_ingredient.__len__()):
 			cursor.execute("SELECT name_english FROM ingredients WHERE id={0}".format(list_ingredient[i][0]))
 			name = cursor.fetchone()
-			list_ingredient[i][1] = name[0]
+			list_ingredient[i][0] = name[0]
 		print(list_ingredient)
 		return render(request, 'pantry.html', {'list_ingredient':list_ingredient})
 
@@ -72,9 +75,11 @@ def listUp(request):
 	data = request.POST
 	ingre = data.get('ingre')
 	qty = data.get('qty')
+	print(ingre,qty)
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT id FROM ingredients WHERE name_english='{0}' or name_hindi='{1}'".format(ingre, ingre))
 		abc = cursor.fetchone()
+		print(abc)
 		cursor.execute("INSERT INTO cust_ingredients VALUES({0}, {1}, '{2}')".format(request.session['id'], abc[0], qty))
 	return render(request, 'pingredients.html', {})
 
