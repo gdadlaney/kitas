@@ -47,15 +47,13 @@
 									</p>
 									<p>
 										<span style="color: red">Missing ingredients:</span>
-										<br>
-										{% set count = 0 %}									
-										{% for ingredient_list in recipe_list.2 if var[i] < limit %}
+										<br>							
+										{% for ingredient_list in recipe_list.2 %}
 											{{ ingredient_list.0 }}
 											{% if ingredient_list.1 is not None and qty_specified %}
 												: {{ ingredient_list.1 }} missing
 											{% endif %}
 											<br>
-											{% set var[i] = var[i]+1 %}
 										{% endfor %}
 									</p>
 									<div class="more">						
