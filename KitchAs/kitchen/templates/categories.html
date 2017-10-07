@@ -14,90 +14,29 @@
 				</div>
 				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<p>There are many variations of food available world wide. Don't Worry though Kitas makes sure you get to enjoy 
-						all of them. Kitas presents you with all the simple recipes across the world. Take your pick - breakfast, snack 							or a tummy filling meal :).</p>
+						all of them. Kitas presents you with all the simple recipes across the world. Take your pick - breakfast, snack or a tummy filling meal :).</p>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="content-mid">
-					
-				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<div class=" hover-fold">
-					  <h4>BREAKFAST</h4>
-					  <div class="top">
-						<div class="front face"></div>
-						<div class="back face">
-						<p> All happiness depends on a lesiurely breakfast. </p>
+				{% for rec in rec_category %}
+					<a href="/{{ rec.0 }}"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<div class=" hover-fold">
+						  <h4>{{ rec.0 }}</h4>
+						  <div class="top">
+							<div class="front face"></div>
+							<div class="back face">
+							<p> {{ rec.1 }} </p>
+							</div>
+						  </div>
+						  <div class="bottom"></div>
 						</div>
-					  </div>
-					  <div class="bottom"></div>
-					</div>
-				<!-- <button type="button" class="btn btn-success">Read More</button> -->
-				</div></a>
-
-				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<div class=" hover-fold">
-					  <h4>SNACKS</h4>
-					  <div class="top">
-						<div class="front face front1"></div>
-						<div class="back face">
-						<p>Ah, look what I found - Snacks.</p>
-						</div>
-					  </div>
-					  <div class="bottom bottom1"></div>
-					</div>
-				</div></a>
-				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<div class=" hover-fold">
-					  <h4>Dessert</h4>
-					  <div class="top">
-						<div class="front face front2"></div>
-						<div class="back face">
-						<p>Life is short, eat dessert first.</p>
-						</div>
-					  </div>
-					  <div class="bottom bottom2"></div>
-					</div>
-				</div></a>
-				<div class="clearfix"></div>
+					<!-- <button type="button" class="btn btn-success">Read More</button> -->
+					</div></a>
+				{% endfor %}
+				<div class="bottom bottom1"></div>
+				</div>
 			</div>
-			<br><br>
-			<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<div class=" hover-fold">
-					  <h4>FOOD</h4>
-					  <div class="top">
-						<div class="front face"></div>
-						<div class="back face">
-						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
-						</div>
-					  </div>
-					  <div class="bottom"></div>
-					</div>
-				</div></a>
-				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<div class=" hover-fold">
-					  <h4>FOOD</h4>
-					  <div class="top">
-						<div class="front face front1"></div>
-						<div class="back face">
-						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
-						</div>
-					  </div>
-					  <div class="bottom bottom1"></div>
-					</div>
-				</div></a>
-				<a href="/menu"><div class="col-md-4 food-grid animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<div class=" hover-fold">
-					  <h4>FOOD</h4>
-					  <div class="top">
-						<div class="front face front1"></div>
-						<div class="back face">
-						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
-						</div>
-					  </div>
-					  <div class="bottom bottom1"></div>
-					</div>
-				</div></a>
 		</div>
 	</div>
-</div>	
 {% endblock %}

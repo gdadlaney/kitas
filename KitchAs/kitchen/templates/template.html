@@ -235,15 +235,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
   			<span class="caret"></span></button>
   			<ul class="dropdown-menu" >
-    			<li style="width: 20px;"><a href="#">MyPantry</a></li>
+    			<li style="width: 20px;"><a href="/pantry">MyPantry</a></li>
     			<li style="width: 20px;"><a href="/list">Add Ingredients</a></li>
-    			<li style="width: 20px;"><a href="#">Add Recipe</a></li>
+    			<li style="width: 20px;"><a href="/recipe">Add Recipe</a></li>
   				<li style="width: 20px;"><a href="/logout">Log Out</a></li>
   			</ul>
 		</div>
-		{% endif %}
-		{% if abc %}
-			<p style="background: red; color: yellow;">{{ abc }}</p>
 		{% endif %}
 		</div>
 	<!-- start search-->	
