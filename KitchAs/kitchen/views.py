@@ -167,7 +167,7 @@ def logout(request):
 	else:
 		user = " "
 	request.session['user']=None
-	return render(request, 'index.html', {"abc":"Thank you, we miss you already "+user})
+	return render(request, 'index.html', {"message":"Thank you, we miss you already "+user})
 
 def test(request):
 	return HttpResponse("Hello")

@@ -250,7 +250,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	{% if request.session.user == None  %}
 		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
 
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
+		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>
+		{{ message }}	
 	{% else %}
 		<!-- <p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p> -->
 		<div class="dropdown" style="float: right; margin-right: 30px;">
@@ -264,9 +265,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   			</ul>
 		</div>
 			
-	{% endif %}
-	{% if abc %}
-		<p style="background: red; color: yellow;">{{ abc }}</p>
 	{% endif %}
 	</div>
 	<!-- start search-->	
