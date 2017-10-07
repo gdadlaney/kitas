@@ -54,7 +54,7 @@
 		  </style>
 
 		  <script>
-  $( function() {
+  $(document).ready( function() {
     $.widget( "custom.combobox", {
       _create: function() {
         this.wrapper = $( "<span>" )
@@ -196,19 +196,21 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <form action="listup" method="post">
+  <form class="form-inline" action="listup" method="post">
   	{% csrf_token %}
-  <div class="ui-widget">
-  <label>Add an ingredient:</label>
-  <select id="combobox" name="ingre">
+  <div class="ui-widget form-group">
+  <table class="table-responsive">
+  <tr><td><label>Add an ingredient:</label></td>
+  <td><select id="combobox" name="ingre">
   	<option name="ingre" value="">select</option>
   	{% for i in list_ingre %}
     <option value="{{i.0}}">{{i.0}}</option>
     {% endfor %}
-  </select>
+  </select></td></tr>
   <br>
-  <label>Quantity:</label>
-  <input type="text" name="qty">
+  <tr><td><label>Quantity:</label></td>
+  <td><input type="text" name="qty"></td></tr><br>
+  </table>
   <input type="submit" name="submit">
 </div>
 
@@ -220,115 +222,4 @@
 
 		</div>
     </div>
-       <!-- seems good for admin
-	 <div class="page-header">
-        <h3>Tables</h3>
-      </div>
-  
-  <div class="bs-example" data-example-id="simple-table">
-    <table class="table">
-      <caption>Optional table caption.</caption>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
-
-
-	<!--Contextual classes-->
-	<!-- 
-  <div class="bs-example" data-example-id="contextual-table" style="border: 1px solid #eee">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Column heading</th>
-          <th>Column heading</th>
-          <th>Column heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="active">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="success">
-          <th scope="row">3</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="info">
-          <th scope="row">5</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="warning">
-          <th scope="row">7</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="danger">
-          <th scope="row">9</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
-	<!--//Contextual classes-->
 	{% endblock %}
