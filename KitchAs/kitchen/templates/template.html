@@ -4,49 +4,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Blog :: w3layouts</title>
-	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="{% static 'js/jquery.min.js' %}"></script>
-	<!-- Custom Theme files -->
-	<!--theme-style-->
-	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
-	<!--//theme-style-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Cookery Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!---->
-	<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
-	<link href="{% static 'css/styles.css' %}" rel="stylesheet">
-	<!-- animation-effect -->
-	<link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
-	<script src="{% static 'js/wow.min.js' %}"></script>
-	<script>
-	 new WOW().init();
-	</script>
-	<!-- //animation-effect -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>KITAS</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<!-- animation-effect -->
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script>
+ new WOW().init();
+</script>
+<!-- //animation-effect -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
-	<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
-	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
+<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+
+<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+	<!--  -->
 
 <body>
-
-
-	
-
 
 	<!-- Modal -->
 	<div id="login" class="modal fade" role="dialog">
@@ -157,12 +152,11 @@
 				<a href="#" class="navicon"></a>
 					<div class="toggle">
 						<ul class="toggle-menu">
-							<li><a class="active" href="/index">Home</a></li>
-							<li><a  href="/menu">Menu</a></li>
-							<li><a  href="/blog">Blog</a></li>
-							<li><a  href="/typo">Codes</a></li>
-							<li><a  href="/events">Events</a></li>
-							<li><a  href="/contact">Contact</a></li>
+							<li align="center"><a class="active" href="/index">Home</a></li>
+							<li align="center"><a  href="/menu">Categories</a></li>
+							<li align="center"><a  href="/blog">Ingredients</a></li>
+							<li align="center"><a  href="/typo">Fab_Recipes</a></li>
+							<li align="center"><a  href="/contact">ContactUS</a></li>
 						</ul>
 					</div>
 				<script>
@@ -181,6 +175,7 @@
 			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>	
 		{% else %}
 			<div class="dropdown" style="float: right; margin-right: 30px;">
+<<<<<<< HEAD
 			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
 			<span class="caret"></span></button>
 			<ul class="dropdown-menu" >
@@ -189,10 +184,17 @@
 				<li style="width: 20px;"><a href="#">Add Recipe</a></li>
 				<li style="width: 20px;"><a href="/logout">Log Out</a></li>
 			</ul>
+=======
+  			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
+  			<span class="caret"></span></button>
+  			<ul class="dropdown-menu" >
+    			<li style="width: 20px;"><a href="/pantry">MyPantry</a></li>
+    			<li style="width: 20px;"><a href="/list">Add Ingredients</a></li>
+    			<li style="width: 20px;"><a href="/recipe">Add Recipe</a></li>
+  				<li style="width: 20px;"><a href="/logout">Log Out</a></li>
+  			</ul>
+>>>>>>> 81c3ab9ce08aee0710cb734a1df16a52361314e5
 		</div>
-		{% endif %}
-		{% if abc %}
-			<p style="background: red; color: yellow;">{{ abc }}</p>
 		{% endif %}
 		</div>
 	<!-- start search-->	
@@ -205,23 +207,24 @@
 <!--//content-->
 	
 <!--footer-->
-	<div class="footer">
-		<div class="container">
+	
+		<div class="container footer">
 			<div class="footer-head">
-				<div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<div class="col-md-6 footer-top animated wow fadeInRight" data-wow-duration="700ms" data-wow-delay="300ms">
 					<ul class=" in">
 						<li><a href="/index">Home</a></li>
-						<li><a  href="/menu">Menu</a></li>
-						<li><a  href="/blog">Blog</a></li>
-						<li><a  href="/events">Events</a></li>
-						<li><a  href="/contact">Contact</a></li>
+						<!-- <li><a  href="/menu">Categories</a></li>
+						<li><a  href="/blog">Ingredients</a></li>
+						<li><a  href="/events">Fab Recipes</a></li> -->
+						<li><a  href="/contact">Contact Us</a></li>
 					</ul>					
-						<span>There are many variations of passages</span>
+						<span>Keep Calm And Cook On</span>
 				</div>
-				<div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+				<div class="col-md-6 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<h2>Follow Us</h2>
 					<label><i class="glyphicon glyphicon-menu-up"></i></label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+					<p>Don't Let The Secret Recipe Die With The Inventor</p>
+					<p>Kitchens are made for bringing families together</p>
 					<ul class="social-ic">
 						<li><a href="#"><i></i></a></li>
 						<li><a href="#"><i class="ic"></i></a></li>
@@ -231,12 +234,10 @@
 					</ul>
 
 				</div>
-			<div class="clearfix"> </div>
+			<!-- <div class="clearfix"> </div> -->
 					
 			</div>
-			<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2016 Cookery . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-		</div>
-	</div>		
+		</div>	
 	<!--//footer-->
 </body>
 </html>
