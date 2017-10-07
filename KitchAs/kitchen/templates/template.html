@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-<<<<<<< HEAD
 <title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Blog :: w3layouts</title>
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -43,9 +41,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-=======
-=======
->>>>>>> 5ebc6866b112abb318e54efa97267730f71275a1
 	<title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Codes :: w3layouts</title>
 	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -73,20 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!-- //animation-effect -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<<<<<<< HEAD
 
-	<!-- jQuery library -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
-	<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
-	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
->>>>>>> 5ebc6866b112abb318e54efa97267730f71275a1
-
-=======
 
 	<!-- jQuery library -->
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
@@ -98,7 +80,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
 
->>>>>>> 5ebc6866b112abb318e54efa97267730f71275a1
+
+	<!-- jQuery library -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
+	<link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
+	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
+
 </head>
 <body>
 
@@ -242,15 +234,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
   			<span class="caret"></span></button>
   			<ul class="dropdown-menu" >
-    			<li style="width: 20px;"><a href="#">MyPantry</a></li>
+    			<li style="width: 20px;"><a href="/pantry">MyPantry</a></li>
     			<li style="width: 20px;"><a href="/list">Add Ingredients</a></li>
-    			<li style="width: 20px;"><a href="#">Add Recipe</a></li>
+    			<li style="width: 20px;"><a href="/recipe">Add Recipe</a></li>
   				<li style="width: 20px;"><a href="/logout">Log Out</a></li>
   			</ul>
 		</div>
-		{% endif %}
-		{% if abc %}
-			<p style="background: red; color: yellow;">{{ abc }}</p>
 		{% endif %}
 		</div>
 	<!-- start search-->	
