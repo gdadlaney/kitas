@@ -124,9 +124,6 @@ def listUp(request):
 		with connection.cursor() as cursor:
 			cursor.execute("SELECT id FROM ingredients WHERE name_english='{0}' or name_hindi='{1}'".format(ingre, ingre))
 			abc = cursor.fetchone()
-
-	
-		
 			cursor.execute("SELECT ingr_id FROM cust_ingredients WHERE ingr_id={0} and cust_id={1}".format(abc[0], request.session['id']))
 			xyz = cursor.fetchone()
 			if(xyz!=None and abc[0] == xyz[0]):
