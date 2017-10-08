@@ -196,25 +196,34 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <form class="form-inline" action="listup" method="post">
-  	{% csrf_token %}
-  <div class="ui-widget form-group">
-  <table class="table-responsive">
-  <tr><td><label>Add an ingredient:</label></td>
-  <td><select id="combobox" name="ingre">
-  	<option name="ingre" value="">select</option>
-  	{% for i in list_ingre %}
-    <option value="{{i.0}}">{{i.0}}</option>
-    {% endfor %}
-  </select></td></tr>
-  <br>
-  <tr><td><label>Quantity:</label></td>
-  <td><input type="text" name="qty"></td></tr><br>
-  </table>
-  <input type="submit" name="submit">
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+		  <form class="form-inline" action="listup" method="post">
+		  	{% csrf_token %}
+			  <div class="ui-widget form-group">
+				  <table class="table-responsive">
+				  <tr><td><label>Add an ingredient:</label></td>
+				  <td><select id="combobox" name="ingre">
+				  	<option name="ingre" value="">select</option>
+				  	{% for i in list_ingre %}
+				    <option value="{{i.0}}">{{i.0}}</option>
+				    {% endfor %}
+				  </select></td></tr>
+				  <br>
+				  <tr><td><label>Quantity:</label></td>
+				  <td><input type="text" name="qty"></td></tr><br>
+				  </table>
+				  <input type="submit" name="submit">
+			  </div>
+		   </form>
+	  	</div><br><br>
+	  	<div class="col-md-6">
+	  		<button class="button btn btn-primary"> Make a recipe </button>
+	  	</div>
+	</div>
 </div>
 
-</form>
 
 <!-- <button id="toggle">Show underlying select</button> -->
 		

@@ -182,22 +182,35 @@
 							//     return dateArray;
 							// }
 							function addSelect(divname) {
-							   var newDiv=document.createElement('div');
+							   // var newDiv=document.createElement('div');
 							// <select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == '') 	{this.value = 'Ingredient';}">
 						 //  	<option value="">select</option>
 						 //  	{% for i in list_ingre %}
 						 //    <option value="{{i.0}}">{{i.0}}</option>
 						 //    {% endfor %}
 						 //  </select>
-							   var html = '<p> <select id="combobox" name="ingre[]" value="ingre[]"> <option value=""> selectone </option> {% for i in list_ingre %} <option value="{{i.0}}"> {{i.0}} </option> {% endfor %} </select> </p>';
-							   newDiv.innerHTML = html;
-							   document.getElementById(divname).appendChild(newDiv);
+<<<<<<< HEAD
+							   // var html1 = '<p> <select id="combobox" name="ingre[]" value="ingre[]"> <option value=""> selectone </option> {% for i in list_ingre %} <option value="{{i.0}}"> {{i.0}} </option> {% endfor %} </select> </p>';
+							   // var html = '<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value=\'\';" onblur="if (this.value == \'\') 	{this.value = \'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select>';
+							   // newDiv.innerHTML = html;
+							   // newdiv = document.getElementById(divname);
+							   // newDiv.innerHTML = newdiv;
+							   // document.getElementById(divname).appendChild(newDiv);
+							   // var cont = '<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br>';
+							   // $('#select-container').append("<select id=\"combobox\" name=\"ingre[]\" value=\"ingre[]\" onfocus=\"this.value='';\" onblur=\"if (this.value == ''){this.value='Ingredient';}\"><option value=\"\">select</option>{% for i in list_ingre %}<option value=\"{{i.0}}\">{{i.0}}</option>{% endfor %}</select><br>");
+
+							   var cont = $('#select-container').html();
+							   $('#select-container').append(cont);
 							}
 							</script>
 
 						 
 						  
-	
+	<!-- 
+						<div id="final" hidden="">
+							
+						  	<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br>
+						</div> -->
 
 
 
@@ -211,7 +224,7 @@
 						
 							<input type="text" value="Preparation Time" name="pt" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Preparation Time';}">
 
-							<!-- <select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Ingredient';}">
+							<!-- <select id="combobox" name="ingre[]" value="ingre[]">
 						  	<option value="">select</option>
 						  	{% for i in list_ingre %}
 						    <option value="{{i.0}}">{{i.0}}</option>
@@ -225,15 +238,18 @@
 							
 
 						
-						<td><div id="select-container">
+						</tr></table>
+						<!-- <td> -->
+						<div id="select-container">
 							
-						  	<!-- <select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select> -->
-						</div></td></tr>
-						</table>
+						  	<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br>
+						</div>
+						<!-- </td></tr> -->
+						<!-- </table> -->
 							<button type="button" id="add" onclick="addSelect('select-container')">Add Ingredient</button>
 						  </div>
 							
-							<input type="text" name="qty" value="qty" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Qty';}">
+							
 							<!-- <input type="text" value="Ingredients" name="ingredient" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Ingredient';}"> -->
 							
 							<!-- yaha quantity ka box -->
@@ -250,6 +266,12 @@
 				</form>
 	</div>
 
+<div id="nello" hidden="">
+							
+						  	<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br>
+						</div>
 
 
 {% endblock %}
+
+
