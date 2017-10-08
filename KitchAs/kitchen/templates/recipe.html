@@ -189,7 +189,7 @@
 						 //    <option value="{{i.0}}">{{i.0}}</option>
 						 //    {% endfor %}
 						 //  </select>
-							   var html = '<p> <select id="combobox" name="ingre[]" value="ingre[]"> <option value=""> selectone </option> {% for i in list_ingre %} <option value="{{i.0}}"> {{i.0}} </option> {% endfor %} </select> </p>';
+							   var html = '<p> <select id="combobox" name="ingre[]" value="ingre[]"> <option value=""> selectone </option> {% for i in list_ingre %} <option value="{{i.0}}"> {{i.0}} </option> {% endfor %} </select> <input type="text" name="qty[]" value=""> </p>';
 							   newDiv.innerHTML = html;
 							   document.getElementById(divname).appendChild(newDiv);
 							}
@@ -211,7 +211,7 @@
 						
 							<input type="text" value="Preparation Time" name="pt" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Preparation Time';}">
 
-							<!-- <select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Ingredient';}">
+							<!-- <select id="combobox" name="ingre[]" value="ingre[]">
 						  	<option value="">select</option>
 						  	{% for i in list_ingre %}
 						    <option value="{{i.0}}">{{i.0}}</option>
@@ -233,7 +233,7 @@
 							<button type="button" id="add" onclick="addSelect('select-container')">Add Ingredient</button>
 						  </div>
 							
-							<input type="text" name="qty" value="qty" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Qty';}">
+							
 							<!-- <input type="text" value="Ingredients" name="ingredient" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Ingredient';}"> -->
 							
 							<!-- yaha quantity ka box -->
