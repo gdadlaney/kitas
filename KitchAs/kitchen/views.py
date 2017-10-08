@@ -15,12 +15,15 @@ def index(request):
 def blog(request):
 	return render(request, 'blog.html', {})
 
+'''
+#angular js categories
 def category(request):
 	return render(request, 'category.html', {})
+'''
 
 def categories(request):
 	with connection.cursor() as cursor:
-		cursor.execute("SELECT name, description FROM rec_categories LIMIT 6")
+		cursor.execute("SELECT name FROM rec_categories LIMIT 6")
 		rec_category = list(cursor.fetchall())
 		for i in range(rec_category.__len__()):
 			rec_category[i] = list(rec_category[i])
@@ -221,6 +224,7 @@ def convert_qty(str):
 	else:
 		return (int(str), False)
 '''
+#function to fetch recipe attributes like directions, if needed
 def fetch_rec_directions(rec_id):
 	cursor.execute("select directions from recipes where id = {0}".format(rec_id) )
 	fetched = cursor.fetchone()
@@ -410,7 +414,7 @@ def search_func(user_ingredients_with_qty):	#convert user qty to ints
 	return (sorted_list, error_message)
 
 @csrf_exempt
-def test2(request):
+def search_for_recipes(request):
 	
 	#fetch posted data & convert it to a dictionary
 	data = request.POST
@@ -430,7 +434,7 @@ def test2(request):
 
 
 	#return HttpResponse(str(sorted_list)+'<br><br>'+error_message)
-	return render(request, 'blank.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": False, "limit":3})
+	return render(request, 'blog.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": False, "limit":3})
 
 def customers(request):
 	with connection.cursor() as cursor:

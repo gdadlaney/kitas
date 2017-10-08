@@ -1,8 +1,9 @@
-cups cups
-tbsp tsp tbl150sp
+cups cups		(replaced " c ")
+tbsp tsp tblsp	(replaced " t ")
 oz
 lbs
 gal ltr
+Inches(&Prime;)	(replaced ")
 
 others - 
 2" piece   Ginger
@@ -22,7 +23,13 @@ Dried ingredient measurements
 1 tbsp = 15g
 1oz = 28g
 1 cup flour = 150g
+
+# not used
 1 cup caster sugar = 225g
 1 cup icing sugar = 115g
 1 cup brown sugar = 175g
 1 cup sultanas = 200g
+
+1 can chick peas taken as 410g
+oil and salt is always taken as NULL in qty
+water is NULL in qty & ingr_id 

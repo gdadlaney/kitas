@@ -23,3 +23,25 @@ rec_id	qty_string	ingr_string	qty	ingr_id
 4	1	1 Potato	1	6
 4	NULL	A few spinach leaves 	NULL	20
 4	NULL	Oil for deep frying	NULL	4
+5	1 can	Chick peas (also called garbanzo beans)	410g	
+5	1	large Onion chopped finely	1	
+5	2	medium sized  Potatoes (optional)	2	
+5	1 tsp	Mustard seeds	5g	
+5	2 or 3 pods	Cardamom	2	
+5	1 tsp	Coriander	5g	
+5	1 tsp	Cumin seeds	5g	
+5	1 tblsp	Garam Masala	15g	
+5	NULL	Vegetable Oil 	NULL	
+6	2 cups	Vegetables	150g	
+6	2	Onions cut length-wise	2	
+6	2	Green chilies cut length-wise	2	
+6	1 tsp	Coriander powder	5g	
+6	1 1/4 tsp	Salt	6g	
+6	one pinch	Turmeric powder	NULL	
+6	1/2&Prime;	Cinnamon stick	NULL	
+6	2	Cloves	2	
+6	2	Cardamom	2	
+6	2 tblsp	Coconut powder	30g	
+6	1 tsp	Khus-Khus (poppy seeds)	5g	
+6	3 cloves	Garlic	3	
+6	1/4 tsp	Ginger powder (or 1/2&Prime; fresh)	1g	
