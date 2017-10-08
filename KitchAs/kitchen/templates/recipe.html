@@ -181,26 +181,29 @@
 							//     }
 							//     return dateArray;
 							// }
+							// var t=0;
 							function addSelect(divname) {
-							   // var newDiv=document.createElement('div');
+							   var newDiv=document.createElement('div');
 							// <select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == '') 	{this.value = 'Ingredient';}">
 						 //  	<option value="">select</option>
 						 //  	{% for i in list_ingre %}
 						 //    <option value="{{i.0}}">{{i.0}}</option>
 						 //    {% endfor %}
 						 //  </select>
-<<<<<<< HEAD
+
 							   // var html1 = '<p> <select id="combobox" name="ingre[]" value="ingre[]"> <option value=""> selectone </option> {% for i in list_ingre %} <option value="{{i.0}}"> {{i.0}} </option> {% endfor %} </select> </p>';
-							   // var html = '<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value=\'\';" onblur="if (this.value == \'\') 	{this.value = \'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select>';
-							   // newDiv.innerHTML = html;
+							   var html = '<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value=\'\';" onblur="if (this.value == \'\') 	{this.value = \'select\';}">{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><input type="text" value="qty" name="qty[]" onfocus="this.value=\'\';" onblur="if (this.value == \'\') 	{this.value = \'qty\';}"><br><br>';
+							   newDiv.innerHTML = html;
 							   // newdiv = document.getElementById(divname);
 							   // newDiv.innerHTML = newdiv;
-							   // document.getElementById(divname).appendChild(newDiv);
+							   document.getElementById(divname).appendChild(newDiv);
 							   // var cont = '<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br>';
 							   // $('#select-container').append("<select id=\"combobox\" name=\"ingre[]\" value=\"ingre[]\" onfocus=\"this.value='';\" onblur=\"if (this.value == ''){this.value='Ingredient';}\"><option value=\"\">select</option>{% for i in list_ingre %}<option value=\"{{i.0}}\">{{i.0}}</option>{% endfor %}</select><br>");
+							   
+							   // var cont = $('#select-container').html();
+							   
 
-							   var cont = $('#select-container').html();
-							   $('#select-container').append(cont);
+							   // $('#select-container').append(cont);
 							}
 							</script>
 
@@ -234,16 +237,17 @@
 
 						<div class="ui-widget form-group">
 						<table class="table-responsive">
-						<tr><td><label>Add an ingredient:</label></td>
+						<tr><td><label>Add an ingredient:</label><br></td>
 							
+							<td><div id="select-container">
+							
+						  	<!-- <select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value='Ingredient';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br><input type="text" value="" name="qty[]"> -->
 
+						</div></td>
 						
 						</tr></table>
 						<!-- <td> -->
-						<div id="select-container">
-							
-						  	<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br>
-						</div>
+						
 						<!-- </td></tr> -->
 						<!-- </table> -->
 							<button type="button" id="add" onclick="addSelect('select-container')">Add Ingredient</button>
@@ -266,10 +270,10 @@
 				</form>
 	</div>
 
-<div id="nello" hidden="">
+<!-- <div id="nello" hidden="">
 							
 						  	<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == ''){this.value=\'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select><br>
-						</div>
+						</div> -->
 
 
 {% endblock %}

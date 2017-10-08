@@ -38,6 +38,34 @@
 <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
 
 <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript">
+	function login(){
+		var data = document.forms["login"];
+		var email = data["email"].value;
+		var password = data["password"].value;
+		console.log(email);
+		console.log(password);
+		if(email=="" || password==""){
+			alert("Enter all the credentials");
+			return false;
+		}
+	}
+
+	function signup(){
+		var data = document.forms["login"];
+		var name = data["name"].value;
+		var email = data["email"].value;
+		var password = data["password"].value;
+		var cpassword = data["cpassword"].value;
+		if(name=="" || email=="" || password=="" || cpassword==""){
+			alert("All fields are compulsory");
+			return false;
+		}
+		if (){
+
+		}
+	}
+</script>
 </head>
 	<!--  -->
 
@@ -54,7 +82,7 @@
 			<h4 class="modal-title">Login</h4>
 		  </div>
 		  <div class="modal-body">
-			<form class="cd-form PostForm" action="login" method="POST">{% csrf_token %}
+			<form class="cd-form PostForm" name="login"  onsubmit="return login()" action="login" method="POST">{% csrf_token %}
 				<p class="fieldset">
 					<label class="image-replace cd-email" for="signin-email">E-mail</label>
 					<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
