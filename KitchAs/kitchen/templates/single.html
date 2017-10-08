@@ -30,57 +30,57 @@
 		{% if request.session.user != None  %}
 			<a href="/makearecipe/{{ recipe_info.0 }}"><button class="button btn btn-primary"> Make a recipe </button></a>
 		{% endif %}
-		<div class="comment">
-							<h3>Comments</h3>
-							 <div class="media wow fadeInLeft animated" data-wow-delay=".5s">
-								<div class="code-in">
-									<p class="smith"><a href="#">Andey</a> <span>02 June 2014, 15:20</span></p>
-									<p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>
-									<div class="clearfix"> </div>
-								</div>
-							    <div class="media-left">
-							        <a href="#">
-							        	<img src="{% static 'images/si1.jpg' %}" alt="">
-							        </a>
-							     </div>
-							    <div class="media-body">
-		
-									<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-							      </div>
-							    </div>
-							    <div class="media media-1 wow fadeInUp animated" data-wow-delay=".5s">
-								<div class="code-in">
-									<p class="smith"><a href="#"> Rackham</a> <span>02 June 2014, 15:20</span></p>
-									<p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>
-									<div class="clearfix"> </div>
-								</div>
-							    <div class="media-left">
-							        <a href="#">
-							        	<img src="{% static 'images/si.jpg' %}" alt="">
-							        </a>
-							     </div>
-							    <div class="media-body">
-		
-									<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-							      </div>
-							    </div>
-								<div class="media wow fadeInRight animated" data-wow-delay=".5s">
-								<div class="code-in">
-									<p class="smith"><a href="#">Clara</a> <span>02 June 2014, 15:20</span></p>
-									<p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>
-									<div class="clearfix"> </div>
-								</div>
-							    <div class="media-left">
-							        <a href="#">
-							        	<img src="{% static 'images/si2.jpg' %}" alt="">
-							        </a>
-							     </div>
-							    <div class="media-body">
-		
-									<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-							      </div>
-							    </div>
-						 </div>
+		<!-- <div class="comment">
+			<h3>Comments</h3>
+			 <div class="media wow fadeInLeft animated" data-wow-delay=".5s">
+				<div class="code-in">
+					<p class="smith"><a href="#">Andey</a> <span>02 June 2014, 15:20</span></p>
+					<p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>
+					<div class="clearfix"> </div>
+				</div>
+			    <div class="media-left">
+			        <a href="#">
+			        	<img src="{% static 'images/si1.jpg' %}" alt="">
+			        </a>
+			     </div>
+			    <div class="media-body">
+
+					<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+			      </div>
+			    </div>
+			    <div class="media media-1 wow fadeInUp animated" data-wow-delay=".5s">
+				<div class="code-in">
+					<p class="smith"><a href="#"> Rackham</a> <span>02 June 2014, 15:20</span></p>
+					<p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>
+					<div class="clearfix"> </div>
+				</div>
+			    <div class="media-left">
+			        <a href="#">
+			        	<img src="{% static 'images/si.jpg' %}" alt="">
+			        </a>
+			     </div>
+			    <div class="media-body">
+
+					<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+			      </div>
+			    </div>
+				<div class="media wow fadeInRight animated" data-wow-delay=".5s">
+				<div class="code-in">
+					<p class="smith"><a href="#">Clara</a> <span>02 June 2014, 15:20</span></p>
+					<p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>
+					<div class="clearfix"> </div>
+				</div>
+			    <div class="media-left">
+			        <a href="#">
+			        	<img src="{% static 'images/si2.jpg' %}" alt="">
+			        </a>
+			     </div>
+			    <div class="media-body">
+
+					<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+			      </div>
+			    </div>
+		 </div>
 		<div class="leave">
 			<h3>Leave a comment</h3>
 				<form>
@@ -99,10 +99,10 @@
 						</label>						
 				</div>
 				</form>
-			</div>
+			</div> -->
 		
-</div>
 	</div>
+</div>
 <!--//content-->
 
 {% endblock %}

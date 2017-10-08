@@ -4,7 +4,7 @@
 
 -- deleting previous data --
 
--- delete from cust_ingredients;
+delete from cust_ingredients;
 delete from rec_ingredients;
 delete from ingredients;
 delete from recipes;
