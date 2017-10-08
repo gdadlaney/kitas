@@ -31,21 +31,21 @@
 		<div class="container" style="width: 60%; margin: auto">
 			<form action="/search_for_recipes" method="post">
 				<div id="accordion" role="tablist" aria-multiselectable="true">
-					{% for ingr_category in ingr_categories %}
+				{% for ingr_category, heading, collapse in ingr_categories_with_extras %}
 					<div class="card">
-						<div class="card-header" role="tab" id="headingOne">
+						<div class="card-header" role="tab" id="{{ heading }}">
 							<h5 class="mb-0">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								<a data-toggle="collapse" data-parent="#accordion" href="#{{ collapse }}" aria-expanded="true" aria-controls="{{ collapse }}">
 									{{ ingr_category.0 }}
 								</a>
 							</h5>
 						</div>
 
-						<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+						<div id="{{ collapse }}" class="collapse show" role="tabpanel" aria-headingby="{{ heading }}">
 							<div class="card-block">
 								{% for ingr in ingr_category.1 %}
 								<input type="checkbox" name="ingr[]" value="{{ ingr }}">{{ ingr }}<br>
-								}
+								{% endfor %}
 							</div>
 						</div>
 					</div>

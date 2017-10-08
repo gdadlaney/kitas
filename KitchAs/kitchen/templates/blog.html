@@ -6,27 +6,24 @@
 	<div class="blog">
 		<div class="container">
 			<div class="menu-top">
-					<div class="col-md-4 menu-left">
-						<h3>Recipes for you</h3>
-						<label><i class="glyphicon glyphicon-menu-up"></i></label>
-						<span>There are many variations</span>
-					</div>
-					<div class="col-md-8 menu-right">
-						<p>We try our best to suggest you the best recipe with what you have.<br> Recipes don't work unless you use your heart.</p>
-						<p>
-							{{sorted_list}}
-						</p>
-					</div>
-					<div class="clearfix"> </div>
+				<div class="col-md-4 menu-left">
+					<h3>Recipes for you</h3>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<span>There are many variations</span>
 				</div>
+				<div class="col-md-8 menu-right" style="padding-top: 130px">
+					<p>We try our best to suggest you the best recipe with what you have.<br> Recipes don't work unless you use your heart.</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
 			<div class="col-md-9 blog-header">
 				<div class=" blog-head">
 					{% for recipe_list in sorted_list %}
-						<div class="col-md-4 blog-top">
+						<div class="col-md-4 blog-top" style="padding-top: 30px">
 							<div class="blog-in">
 								<a href="/single"><img class="img-responsive" src="{% static 'images/bl.jpg' %}" alt=" "></a>
 								<div class="blog-grid">
-									<h3><a href="/single">{{ recipe_list.0 }}</a></h3>
+									<h3><a href="/single/{{ recipe_list.0 }}">{{ recipe_list.0 }}</a></h3>
 									{% if recipe_list|length >= 5 %}
 									<div class="date">
 										<span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>22.08.2014</span>
@@ -57,7 +54,7 @@
 										{% endfor %}
 									</p>
 									<div class="more">						
-										<a class="link link-yaku" href="/single">
+										<a class="link link-yaku" href="/single/{{ recipe_list.0 }}">
 											<span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
 										</a>
 									</div>
@@ -65,64 +62,58 @@
 							</div>
 						</div>
 					{% endfor %}
-					<div class="more">						
-						<a class="link link-yaku" href="/single/PAKORAS (SAVORY FRITTERS)">
-							<span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
-						</a>
-					</div>
 		
 					<div class="clearfix"> </div>
 				</div>
 			</div>
-			<div class="col-md-3 categories-grid">
+			<!-- <div class="col-md-3 categories-grid">
 				<div class="search-in animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<h4>Search</h4>
-						<div class="search">
+					<div class="search">
 						<form>
 							<input type="text" placeholder="Search" required="" >
 							<input type="submit" value="" >
 						</form>
-						</div>
-				</div>
-					<div class="grid-categories animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<h4>Categories</h4>
-						<ul class="popular">
-							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Breakfast</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Lunch</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dinner</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dessert</a></li>
-							
-						</ul>
 					</div>
-					<div class="blog-bottom animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-							<h4>Recent Posts</h4>
-								<div class="product-go">
-									<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo.jpg' %}" alt=""></a>
-									<div class="grid-product">
-										<a href="/single" class="elit">Consectetuer adipiscing</a>
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-									</div>
-								<div class="clearfix"> </div>
-								</div>
-								<div class="product-go">
-									<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo1.jpg' %}" alt=""></a>
-									<div class="grid-product">
-										<a href="/single" class="elit">Consectetuer adipiscing</a>
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-									</div>
-								<div class="clearfix"> </div>
-								</div>
-								<div class="product-go">
-									<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo2.jpg' %}" alt=""></a>
-									<div class="grid-product">
-										<a href="/single" class="elit">Consectetuer adipiscing</a>
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-									</div>
-								<div class="clearfix"> </div>
-								</div>
-							</div>
-
 				</div>
+				<div class="grid-categories animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h4>Categories</h4>
+					<ul class="popular">
+						<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Breakfast</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Lunch</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dinner</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dessert</a></li>
+						
+					</ul>
+				</div>
+				<div class="blog-bottom animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h4>Recent Posts</h4>
+					<div class="product-go">
+						<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo.jpg' %}" alt=""></a>
+						<div class="grid-product">
+							<a href="/single" class="elit">Consectetuer adipiscing</a>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+					</div>
+					<div class="clearfix"> </div>
+					</div>
+					<div class="product-go">
+						<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo1.jpg' %}" alt=""></a>
+						<div class="grid-product">
+							<a href="/single" class="elit">Consectetuer adipiscing</a>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+					</div>
+					<div class="clearfix"> </div>
+					</div>
+					<div class="product-go">
+						<a href="/single" class="fashion"><img class="img-responsive " src="{% static 'images/bo2.jpg' %}" alt=""></a>
+						<div class="grid-product">
+							<a href="/single" class="elit">Consectetuer adipiscing</a>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+					</div>
+					<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div> -->
 		<div class="clearfix"> </div>
 		</div>
 	</div>
