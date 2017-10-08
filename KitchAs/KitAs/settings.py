@@ -53,8 +53,17 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'KitAs.urls'
 
 
+"""
+{
+    'BACKEND': 'django.template.backends.jinja2.Jinja2',
+    'DIRS': [os.path.join(BASE_DIR, 'kitchen/templates/jinja2')],
+    'APP_DIRS': True,
 
-TEMPLATES = [
+},
+'OPTIONS': {'environment': 'kitas.jinja2.Environment',},
+"""
+
+TEMPLATES = [  
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
