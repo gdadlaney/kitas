@@ -116,6 +116,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
 <link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
 <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+
+<style type="text/css">
+	.toggle-menu li {
+	width: 40%;
+}
+</style>
+
 </head>
 <body>
 
@@ -225,16 +232,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
 			<h1><a href="/index"><span>KITAS</span></a></h1>
 		</div>
+
 		<div class="nav-icon">		
 			<a href="#" class="navicon"></a>
 				<div class="toggle">
 					<ul class="toggle-menu">
-						<li><a class="active" href="/index">Home</a></li>
-						<li><a  href="/menu">Menu</a></li>
-						<li><a  href="/blog">Blog</a></li>
-						<li><a  href="/typo">Codes</a></li>
-						<li><a  href="/events">Events</a></li>
-						<li><a  href="/contact">Contact</a></li>
+						<li align="center"><a class="active" href="/index">Home</a></li>
+						<li align="center"><a  href="/categories">Categories</a></li>
+						<li align="center"><a  href="/ingredients">Ingredients</a></li>
+						<li align="center"><a  href="/fav_recipes">Fav Recipes</a></li>
+						<li align="center"><a  href="/contact">Contact Us</a></li>
 					</ul>
 				</div>
 			<script>

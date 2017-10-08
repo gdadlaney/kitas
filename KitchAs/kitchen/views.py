@@ -30,6 +30,11 @@ def categories(request):
 	return render(request, 'categories.html', {'rec_category':rec_category})
 
 def ingredients(request):
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT name FROM rec_categories LIMIT 6")
+		rec_category = list(cursor.fetchall())
+		for i in range(rec_category.__len__()):
+			rec_category[i] = list(rec_category[i])
 	return render(request, 'ingredients.html', {})
 
 def accounts(request):
