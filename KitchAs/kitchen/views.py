@@ -55,6 +55,15 @@ def recipe(request):
 			list_ingre = cursor.fetchall()	
 		return render(request, 'recipe.html', {'list_ingre':list_ingre})
 
+
+def single(request, rec_name):
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT name, directions, time_modified FROM recipes where name='{0}'".format(rec_name))
+		recipe_info = cursor.fetchone()
+		print(recipe_info)
+	return render(request, 'single.html', {'recipe_info':recipe_info})
+
+
 @csrf_protect
 def subRecipe(request):
 	if request.session['user']==None:
