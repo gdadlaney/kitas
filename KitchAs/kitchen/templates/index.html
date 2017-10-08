@@ -116,6 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{% static 'css/reset.css' %}"> <!-- CSS reset -->
 <link rel="stylesheet" href="{% static 'css/stylef.css' %}"> <!-- Gem style -->
 <script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+<<<<<<< HEAD
 
 <style type="text/css">
 	.toggle-menu li {
@@ -123,6 +124,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 }
 </style>
 
+=======
+<script type="text/javascript">
+	function login(){
+		var data = document.forms["login"];
+		var email = data["email"].value;
+		var password = data["password"].value;
+		console.log(email);
+		console.log(password);
+		if(email=="" || password==""){
+			alert("Enter all the credentials");
+			return false;
+		}
+	}
+
+	function signup(){
+		var data = document.forms["login"];
+		var name = data["name"].value;
+		var email = data["email"].value;
+		var password = data["password"].value;
+		var cpassword = data["cpassword"].value;
+		if(name=="" || email=="" || password=="" || cpassword==""){
+			alert("All fields are compulsory");
+			return false;
+		}
+		if (){
+
+		}
+	}
+</script>
+>>>>>>> 0af4e3ea5a934cbd9d236c81f241361df5c0d9cc
 </head>
 <body>
 
@@ -240,8 +271,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li align="center"><a class="active" href="/index">Home</a></li>
 						<li align="center"><a  href="/categories">Categories</a></li>
 						<li align="center"><a  href="/ingredients">Ingredients</a></li>
+<<<<<<< HEAD
 						<li align="center"><a  href="/fav_recipes">Fav Recipes</a></li>
 						<li align="center"><a  href="/contact">Contact Us</a></li>
+=======
+						<li align="center"><a  href="/typo">Fab_Recipes</a></li>
+						<li align="center"><a  href="/contact">ContactUS</a></li>
+>>>>>>> 0af4e3ea5a934cbd9d236c81f241361df5c0d9cc
 					</ul>
 				</div>
 			<script>
@@ -265,7 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
   			<span class="caret"></span></button>
   			<ul class="dropdown-menu" >
-    			<li style="width: 20px;"><a href="/pantry">Profile</a></li>
+    			<li style="width: 20px;"><a href="/pantry">MyPantry</a></li>
     			<li style="width: 20px;"><a href="/list">Add Ingredients</a></li>
     			<li style="width: 20px;"><a href="/recipe">Add Recipe</a></li>
   				<li style="width: 20px;"><a href="/logout">Log Out</a></li>
@@ -337,7 +373,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>	
 <!--footer-->
 	<div class="footer">
-		<div class="container footer">
+		<div class="container">
 			<div class="footer-head">
 				<div class="col-md-6 footer-top animated wow fadeInRight" data-wow-duration="700ms" data-wow-delay="300ms">
 					<ul class=" in">
@@ -363,10 +399,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 
 				</div>
-			<!-- <div class="clearfix"> </div> -->					
+			<div class="clearfix"> </div>
+					
 			</div>
+		</div>	
 		</div>
-	</div>		
-<!--//footer-->
 </body>
 </html>
