@@ -6,9 +6,12 @@
 </head>
 <body>
 Hello World!!!<br>
-{% set count = 0 %}
 {% for temp in sorted_list %}
   {{temp}}<br>
+  <!-- recipe name -->
+  {{ temp.0 }}		
+  <!-- ingredient name -->
+  {{ temp.1.0.0 }}
 {% endfor %}
 </body>
 </html>
