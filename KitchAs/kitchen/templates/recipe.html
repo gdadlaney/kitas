@@ -189,6 +189,7 @@
 						 //    <option value="{{i.0}}">{{i.0}}</option>
 						 //    {% endfor %}
 						 //  </select>
+<<<<<<< HEAD
 							   // var html1 = '<p> <select id="combobox" name="ingre[]" value="ingre[]"> <option value=""> selectone </option> {% for i in list_ingre %} <option value="{{i.0}}"> {{i.0}} </option> {% endfor %} </select> </p>';
 							   // var html = '<select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value=\'\';" onblur="if (this.value == \'\') 	{this.value = \'Ingredient\';}"><option value="">select</option>{% for i in list_ingre %}<option value="{{i.0}}">{{i.0}}</option>{% endfor %}</select>';
 							   // newDiv.innerHTML = html;
@@ -200,7 +201,6 @@
 
 							   var cont = $('#select-container').html();
 							   $('#select-container').append(cont);
-
 							}
 							</script>
 
@@ -224,7 +224,7 @@
 						
 							<input type="text" value="Preparation Time" name="pt" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Preparation Time';}">
 
-							<!-- <select id="combobox" name="ingre[]" value="ingre[]" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Ingredient';}">
+							<!-- <select id="combobox" name="ingre[]" value="ingre[]">
 						  	<option value="">select</option>
 						  	{% for i in list_ingre %}
 						    <option value="{{i.0}}">{{i.0}}</option>
@@ -249,7 +249,7 @@
 							<button type="button" id="add" onclick="addSelect('select-container')">Add Ingredient</button>
 						  </div>
 							
-							<input type="text" name="qty" value="qty" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Qty';}">
+							
 							<!-- <input type="text" value="Ingredients" name="ingredient" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Ingredient';}"> -->
 							
 							<!-- yaha quantity ka box -->
