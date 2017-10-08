@@ -66,7 +66,7 @@ def single(request, rec_name):
 		print(recipe_info)
 	return render(request, 'single.html', {'recipe_info':recipe_info})
 
-
+#add user recipes
 @csrf_protect
 def subRecipe(request):
 	if request.session['user']==None:
@@ -123,7 +123,7 @@ def pantry(request):
 
 
 
-
+#add ingredients to pantry
 @csrf_protect
 def listUp(request):
 	if request.session['user']==None:
