@@ -23,7 +23,7 @@ def category(request):
 
 def categories(request):
 	with connection.cursor() as cursor:
-		cursor.execute("SELECT name FROM rec_categories LIMIT 6")
+		cursor.execute("SELECT name, description FROM rec_categories LIMIT 6")
 		rec_category = list(cursor.fetchall())
 		for i in range(rec_category.__len__()):
 			rec_category[i] = list(rec_category[i])
@@ -46,6 +46,44 @@ def addIngredient(request):
 			list_ingre = cursor.fetchall()
 
 		return render(request, 'pingredients.html', {'list_ingre':list_ingre})
+
+
+def makearecipe(request, rec_name):
+	if request.session['user']==None:
+		return render(request, 'index.html', {})
+	else:
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT ingr_id, qty FROM cust_ingredients WHERE cust_id={0}".format(request.session['id']))
+			data_list = cursor.fetchall()
+			cursor.execute("SELECT id FROM recipes WHERE name='{0}'".format(rec_name))
+			rec_id = cursor.fetchone()[0]
+			cursor.execute("SELECT ingr_id, qty FROM rec_ingredients WHERE rec_id={0}".format(rec_id))
+			list_ingre_w_qty = cursor.fetchall()
+			
+			for i in range(data_list.__len__()):
+				for j in range(list_ingre_w_qty.__len__()):
+					if data_list[i][0]==list_ingre_w_qty[j][0]:
+						qt1 = convert_qty( data_list[i][1])
+						qt2 = convert_qty( list_ingre_w_qty[j][1])
+
+						if(list_ingre_w_qty[j][1]!=None and qt1[1]==qt[2]):
+							rqty = int(''.join(filter(str.isdigit, data_list[i][1]))) - int(''.join(filter(str.isdigit, list_ingre_w_qty[j][1]))) 
+							if rqty <= 0:
+								cursor.execute("DELETE FROM cust_ingredients WHERE cust_id={0} and ingr_id={1}".format(request.session['id'], data_list[i][0]))
+							else:
+								cursor.execute("UPDATE cust_ingredients SET qty={0} WHERE cust_id={1} and ingr_id={2}".format(rqty, request.session['id'], data_list[i][0]))
+			
+			cursor.execute("SELECT ingr_id, qty FROM cust_ingredients WHERE cust_id={0}".format(request.session['id']))
+			list_ingredient = list(cursor.fetchall())
+
+			for i in range(list_ingredient.__len__()):
+				list_ingredient[i] = list(list_ingredient[i])
+			
+			for i in range(list_ingredient.__len__()):
+				cursor.execute("SELECT name_english FROM ingredients WHERE id={0}".format(list_ingredient[i][0]))
+				name = cursor.fetchone()
+				list_ingredient[i][0] = name[0]
+		return render(request, 'pantry.html', {'list_ingredient':list_ingredient})
 
 
 @csrf_protect
@@ -90,12 +128,12 @@ def subRecipe(request):
 			# 	ingre[i] = list(ingre[i])
 			# 	qty[i] = list(qty[i])
 			# i=0
+			cursor.execute("INSERT INTO recipes (name,directions,cust_id,servings,prep_time,category) VALUES('{0}', '{1}', {2}, '{3}', '{4}', {5})".format(name,directions,request.session['id'],servings,pt,category))#abc[0], qty))
+			cursor.execute("SELECT id FROM recipes WHERE name='{0}'".format(name))
+			xyz = cursor.fetchone()
 			for i in range(ingre.__len__()):
 				cursor.execute("SELECT id FROM ingredients WHERE name_english='{0}' or name_hindi='{1}'".format(ingre[i], ingre[i]))
 				abc = cursor.fetchone()
-				cursor.execute("INSERT INTO recipes (name,directions,cust_id,servings,prep_time,category) VALUES('{0}', '{1}', {2}, '{3}', '{4}', {5})".format(name,directions,request.session['id'],servings,pt,category))#abc[0], qty))
-				cursor.execute("SELECT id FROM recipes WHERE name='{0}'".format(name))
-				xyz = cursor.fetchone()
 				cursor.execute("INSERT INTO rec_ingredients VALUES({0}, '{1}', '{2}', '{3}', {4})".format(xyz[0],qty[i],ingre[i],qty[i],abc[0]))
 
 
@@ -137,7 +175,10 @@ def listUp(request):
 		data = request.POST
 		ingre = data.get('ingre')
 		qty = data.get('qty')
-		qty = int(''.join(filter(str.isdigit, qty)))
+		if(qty!=""):
+			qty = int(''.join(filter(str.isdigit, qty)))
+		else:
+			qty= 0
 		with connection.cursor() as cursor:
 			cursor.execute("SELECT name_english FROM ingredients")
 			list_ingre = cursor.fetchall()
@@ -148,9 +189,11 @@ def listUp(request):
 			if(xyz!=None and abc[0] == xyz[0]):
 				cursor.execute("SELECT qty FROM cust_ingredients WHERE cust_id={0} and ingr_id={1}".format(request.session['id'], abc[0]))
 				quan = cursor.fetchone()
-				oqty = int(''.join(filter(str.isdigit, quan[0])))
+				if quan[0]!="":
+					oqty = int(''.join(filter(str.isdigit, quan[0])))		
+					qty += oqty
 				print(oqty)
-				qty += oqty
+				
 				print(qty)
 				cursor.execute("call up_list_of_ingredient({0}, {1}, '{2}')".format(request.session['id'], abc[0], qty))
 			else:
@@ -183,6 +226,8 @@ def login(request):
 	data = request.POST
 	email = data.get('email')
 	passw = data.get('password')
+	if(email==""or passw==""):
+		return render(request, 'index.html', {})
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT * FROM customers WHERE email='{0}' and password='{1}'".format(email, passw))
 		abc = cursor.fetchone()
@@ -199,7 +244,7 @@ def signup(request):
 	passwd = data.get('cpassword')
 	print(name, email, passw, passwd)
 	if (email=="" or  name=="" or passw!=passwd):
-		return HttpResponse("All Fields are compulsory")
+		return render(request, 'index.html', {})
 	else:
 		with connection.cursor() as cursor:
 			cursor.execute("INSERT INTO customers(name, email, password) values('{0}', '{1}', '{2}')".format(name, email, passw))
@@ -450,3 +495,5 @@ def customers(request):
 	return HttpResponse(row)
 
 
+def contact(request):
+	return render(request, 'contact.html', {})

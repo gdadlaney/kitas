@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: kitas
 -- ------------------------------------------------------
--- Server version	5.7.19-0ubuntu0.16.04.1
+-- Server version	5.7.19-0ubuntu0.17.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -263,6 +263,7 @@ CREATE TABLE `cust_ingredients` (
 
 LOCK TABLES `cust_ingredients` WRITE;
 /*!40000 ALTER TABLE `cust_ingredients` DISABLE KEYS */;
+INSERT INTO `cust_ingredients` VALUES (2,6,'32'),(2,11,'20'),(2,5,'20'),(2,1,'100');
 /*!40000 ALTER TABLE `cust_ingredients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,7 +280,7 @@ CREATE TABLE `customers` (
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +289,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'admin','admin@kitas.com','admin');
+INSERT INTO `customers` VALUES (1,'admin','admin@kitas.com','admin'),(2,'Ritesh Ghorse','riteshghorse@gmail.com','67');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,7 +400,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('32ijnc3dlbl48m18bnwtzgqquok9l2yv','NzJiMDI5MTUwOWQ5NmYxODU3ZTI3YTQzZDdjYzNhODgzZGJmNDBhYzp7InVzZXIiOiJhZG1pbiIsImlkIjoxfQ==','2017-10-20 11:59:14.737980'),('uykw7rc5shy9g5k1kfnolbrqwlrf57ov','Njk2MzY3MGU0M2U2MjkxZDQxYTJhZjdkZDgzMGRlNGY5OWJjZTU2MTp7InVzZXIiOm51bGx9','2017-10-16 14:54:59.931339');
+INSERT INTO `django_session` VALUES ('32ijnc3dlbl48m18bnwtzgqquok9l2yv','NzJiMDI5MTUwOWQ5NmYxODU3ZTI3YTQzZDdjYzNhODgzZGJmNDBhYzp7InVzZXIiOiJhZG1pbiIsImlkIjoxfQ==','2017-10-20 11:59:14.737980'),('ohzpsfv9phzb301khuba3a9c61pzh12t','MDJiNjI4NGE0NGZjYjg4MjgzMDk0OTY2MTk0YzE0ZTU3OWMwY2JmZTp7InVzZXIiOiJSaXRlc2ggR2hvcnNlIiwiaWQiOjJ9','2017-10-22 13:46:46.601894'),('uykw7rc5shy9g5k1kfnolbrqwlrf57ov','Njk2MzY3MGU0M2U2MjkxZDQxYTJhZjdkZDgzMGRlNGY5OWJjZTU2MTp7InVzZXIiOm51bGx9','2017-10-16 14:54:59.931339');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -465,6 +466,7 @@ DROP TABLE IF EXISTS `rec_categories`;
 CREATE TABLE `rec_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -475,7 +477,7 @@ CREATE TABLE `rec_categories` (
 
 LOCK TABLES `rec_categories` WRITE;
 /*!40000 ALTER TABLE `rec_categories` DISABLE KEYS */;
-INSERT INTO `rec_categories` VALUES (1,'Breads'),(2,'Snacks'),(3,'Vegetables'),(4,'Lentils'),(5,'Rice'),(6,'Fish'),(7,'Chicken'),(8,'Lamb and Beef'),(9,'Desserts'),(10,'This and That'),(1000,'Others');
+INSERT INTO `rec_categories` VALUES (1,'Breads','We know you love breads'),(2,'Snacks','Ah look what I found - Snacks!'),(3,'Vegetables','Eat vegetables. Stay Healthy'),(4,'Lentils','You know what it is!'),(5,'Rice','Life is short. Eat Rice first'),(6,'Fish','Fishes are here!'),(7,'Chicken',NULL),(8,'Lamb and Beef',NULL),(9,'Desserts',NULL),(10,'This and That',NULL),(1000,'Others',NULL);
 /*!40000 ALTER TABLE `rec_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -530,7 +532,7 @@ CREATE TABLE `recipes` (
   KEY `category` (`category`),
   CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customers` (`id`),
   CONSTRAINT `recipes_ibfk_2` FOREIGN KEY (`category`) REFERENCES `rec_categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -552,4 +554,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-06 17:40:33
+-- Dump completed on 2017-10-09  0:03:03
