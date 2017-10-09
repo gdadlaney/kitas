@@ -15,6 +15,18 @@
 					<p>We try our best to suggest you the best recipe with what you have.<br> Recipes don't work unless you use your heart.</p>
 				</div>
 				<div class="clearfix"> </div>
+				{% if message1 is not None and message2 is not None %}
+				<div class="col-md-9 menu-left">
+					<br>
+					<center>
+						<h3 style="	font-size: 2.5em;">
+									 {{ message1 }} </h3>
+						<h3 style="	font-size: 1.5em;">
+									 {{ message2 }}<a href='{{ link1 }}'>here</a></h3>
+						<label><i class="glyphicon glyphicon-menu-down"></i></label>
+					</center>
+				</div>
+				{% endif %}
 			</div>
 			<div class="col-md-9 blog-header">
 				<div class=" blog-head">
