@@ -108,6 +108,7 @@ def makearecipe(request, rec_name):
 			data_list = cursor.fetchall()
 			cursor.execute("SELECT id FROM recipes WHERE name='{0}'".format(rec_name))
 			rec_id = cursor.fetchone()[0]
+			cursor.execute("INSERT INTO cust_activity (cust_id,rec_id) values ({0},{1})".format(request.session['id'],rec_id))
 			cursor.execute("SELECT ingr_id, qty FROM rec_ingredients WHERE rec_id={0}".format(rec_id))
 			list_ingre_w_qty = cursor.fetchall()
 			

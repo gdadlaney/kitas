@@ -18,12 +18,41 @@
 			<div class="page">
 				<div class="menu-top">
 				<div class="col-md-4 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<h3>Short Codes</h3>
+					<h3>Add An Ingredient</h3>
 					<label><i class="glyphicon glyphicon-menu-up"></i></label>
-					<span>There are many variations</span>
+					<span>Add an ingredient to your pantry from here </span>
 				</div>
 				<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-					<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour , or randomised words which don't look even slightly believable.There are many variations by injected humour. There are many variations of passages of Lorem Ipsum available.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form by injected humour , or randomised words</p>
+					<p>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+							  <form class="form-inline" action="listup" method="post">
+							  	{% csrf_token %}
+								  <div class="ui-widget form-group">
+									  <table class="table-responsive">
+									  <tr><td><label>Add an ingredient:</label></td>
+									  <td><select id="combobox" name="ingre">
+									  	<option name="ingre" value="">select</option>
+									  	{% for i in list_ingre %}
+									    <option value="{{i.0}}">{{i.0}}</option>
+									    {% endfor %}
+									  </select></td></tr>
+									  <tr><td><label><br>Quantity:</label></td>
+									  <td><input type="text" name="qty"></td></tr><br>
+									  </table>
+									  <p>
+									  <br><input type="submit" name="submit" style="margin-left: 100px;">
+								  	  </p>
+								  </div>
+							   </form>
+						  	</div>
+						</div>
+					</div>
+
+	
+
+					</p>
 				</div>
 				<div class="clearfix"> </div>
 				</div>
@@ -195,31 +224,6 @@
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-6">
-		  <form class="form-inline" action="listup" method="post">
-		  	{% csrf_token %}
-			  <div class="ui-widget form-group">
-				  <table class="table-responsive">
-				  <tr><td><label>Add an ingredient:</label></td>
-				  <td><select id="combobox" name="ingre">
-				  	<option name="ingre" value="">select</option>
-				  	{% for i in list_ingre %}
-				    <option value="{{i.0}}">{{i.0}}</option>
-				    {% endfor %}
-				  </select></td></tr>
-				  <br>
-				  <tr><td><label>Quantity:</label></td>
-				  <td><input type="text" name="qty"></td></tr><br>
-				  </table>
-				  <input type="submit" name="submit">
-			  </div>
-		   </form>
-	  	</div>
-	</div>
-</div>
 
 
 <!-- <button id="toggle">Show underlying select</button> -->

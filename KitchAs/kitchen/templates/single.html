@@ -27,11 +27,12 @@
 					
 				</div>
 		</div>
-		{% if request.session.user != None  %}
-			<a href="/makearecipe/{{ recipe_info.0 }}"><button class="button btn btn-primary"> Make a recipe </button></a>
-		{% endif %}
+		
 		
 	</div>
+	{% if request.session.user != None  %}
+			<a href="/makearecipe/{{ recipe_info.0 }}"><button class="button btn btn-primary" style="margin: 70px;"> Make a recipe </button></a>
+		{% endif %}
 </div>
 <!--//content-->
 
