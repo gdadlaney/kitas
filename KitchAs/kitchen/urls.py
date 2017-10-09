@@ -21,6 +21,7 @@ urlpatterns = [
 	url(r'^makearecipe/(?P<rec_name>[A-Za-z()\s]+)$', views.makearecipe, name="makearecipe"),
 	url(r'^single/(?P<rec_name>[A-Za-z()\s]+)$', views.single, name="single"),
 	url(r'^subrecipe$', views.subRecipe, name="subRecipe"),
+	url(r'^delrecipe$', views.delRecipe, name="delRecipe"),
 	#url(r'^', views.index, name='index'),
 	url(r'^admin$', views.admin, name="admin"),
 	url(r'^', views.page_not_found, name='page_not_found'),

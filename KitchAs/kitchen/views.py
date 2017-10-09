@@ -533,6 +533,19 @@ def customers(request):
 def contact(request):
 	return render(request, 'contact.html', {})
 
+def delRecipe(request):
+	if request.session['user'] == "admin":
+		recname = request.get.data("recname")
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT id FROM recipes where name={0}".format(recname))
+			recid=cursor.fetchone()
+			cursor.execute("DELETE from rec_ingredients where rec_id={0}".format(recid))
+			cursor.execute("DELETE from recipes where id={0}".format(recid))
+			return render(request, 'admin.html', {})
+	else:
+		return render(request, "index.html", {})
+	
+
 
 
 def admin(request):
