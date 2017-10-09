@@ -33,6 +33,9 @@
 									<span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
 								</a>
 							</div>
+							{% if request.session.user != None  %}
+								<a href="/makearecipe/{{ recipe_info.0 }}"><button class="button btn btn-primary"> Make a recipe </button></a>
+							{% endif %}
 						</div>
 						<div class="clearfix"> </div>
 					</div>
