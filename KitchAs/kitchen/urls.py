@@ -18,6 +18,7 @@ urlpatterns = [
 	url(r'^pantry$', views.pantry, name="pantry"),
 	url(r'^Breads$', views.breads, name="breads"),
 	url(r'^Snacks$', views.snacks, name="snacks"),
+	url(r'^category/(?P<rec_name>[A-Z][a-z]+)$', views.category, name="category"),
 	url(r'^makearecipe/(?P<rec_name>[A-Z]+)$', views.makearecipe, name="makearecipe"),
 	url(r'^single/(?P<rec_name>[A-Z]+)$', views.single, name="single"),
 	url(r'^subrecipe$', views.subRecipe, name="subRecipe"),

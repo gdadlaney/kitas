@@ -202,6 +202,16 @@ def listUp(request):
 
 
 
+def category(request, rec_name):
+	print("in function")
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT id FROM rec_categories WHERE name='{0}'".format(rec_name))
+		id = cursor.fetchone()
+		cursor.execute("SELECT name, directions FROM recipes WHERE category={0}".format(id[0]))
+		recipes = cursor.fetchall()
+		return render(request, 'events.html', {'recipes':recipes})
+
+
 def breads(request):
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT id FROM rec_categories WHERE name='{0}'".format("Breads"))
