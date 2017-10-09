@@ -81,6 +81,23 @@ def ingredients(request):
 
 		return render(request, 'ingredients.html', {"ingr_categories_with_extras":ingr_categories_with_extras})
 
+
+
+def myrecipe(request):
+	if request.session['user']=="admin":
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT name, directions FROM recipes")
+			usr_recipes = cursor.fetchall()
+		return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+	elif request.session['user'] != None:
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT name, directions FROM recipes WHERE cust_id={0}".format(request.session['id']))
+			usr_recipes = cursor.fetchall()
+		return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+	else:
+		return render(request, 'index.html', {})
+
+
 def accounts(request):
 	return render(request, 'index.html/#cd-login', {"ingr_categories": ingr_categories})
 
@@ -106,6 +123,7 @@ def makearecipe(request, rec_name):
 			data_list = cursor.fetchall()
 			cursor.execute("SELECT id FROM recipes WHERE name='{0}'".format(rec_name))
 			rec_id = cursor.fetchone()[0]
+			cursor.execute("INSERT INTO cust_activity (cust_id,rec_id) values ({0},{1})".format(request.session['id'],rec_id))
 			cursor.execute("SELECT ingr_id, qty FROM rec_ingredients WHERE rec_id={0}".format(rec_id))
 			list_ingre_w_qty = cursor.fetchall()
 			
@@ -115,7 +133,7 @@ def makearecipe(request, rec_name):
 						qt1 = convert_qty( data_list[i][1])
 						qt2 = convert_qty( list_ingre_w_qty[j][1])
 
-						if(list_ingre_w_qty[j][1]!=None and qt1[1]==qt[2]):
+						if(list_ingre_w_qty[j][1]!=None and qt1[1]==qt2[1]):
 							rqty = int(''.join(filter(str.isdigit, data_list[i][1]))) - int(''.join(filter(str.isdigit, list_ingre_w_qty[j][1]))) 
 							if rqty <= 0:
 								cursor.execute("DELETE FROM cust_ingredients WHERE cust_id={0} and ingr_id={1}".format(request.session['id'], data_list[i][0]))
@@ -160,7 +178,7 @@ def subRecipe(request):
 		return render(request, 'index.html', {})
 	else:
 		data = request.POST
-		name = data.get('name')
+		name = (data.get('name')).upper()
 		pt = data.get('pt')
 		ingre = data.getlist('ingre[]')
 		qty = data.getlist('qty[]')
@@ -251,18 +269,10 @@ def listUp(request):
 
 
 
-def breads(request):
+def category(request, rec_name):
+	print("in function")
 	with connection.cursor() as cursor:
-		cursor.execute("SELECT id FROM rec_categories WHERE name='{0}'".format("Breads"))
-		id = cursor.fetchone()
-		cursor.execute("SELECT name, directions FROM recipes WHERE category={0}".format(id[0]))
-		recipes = cursor.fetchall()
-		return render(request, 'events.html', {'recipes':recipes})
-
-
-def snacks(request):
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT id FROM rec_categories WHERE name='{0}'".format("Snacks"))
+		cursor.execute("SELECT id FROM rec_categories WHERE name='{0}'".format(rec_name))
 		id = cursor.fetchone()
 		cursor.execute("SELECT name, directions FROM recipes WHERE category={0}".format(id[0]))
 		recipes = cursor.fetchall()
@@ -297,7 +307,7 @@ def signup(request):
 	else:
 		with connection.cursor() as cursor:
 			cursor.execute("INSERT INTO customers(name, email, password) values('{0}', '{1}', '{2}')".format(name, email, passw))
-		return HttpResponse("Record Inserted")
+		return render(request, "index.html", {})
 
 def logout(request):
 	if request.session['user'] != None:
@@ -570,3 +580,41 @@ def customers(request):
 
 def contact(request):
 	return render(request, 'contact.html', {})
+
+
+def delRecipeUser(request, rec_name):
+	if request.session['user']==None:
+		return render(request, 'index.html', {})
+	else:
+		userid = request.session['id']
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT id FROM recipes where name='{0}' and cust_id={1}".format(rec_name, userid))
+			recid=cursor.fetchone()
+			cursor.execute("DELETE from rec_ingredients where rec_id={0}".format(recid[0]))
+			cursor.execute("DELETE from recipes where id={0}".format(recid[0]))
+			cursor.execute("SELECT name, directions FROM recipes WHERE cust_id={0}".format(request.session['id']))
+			usr_recipes = cursor.fetchall()
+			return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+
+@csrf_protect
+def delRecipe(request):
+	if request.session['user'] == "admin":
+		recname = (request.POST.get("recname")).upper()
+		print(recname)		
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT id FROM recipes where name='{0}' ".format(recname))
+			recid=cursor.fetchone()
+			cursor.execute("DELETE from rec_ingredients where rec_id={0}".format(recid[0]))
+			cursor.execute("DELETE from recipes where id={0}".format(recid[0]))
+			return render(request, 'admin.html', {})
+	else:
+		return render(request, "index.html", {})
+	
+
+
+
+def admin(request):
+	if request.session['user'] == "admin":
+		return render(request, 'admin.html', {})
+	else:
+		return render(request, "index.html", {})

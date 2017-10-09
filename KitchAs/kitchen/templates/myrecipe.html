@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+	<!--content-->
+	<div class="content">
+		<div class="events">
+			<div class="container">
+				<div class="events-top">
+					<div class="col-md-4 events-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<h3>Recipes</h3>
+						<label><i class="glyphicon glyphicon-menu-up"></i></label>
+						<span>There are many variations</span>
+					</div>
+					<div class="col-md-8 events-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+						<p>Here's the recipes...</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				{% for recipe in usr_recipes %}
+					<div class="events-bottom">
+						<div class="col-md-5 events-bottom1 animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+							<a href="/single"><img src="{% static 'images/ev.jpg' %}" alt="" class="img-responsive"></a>
+						</div>
+						<div class="col-md-7 events-bottom2 animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+							<h3>{{ recipe.0 | safe}}</h3>
+							<label><i class="glyphicon glyphicon-menu-up"></i></label>
+							<p>{{ recipe.1 | safe }}
+							</p>
+							<div class="read-more">						
+								<a class="link link-yaku" href="/single">
+									<span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
+								</a>
+							</div>
+							{% if request.session.user != None  %}
+								<a href="/delrecipeuser/{{ recipe.0 }}"><button class="button btn btn-primary"> Delete Recipe </button></a>
+							{% endif %}
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				{% endfor %}
+					<div class="clearfix"> </div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+{% endblock %}

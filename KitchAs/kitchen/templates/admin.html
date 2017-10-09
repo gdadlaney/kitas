@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+	<div class="content" id="content-down">
+	<div class="content-top-top">
+		<div class="container">
+			<div class="content-top">
+				<div class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>Admin</h3>
+					<label><i class="glyphicon glyphicon-menu-up"></i></label>
+					<span>Remove recipes:</span>
+				</div>
+				<div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<p> Remove fake recipes, the ones that haven't been tried or contain wrong information.</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="content-mid">
+						<div class="row">
+							<form action="/delrecipe" method="post">{% csrf_token %}
+								<h4>Recipe to remove:</h4><input type="text" name="recname"  value="" placeholder="Recipe Name">
+								<input type="submit" value="Delete">
+							</form>
+						</div>
+					<!-- <button type="button" class="btn btn-success">Read More</button> -->
+					</div>
+				<div class="bottom bottom1"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
