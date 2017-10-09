@@ -16,13 +16,13 @@ urlpatterns = [
 	url(r'^listup$', views.listUp, name="listUp"),
 	url(r'^recipe$', views.recipe, name="recipe"),
 	url(r'^pantry$', views.pantry, name="pantry"),
-	url(r'^Breads$', views.breads, name="breads"),
-	url(r'^Snacks$', views.snacks, name="snacks"),
-	url(r'^category/(?P<rec_name>[A-Z][a-z]+)$', views.category, name="category"),
-	url(r'^makearecipe/(?P<rec_name>[A-Z]+)$', views.makearecipe, name="makearecipe"),
-	url(r'^single/(?P<rec_name>[A-Z]+)$', views.single, name="single"),
+	url(r'^myrecipe$', views.myrecipe, name="myrecipe"),
+	url(r'^category/(?P<rec_name>[A-Z()\s ][a-z]+)$', views.category, name="category"),
+	url(r'^makearecipe/(?P<rec_name>[A-Za-z()\s]+)$', views.makearecipe, name="makearecipe"),
+	url(r'^single/(?P<rec_name>[A-Za-z()\s]+)$', views.single, name="single"),
 	url(r'^subrecipe$', views.subRecipe, name="subRecipe"),
 	#url(r'^', views.index, name='index'),
+	url(r'^admin$', views.admin, name="admin"),
 	url(r'^', views.page_not_found, name='page_not_found'),
 ]
 

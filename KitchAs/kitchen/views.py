@@ -66,6 +66,15 @@ def ingredients(request):
 
 	return render(request, 'ingredients.html', {"ingr_categories_with_extras":ingr_categories_with_extras})
 
+
+
+def myrecipe(request):
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT name, directions FROM recipes WHERE cust_id={0}".format(request.session['id']))
+		usr_recipes = cursor.fetchall()
+	return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+
+
 def accounts(request):
 	return render(request, 'index.html/#cd-login', {"ingr_categories": ingr_categories})
 
@@ -100,7 +109,7 @@ def makearecipe(request, rec_name):
 						qt1 = convert_qty( data_list[i][1])
 						qt2 = convert_qty( list_ingre_w_qty[j][1])
 
-						if(list_ingre_w_qty[j][1]!=None and qt1[1]==qt[2]):
+						if(list_ingre_w_qty[j][1]!=None and qt1[1]==qt2[1]):
 							rqty = int(''.join(filter(str.isdigit, data_list[i][1]))) - int(''.join(filter(str.isdigit, list_ingre_w_qty[j][1]))) 
 							if rqty <= 0:
 								cursor.execute("DELETE FROM cust_ingredients WHERE cust_id={0} and ingr_id={1}".format(request.session['id'], data_list[i][0]))
@@ -246,24 +255,6 @@ def category(request, rec_name):
 		return render(request, 'events.html', {'recipes':recipes})
 
 
-def breads(request):
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT id FROM rec_categories WHERE name='{0}'".format("Breads"))
-		id = cursor.fetchone()
-		cursor.execute("SELECT name, directions FROM recipes WHERE category={0}".format(id[0]))
-		recipes = cursor.fetchall()
-		return render(request, 'events.html', {'recipes':recipes})
-
-
-def snacks(request):
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT id FROM rec_categories WHERE name='{0}'".format("Snacks"))
-		id = cursor.fetchone()
-		cursor.execute("SELECT name, directions FROM recipes WHERE category={0}".format(id[0]))
-		recipes = cursor.fetchall()
-		return render(request, 'events.html', {'recipes':recipes})
-
-
 
 @csrf_protect
 def login(request):
@@ -292,7 +283,7 @@ def signup(request):
 	else:
 		with connection.cursor() as cursor:
 			cursor.execute("INSERT INTO customers(name, email, password) values('{0}', '{1}', '{2}')".format(name, email, passw))
-		return HttpResponse("Record Inserted")
+		return render(request, "index.html", {})
 
 def logout(request):
 	if request.session['user'] != None:
@@ -541,3 +532,11 @@ def customers(request):
 
 def contact(request):
 	return render(request, 'contact.html', {})
+
+
+
+def admin(request):
+	if request.session['user'] == "admin":
+		return render(request, 'admin.html', {})
+	else:
+		return render(request, "index.html", {})
