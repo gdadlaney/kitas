@@ -69,10 +69,18 @@ def ingredients(request):
 
 
 def myrecipe(request):
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT name, directions FROM recipes WHERE cust_id={0}".format(request.session['id']))
-		usr_recipes = cursor.fetchall()
-	return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+	if request.session['user']=="admin":
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT name, directions FROM recipes")
+			usr_recipes = cursor.fetchall()
+		return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+	elif request.session['user'] != None:
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT name, directions FROM recipes WHERE cust_id={0}".format(request.session['id']))
+			usr_recipes = cursor.fetchall()
+		return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+	else:
+		return render(request, 'index.html', {})
 
 
 def accounts(request):
@@ -154,7 +162,7 @@ def subRecipe(request):
 		return render(request, 'index.html', {})
 	else:
 		data = request.POST
-		name = data.get('name')
+		name = (data.get('name')).upper()
 		pt = data.get('pt')
 		ingre = data.getlist('ingre[]')
 		qty = data.getlist('qty[]')
@@ -533,14 +541,31 @@ def customers(request):
 def contact(request):
 	return render(request, 'contact.html', {})
 
+
+def delRecipeUser(request, rec_name):
+	if request.session['user']==None:
+		return render(request, 'index.html', {})
+	else:
+		userid = request.session['id']
+		with connection.cursor() as cursor:
+			cursor.execute("SELECT id FROM recipes where name='{0}' and cust_id={1}".format(rec_name, userid))
+			recid=cursor.fetchone()
+			cursor.execute("DELETE from rec_ingredients where rec_id={0}".format(recid[0]))
+			cursor.execute("DELETE from recipes where id={0}".format(recid[0]))
+			cursor.execute("SELECT name, directions FROM recipes WHERE cust_id={0}".format(request.session['id']))
+			usr_recipes = cursor.fetchall()
+			return render(request, 'myrecipe.html', {'usr_recipes':usr_recipes})
+
+@csrf_protect
 def delRecipe(request):
 	if request.session['user'] == "admin":
-		recname = request.get.data("recname")
+		recname = (request.POST.get("recname")).upper()
+		print(recname)		
 		with connection.cursor() as cursor:
-			cursor.execute("SELECT id FROM recipes where name={0}".format(recname))
+			cursor.execute("SELECT id FROM recipes where name='{0}' ".format(recname))
 			recid=cursor.fetchone()
-			cursor.execute("DELETE from rec_ingredients where rec_id={0}".format(recid))
-			cursor.execute("DELETE from recipes where id={0}".format(recid))
+			cursor.execute("DELETE from rec_ingredients where rec_id={0}".format(recid[0]))
+			cursor.execute("DELETE from recipes where id={0}".format(recid[0]))
 			return render(request, 'admin.html', {})
 	else:
 		return render(request, "index.html", {})

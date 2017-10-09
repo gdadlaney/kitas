@@ -20,7 +20,7 @@
 			</div>
 			<div class="content-mid">
 						<div class="row">
-							<form action="/delrecipe" method="post">
+							<form action="/delrecipe" method="post">{% csrf_token %}
 								<h4>Recipe to remove:</h4><input type="text" name="recname"  value="" placeholder="Recipe Name">
 								<input type="submit" value="Delete">
 							</form>
