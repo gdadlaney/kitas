@@ -30,10 +30,44 @@ def categories(request):
 	return render(request, 'categories.html', {'rec_category':rec_category})
 
 def ingredients(request):
-	return render(request, 'ingredients.html', {})
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT id, name FROM ingr_categories")
+		rec_category = list(cursor.fetchall())	#checking condition
+		ingr_categories = []
+		for i in range(rec_category.__len__()):
+			ingr_cat_id = rec_category[i][0]
+			ingr_cat_name = rec_category[i][1]
+			cursor.execute("SELECT name_english FROM ingredients where category={0}".format(ingr_cat_id))
+			fetched = cursor.fetchall()
+			if fetched == ():
+				continue
+			ingr_names = list(fetched)
+			for j in range(ingr_names.__len__()):
+				ingr_names[j] = ingr_names[j][0]
+			ingr_categories.append([ingr_cat_name, ingr_names])
+
+		Count = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"]
+		heading = []
+		collapse = []
+		for i in range(ingr_categories.__len__()):
+			heading.append("heading"+Count[i])
+			collapse.append("collapse"+Count[i])
+
+	print("ingr_categories = ", ingr_categories)
+	#ingr_categories =  [['Vegetables', ['potato', 'onion', 'tomato', 'coriander leaves', 'spinach']], ['Grains', ['wheat flour', 'flour', None]], ['Spices', ['cumin', 'green chillies', 'black pepper', 'tamarind', 'jaggery', 'red pepper', 'salt', None, 'paprika']], ['Others', ['ghee', 'oil', 'puffed rice']]]
+	print("heading = ", heading)
+	#heading =  ['headingOne', 'headingTwo', 'headingThree', 'headingFour']
+	print("collapse = ", collapse)
+	#collapse =  ['#collapseOne', '#collapseTwo', '#collapseThree', '#collapseFour']
+
+	ingr_categories_with_extras = list(zip(ingr_categories, heading, collapse))
+	print("ingr_categories_with_extras = ", ingr_categories_with_extras)
+	#ingr_categories_with_extras =  [(['Vegetables', ['potato', 'onion', 'tomato', 'coriander leaves', 'spinach']], 'headingOne', '#collapseOne'), (['Grains', ['wheat flour', 'flour', None]], 'headingTwo', '#collapseTwo'), (['Spices', ['cumin', 'green chillies', 'black pepper', 'tamarind', 'jaggery', 'red pepper', 'salt', None, 'paprika']], 'headingThree', '#collapseThree'), (['Others', ['ghee', 'oil', 'puffed rice']], 'headingFour', '#collapseFour')]
+
+	return render(request, 'ingredients.html', {"ingr_categories_with_extras":ingr_categories_with_extras})
 
 def accounts(request):
-	return render(request, 'index.html/#cd-login', {})
+	return render(request, 'index.html/#cd-login', {"ingr_categories": ingr_categories})
 
 
 def addIngredient(request):

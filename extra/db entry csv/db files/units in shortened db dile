@@ -33,3 +33,5 @@ Dried ingredient measurements
 1 can chick peas taken as 410g
 oil and salt is always taken as NULL in qty
 water is NULL in qty & ingr_id 
+coriander powder != coriander leaves (g and pieces)
+cumin seeds != cumin

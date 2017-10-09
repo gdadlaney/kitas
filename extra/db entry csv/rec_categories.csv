@@ -1,12 +1,12 @@
-id	name
-1	Breads
-2	Snacks
-3	Vegetables
-4	Lentils
-5	Rice
-6	Fish
-7	Chicken
-8	Lamb and Beef
-9	Desserts
-10	This and That
-1000	Others
+id	name	description
+1	Breads	We know you love breads
+2	Snacks	Ah look what I found - Snacks!
+3	Vegetables	Eat vegetables. Stay Healthy
+4	Lentils	You know what it is!
+5	Rice	Life is short. Eat Rice first
+6	Fish	Fishes are here!
+7	Chicken	NULL
+8	Lamb and Beef	NULL
+9	Desserts	NULL
+10	This and That	NULL
+1000	Others	NULL

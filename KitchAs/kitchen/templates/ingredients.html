@@ -28,58 +28,33 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-		<form action="/search_for_recipes" method="post">
-			<div id="accordion" role="tablist" aria-multiselectable="true">
-				<div class="card">
-					<div class="card-header" role="tab" id="headingOne">
-						<h5 class="mb-0">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								Dairy
-							</a>
-						</h5>
-					</div>
+		<div class="container" style="width: 60%; margin: auto">
+			<form action="/search_for_recipes" method="post">
+				<div id="accordion" role="tablist" aria-multiselectable="true">
+				{% for ingr_category, heading, collapse in ingr_categories_with_extras %}
+					<div class="card">
+						<div class="card-header" role="tab" id="{{ heading }}">
+							<h5 class="mb-0">
+								<a data-toggle="collapse" data-parent="#accordion" href="#{{ collapse }}" aria-expanded="true" aria-controls="{{ collapse }}">
+									{{ ingr_category.0 }}
+								</a>
+							</h5>
+						</div>
 
-					<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-						<div class="card-block">
-							<input type="checkbox" name="ingr[]" value="milk">Milk<br>
-							<input type="checkbox" name="ingr[]" value="butter">Butter<br>
-							<input type="checkbox" name="ingr[]" value="cheese">Cheese<br>
+						<div id="{{ collapse }}" class="collapse show" role="tabpanel" aria-headingby="{{ heading }}">
+							<div class="card-block">
+								{% for ingr in ingr_category.1 %}
+								<input type="checkbox" name="ingr[]" value="{{ ingr }}">{{ ingr }}<br>
+								{% endfor %}
+							</div>
 						</div>
 					</div>
+					{% endfor %}
 				</div>
-				<div class="card">
-					<div class="card-header" role="tab" id="headingTwo">
-						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								Vegetables
-							</a>
-						</h5>
-					</div>
-					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-						<div class="card-block">
-							<input type="checkbox" name="ingr[]" value="potato">Potato<br>
-							<input type="checkbox" name="ingr[]" value="onion">Onion<br>
-						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header" role="tab" id="headingThree">
-						<h5 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								Meats
-							</a>
-						</h5>
-					</div>
-					<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-						<div class="card-block">
-							<input type="checkbox" name="ingr[]" value="chicken">Chicken<br>
-							<input type="checkbox" name="ingr[]" value="beef">Beef<br>
-						</div>
-					</div>
-				</div>
-			</div>
-			<input type="submit" value="Submit">
-		</form>
+				<br>
+				<center><input type="submit" value="Submit"></center>
+			</form>
+		</div>
 
 		<script>
 		function myFunction()
