@@ -23,7 +23,7 @@ urlpatterns = [
 	url(r'^subrecipe$', views.subRecipe, name="subRecipe"),
 	url(r'^delrecipe$', views.delRecipe, name="delRecipe"),
 	url(r'^delrecipeuser/(?P<rec_name>[A-Za-z()\s ]+)$', views.delRecipeUser, name="delRecipeUser"),
-	#url(r'^', views.index, name='index'),
+	url(r'^favrecipe$', views.favrecipe, name="favrecipe"),
 	url(r'^admin$', views.admin, name="admin"),
 	url(r'^', views.page_not_found, name='page_not_found'),
 ]

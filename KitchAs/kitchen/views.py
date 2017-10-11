@@ -21,6 +21,11 @@ def category(request):
 	return render(request, 'category.html', {})
 '''
 
+
+def favrecipe(request):
+	print(request.POST.get('name'))
+	return render(request, 'index.html', {})
+
 def categories(request):
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT name, description FROM rec_categories LIMIT 6")

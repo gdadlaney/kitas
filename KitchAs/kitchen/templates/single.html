@@ -3,6 +3,22 @@
 
 {% block content %}
 <!--content-->
+
+<script type="text/javascript">
+	function ajaxone(){
+		var name;
+		$ajax({
+			url: "/favrecipe",
+			type: "post",
+			data: "name=a",
+			dataType: "script",
+			success: function(){
+				alert("hi");
+			}
+		});
+	}
+</script>
+
 <div class="blog">
 	<div class="container">
 		
@@ -16,8 +32,7 @@
 							<h4>{{ recipe_info.0 }}</h4>
 								<ul class="grid-blog">
 									<li><span><i class="glyphicon glyphicon-time"> </i>{{ recipe_info.2 }}</span></li>
-									<li><a href="#"><i class="glyphicon glyphicon-comment"> </i>5 Comment</a></li>
-									<li><a href="#"><i class="glyphicon glyphicon-share"> </i>Share</a></li>
+									<li><button class="button btn btn-primary" onclick="ajaxone()">Like</button></li>
 								</ul>
 								<p class="wow fadeInLeft animated" data-wow-delay=".5s">
 									{{ recipe_info.1 | safe }}
@@ -33,7 +48,9 @@
 	{% if request.session.user != None  %}
 			<a href="/makearecipe/{{ recipe_info.0 }}"><button class="button btn btn-primary" style="margin: 70px;"> Make a recipe </button></a>
 		{% endif %}
-</div>
+		
+
+
 <!--//content-->
 
 {% endblock %}
