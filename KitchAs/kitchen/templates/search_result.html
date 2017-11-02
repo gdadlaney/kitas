@@ -2,6 +2,21 @@
 {% load staticfiles %}
 
 {% block content %}
+<style type="text/css">
+	.ellipsify{
+		webkit-flex-grow: 1;
+		flex-grow: 1;
+		overflow: hidden;
+		position: relative;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.my_cursor{
+		cursor: default;	/*the text cursor doesn't look so good*/
+	}
+</style>
+
 <!--content-->
 	<div class="blog">
 		<div class="container">
@@ -33,9 +48,9 @@
 					{% for recipe_list in sorted_list %}
 						<div class="col-md-4 blog-top" style="padding-top: 30px">
 							<div class="blog-in">
-								<a href="/single"><img class="img-responsive" src="{% static 'images/bl.jpg' %}" alt=" "></a>
+								<a href="/single/{{ recipe_list.0 }}"><img class="img-responsive" src="{% static 'images/bl.jpg' %}" alt=" "></a>
 								<div class="blog-grid">
-									<h3><a href="/single/{{ recipe_list.0 }}">{{ recipe_list.0 }}</a></h3>
+									<h3 class="ellipsify"><a href="/single/{{ recipe_list.0 }}"><span title="{{ recipe_list.0 }}">{{ recipe_list.0 }}</span></a></h3>
 									{% if recipe_list|length >= 5 %}
 									<div class="date">
 										<span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>22.08.2014</span>
@@ -43,28 +58,31 @@
 										<div class="clearfix"> </div>
 									</div>
 									{% endif %}
-									<p>
-										<span style="color: green">Ingredients Present:</span>
-										<br>
-										{% for ingredient_list in recipe_list.1 %}
-											{{ ingredient_list.0 }}
-											{% if ingredient_list.1 is not None and qty_specified %}
-												: {{ ingredient_list.1 }} missing
-											{% endif %}
+									<div class="my_cursor">
+										<p>
+											<span style="color: green">Ingredients Present:</span>
 											<br>
-										{% endfor %}
-									</p>
-									<p>
-										<span style="color: red">Missing ingredients:</span>
-										<br>							
-										{% for ingredient_list in recipe_list.2 %}
-											{{ ingredient_list.0 }}
-											{% if ingredient_list.1 is not None and qty_specified %}
-												: {{ ingredient_list.1 }} missing
-											{% endif %}
-											<br>
-										{% endfor %}
-									</p>
+											{% for ingredient_list in recipe_list.1 %}
+												<p title="{{ ingredient_list.0 }}: {{ ingredient_list.1 }}" class="ellipsify">{{ ingredient_list.0 }}
+												{% if ingredient_list.1 is not None and qty_specified %}
+													: {{ ingredient_list.1 }} missing
+												{% endif %}
+												</p>
+											{% endfor %}
+										</p>
+										<p>
+											<span style="color: red">Missing ingredients:</span>
+											<br>							
+											{% for ingredient_list in recipe_list.2 %}
+												<p title="{{ ingredient_list.0 }}: {{ ingredient_list.1 }}" class="ellipsify">
+												{{ ingredient_list.0 }}
+												{% if ingredient_list.1 is not None and qty_specified %}
+													: {{ ingredient_list.1 }} missing
+												{% endif %}
+												</p>
+											{% endfor %}
+										</p>
+									</div>
 									<div class="more">						
 										<a class="link link-yaku" href="/single/{{ recipe_list.0 }}">
 											<span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					

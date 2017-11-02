@@ -165,28 +165,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h4 class="modal-title">Login</h4>
       </div>
       <div class="modal-body">
-        <form class="cd-form PostForm" action="login" method="POST">{% csrf_token %}
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="signin-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
+        <form class="cd-form PostForm" action="/login" method="POST">{% csrf_token %}
+			<p class="fieldset">
+				<label class="image-replace cd-email" for="signin-email">E-mail</label>
+				<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" name="email">
+				<span class="cd-error-message">Error message here!</span>
+			</p>
 
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password" name="password">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
+			<p class="fieldset">
+				<label class="image-replace cd-password" for="signin-password">Password</label>
+				<input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password" name="password">
+				<span class="cd-error-message">Error message here!</span>
+			</p>
 
-					<p class="fieldset">
-						<input type="checkbox" id="remember-me" checked>
-						<label for="remember-me">Remember me</label>
-					</p>
+			<p class="fieldset">
+				<input type="checkbox" id="remember-me" checked>
+				<label for="remember-me">Remember me</label>
+			</p>
 
-					<p class="fieldset">
-						<input class="full-width" type="submit" value="Login">
-					</p>
-				</form>
+			<p class="fieldset">
+				<input class="full-width" type="submit" value="Login">
+			</p>
+		</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -206,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h4 class="modal-title">Sign Up</h4>
       </div>
       <div class="modal-body">
-        <form class="cd-form" action="signup" method="post">{% csrf_token %}
+        <form class="cd-form" action="/signup" method="post">{% csrf_token %}
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signin-email">Name</label>
 						<input class="full-width has-padding has-border" name="name" id="name" type="text" placeholder="Name">
@@ -284,13 +284,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="clearfix"></div>
 	
 	{% if request.session.user == None  %}
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#login" style="z-index: 1; float: right;">Log In</button>
+		<button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#login" style="z-index: 1; float: right; margin-bottom: 10px;">Log In</button>
 
-		<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right;">Sign Up</button>
+		<button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#signup" style="z-index: 1; float: right; margin: 0 10px 0 10px;">Sign Up</button>
 		{{ message }}	
 	{% else %}
 		<!-- <p style="background: red; color: yellow;"> Hello, {{ request.session.user }} </p> -->
-		<div class="dropdown" style="float: right; margin-right: 30px;">
+		<div class="dropdown" style="float: right; margin-right: 30px; margin-bottom: 10px;">
   			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hello,  {{ request.session.user }}
   			<span class="caret"></span></button>
   			<ul class="dropdown-menu" >

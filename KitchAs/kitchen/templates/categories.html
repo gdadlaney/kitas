@@ -18,21 +18,23 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			<div class="content-mid">
+			<div class="content-mid" style="padding: 0 50px 50px 10px;">
 				{% for rec in rec_category %}
-					<a href="/category/{{ rec.0 }}"><div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<div class=" hover-fold">
-						  <h4>{{ rec.0 }}</h4>
-						  <div class="top">
-							<div class="front face"></div>
-							<div class="back face">
-							<p> {{ rec.1 }} </p>
+					<a href="/category/{{ rec.0 }}">
+						<div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms"  style="padding: 15px;">
+							<div class=" hover-fold">
+								<h4>{{ rec.0 }}</h4>
+								<div class="top">
+									<div class="front face"></div>
+									<div class="back face">
+									<p> {{ rec.1 }} </p>
+									</div>
+								</div>
+								<div class="bottom"></div>
 							</div>
-						  </div>
-						  <div class="bottom"></div>
+							<!-- <button type="button" class="btn btn-success">Read More</button> -->
 						</div>
-					<!-- <button type="button" class="btn btn-success">Read More</button> -->
-					</div></a>
+					</a>
 				{% endfor %}
 				<div class="bottom bottom1"></div>
 				</div>

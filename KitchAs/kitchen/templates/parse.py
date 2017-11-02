@@ -1,3 +1,4 @@
+#additions - handle <form action = "/login">	the / is important
 
 import sys
 import pdb

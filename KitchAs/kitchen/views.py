@@ -172,8 +172,28 @@ def recipe(request):
 def single(request, rec_name):
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT name, directions, time_modified FROM recipes where name='{0}'".format(rec_name))
-		recipe_info = cursor.fetchone()
-		print(recipe_info)
+		recipe_info = list(cursor.fetchone())
+		print("Recipe basic info = ", recipe_info)
+
+		sorted_list = request.session.get('sorted_list')
+		error_message = request.session.get('error_message')
+		#print("sorted_list = ", sorted_list)
+		if error_message is not None:
+			print("error_message = ", error_message)
+
+		# making space for ingredients matching & missing lists
+		recipe_info.append(recipe_info[1])
+		recipe_info.append(recipe_info[2])
+
+		for temp in sorted_list:
+			if recipe_info[0] == temp[0]:
+				recipe_info[1] = temp[1]
+				recipe_info[2] = temp[2]
+			else:
+				print("No matching recipe name in DB")
+
+		print("Final recipe_info = ", recipe_info)
+
 	return render(request, 'single.html', {'recipe_info':recipe_info})
 
 #add user recipes
@@ -477,7 +497,7 @@ def search_func(user_ingredient_ids_with_qty):	#convert user qty to ints
 				error_message += err
 				print(err)
 			
-			#comment this to make sorted_list smaller to view
+			# ******* comment this to make sorted_list smaller to view ***********
 			'''
 			if fetched is not None and fetched[1] is not None:
 				sorted_list[i][3] = fetched[1]
@@ -485,7 +505,7 @@ def search_func(user_ingredient_ids_with_qty):	#convert user qty to ints
 				err="**recipe directions not found**\n"
 				error_message += err
 				print(err)
-			'''
+			'''			
 
 			for j in [1, 2]:
 				for k in range(sorted_list[i][j].__len__()):	#case satisfied - ignores when sorted_list[i][j] is empty
@@ -511,6 +531,21 @@ def search_func(user_ingredient_ids_with_qty):	#convert user qty to ints
 
 	return (sorted_list, error_message)
 
+def ShortenIngredientList(sorted_list, count):
+
+	short_list = sorted_list
+
+	for i in range(len(sorted_list)):
+		cnt = count
+		if( len(sorted_list[i][1]) >= cnt ):
+			short_list[i][1] = sorted_list[i][1][:cnt]
+		else:
+			cnt -= len(sorted_list[i][1])
+			short_list[i][2] = sorted_list[i][2][:cnt]
+
+	print("Shortened List = ", short_list)
+
+	return short_list
 
 @csrf_exempt
 def search_result(request):
@@ -546,8 +581,13 @@ def search_result(request):
 	if not ingrs_from_checkboxes:
 		(sorted_list, error_message) = search_func(user_ingredient_ids_with_qty)
 
+		request.session['sorted_list'] = sorted_list[:]	#a reference would change, hence a copy ( performance penalty? )
+		request.session['error_message'] = error_message
+
+		sorted_list = ShortenIngredientList(sorted_list, 5)
+
 		#return HttpResponse(str(sorted_list)+'<br><br>'+error_message)
-		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": True, "limit":3, "message1": "From your pantry", "message2": "to manually select ingredient to make a recipe click ", "link1": "/ingredients"})
+		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": True,"message1": "From your pantry", "message2": "to manually select ingredient to make a recipe click ", "link1": "/ingredients"})
 	else:
 		#fetch posted data & convert it to a dictionary
 		data = request.POST
@@ -573,8 +613,13 @@ def search_result(request):
 
 		(sorted_list, error_message) = search_func(user_ingredient_ids_with_qty)
 
+		request.session['sorted_list'] = sorted_list[:]	#a reference would change, hence a copy ( performance penalty? )
+		request.session['error_message'] = error_message
+
+		sorted_list = ShortenIngredientList(sorted_list, 5)
+
 		#return HttpResponse(str(sorted_list)+'<br><br>'+error_message)
-		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": False, "limit":3, "message1":"From selected ingredients", "message2": "You can also add ingredients to your pantry, click ", "link1": "/list"})
+		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": False, "message1":"From selected ingredients", "message2": "You can also add ingredients to your pantry, click ", "link1": "/list"})
 
 def customers(request):
 	with connection.cursor() as cursor:
