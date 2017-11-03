@@ -2,6 +2,13 @@
 {% load staticfiles %}
 
 {% block content %}
+	
+	<style type="text/css">
+		.ignore-css{
+			all:unset;
+		}
+	</style>
+
 	<!--content-->
 	<div class="menu" ng-app="myApp" ng-controller="namesCtrl">
 		<div class="container">
@@ -14,35 +21,25 @@
 				<div class="col-md-8 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<p>Pick the ingredients and we will show you what all you can cook with it.<br>Simple, isn't it?</p>
 					
-  
+	
 				</div>
 				<div class="clearfix"> </div>
 			</div>			
 		</div>
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
-		<!-- jQuery first, then Tether, then Bootstrap JS. -->
-		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
-		<div class="container" style="width: 60%; margin: auto">
+		<!-- bootstrap3 - picked up from w3 schools - https://www.w3schools.com/bootstrap/bootstrap_collapse.asp -->
+		<div class="container"  style="width: 60%; margin: auto">
 			<form action="/search_result" method="post">
-				<div id="accordion" role="tablist" aria-multiselectable="true">
-				{% for ingr_category, heading, collapse in ingr_categories_with_extras %}
-					<div class="card">
-						<div class="card-header" role="tab" id="{{ heading }}">
-							<h5 class="mb-0">
-								<a data-toggle="collapse" data-parent="#accordion" href="#{{ collapse }}" aria-expanded="true" aria-controls="{{ collapse }}">
-									{{ ingr_category.0 }}
-								</a>
-							</h5>
+				<div class="panel-group" id="accordion">
+					{% for ingr_category, collapse in ingr_categories_with_extras %}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#{{ collapse }}">{{ ingr_category.0 }}</a>
+							</h4>
 						</div>
-
-						<div id="{{ collapse }}" class="collapse show" role="tabpanel" aria-headingby="{{ heading }}">
-							<div class="card-block">
+						<div id="{{ collapse }}" class="panel-collapse collapse">
+							<div class="panel-body">
 								{% for ingr in ingr_category.1 %}
 								<input type="checkbox" name="ingr[]" value="{{ ingr }}">{{ ingr }}<br>
 								{% endfor %}
@@ -50,11 +47,12 @@
 						</div>
 					</div>
 					{% endfor %}
-				</div>
+				</div>	
 				<br>
 				<center><input type="submit" value="Submit"></center>
-			</form>
+			</form> 
 		</div>
+		
 
 		<script>
 		function myFunction()

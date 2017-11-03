@@ -13,6 +13,10 @@ urlpatterns = [
 	url(r'^login$', views.login, name='login'),
 	url(r'^categories$', views.categories, name='categories'),
 	url(r'^ingredients$', views.ingredients, name='ingredients'),
+
+	url(r'^SearchFromPantry$', views.SearchFromPantry, name='SearchFromPantry'),
+	url(r'^SearchFromCheckboxes$', views.SearchFromCheckboxes, name='SearchFromCheckboxes'),
+
 	url(r'^list$', views.addIngredient, name="addIngredient"),
 	url(r'^listup$', views.listUp, name="listUp"),
 	url(r'^recipe$', views.recipe, name="recipe"),

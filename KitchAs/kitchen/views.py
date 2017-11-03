@@ -34,9 +34,19 @@ def categories(request):
 			rec_category[i] = list(rec_category[i])
 	return render(request, 'categories.html', {'rec_category':rec_category})
 
+def SearchFromPantry(request):
+	if request.session['user']==None:
+		return redirect('/index')
+	request.session['search_from_pantry'] = True
+	return redirect('/ingredients')
+
+def SearchFromCheckboxes(request):
+	request.session['search_from_pantry'] = False
+	return redirect('/ingredients')
+
 def ingredients(request):
 	#user is logged in
-	if request.session['user'] is not None:
+	if request.session.get("search_from_pantry") == True :
 		show_checkboxes = False
 		with connection.cursor() as cursor:
 			cursor.execute("SELECT ingr_id, qty FROM cust_ingredients where cust_id={0}".format(request.session['id']))
@@ -57,7 +67,7 @@ def ingredients(request):
 			for i in range(rec_category.__len__()):
 				ingr_cat_id = rec_category[i][0]
 				ingr_cat_name = rec_category[i][1]
-				cursor.execute("SELECT name_english FROM ingredients where category={0}".format(ingr_cat_id))
+				cursor.execute("SELECT name_english FROM ingredients where category={0} ORDER BY name_english".format(ingr_cat_id))
 				fetched = cursor.fetchall()
 				if fetched == ():
 					continue
@@ -66,23 +76,18 @@ def ingredients(request):
 					ingr_names[j] = ingr_names[j][0]
 				ingr_categories.append([ingr_cat_name, ingr_names])
 
-			Count = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"]
-			heading = []
 			collapse = []
 			for i in range(ingr_categories.__len__()):
-				heading.append("heading"+Count[i])
-				collapse.append("collapse"+Count[i])
+				collapse.append("collapse"+str(i+1))
 
 		print("ingr_categories = ", ingr_categories)
-		#ingr_categories =  [['Vegetables', ['potato', 'onion', 'tomato', 'coriander leaves', 'spinach']], ['Grains', ['wheat flour', 'flour', None]], ['Spices', ['cumin', 'green chillies', 'black pepper', 'tamarind', 'jaggery', 'red pepper', 'salt', None, 'paprika']], ['Others', ['ghee', 'oil', 'puffed rice']]]
-		print("heading = ", heading)
-		#heading =  ['headingOne', 'headingTwo', 'headingThree', 'headingFour']
+		#ingr_categories =  [['Vegetables', ['Chick peas', 'coriander leaves', 'onion', 'potato', 'spinach', 'tomato']], ['Grains', ['Chickpea flour', 'flour', 'wheat flour']], ['Spices', ['black pepper', 'Cardamom', 'Cinnamon stick', 'Coconut powder', 'Coriander powder', 'cumin', 'Cumin seeds', 'Garam Masala', 'Garlic', 'Ginger powder', 'green chillies', 'Hot pepper', 'jaggery', 'Mango powder', 'Mustard seeds', 'paprika', 'poppy seeds', 'red pepper', 'salt', 'tamarind', 'Turmeric powder']], ['Others', ['ghee', 'oil', 'puffed rice']]]
 		print("collapse = ", collapse)
-		#collapse =  ['#collapseOne', '#collapseTwo', '#collapseThree', '#collapseFour']
+		#collapse =  ['collapse1', 'collapse2', 'collapse3', 'collapse4']
 
-		ingr_categories_with_extras = list(zip(ingr_categories, heading, collapse))
+		ingr_categories_with_extras = list(zip(ingr_categories, collapse))
 		print("ingr_categories_with_extras = ", ingr_categories_with_extras)
-		#ingr_categories_with_extras =  [(['Vegetables', ['potato', 'onion', 'tomato', 'coriander leaves', 'spinach']], 'headingOne', '#collapseOne'), (['Grains', ['wheat flour', 'flour', None]], 'headingTwo', '#collapseTwo'), (['Spices', ['cumin', 'green chillies', 'black pepper', 'tamarind', 'jaggery', 'red pepper', 'salt', None, 'paprika']], 'headingThree', '#collapseThree'), (['Others', ['ghee', 'oil', 'puffed rice']], 'headingFour', '#collapseFour')]
+		#ingr_categories_with_extras =  [(['Vegetables', ['Chick peas', 'coriander leaves', 'onion', 'potato', 'spinach', 'tomato']], 'collapse1'), (['Grains', ['Chickpea flour', 'flour', 'wheat flour']], 'collapse2'), (['Spices', ['black pepper', 'Cardamom', 'Cinnamon stick', 'Coconut powder', 'Coriander powder', 'cumin', 'Cumin seeds', 'Garam Masala', 'Garlic', 'Ginger powder', 'green chillies', 'Hot pepper', 'jaggery', 'Mango powder', 'Mustard seeds', 'paprika', 'poppy seeds', 'red pepper', 'salt', 'tamarind', 'Turmeric powder']], 'collapse3'), (['Others', ['ghee', 'oil', 'puffed rice']], 'collapse4')]
 
 		return render(request, 'ingredients.html', {"ingr_categories_with_extras":ingr_categories_with_extras})
 
@@ -317,6 +322,9 @@ def login(request):
 		abc = cursor.fetchone()
 	request.session['id'] = abc[0]
 	request.session['user'] = abc[1]
+
+	request.session['search_from_pantry'] = True	#required for search by ingredients
+
 	return render(request, 'index.html', {})
 
 @csrf_protect
@@ -340,6 +348,10 @@ def logout(request):
 	else:
 		user = " "
 	request.session['user']=None
+	request.session['id']=None
+
+	request.session['search_from_pantry']=False
+
 	return render(request, 'index.html', {"message":"Thank you, we miss you already "+user})
 
 
@@ -539,6 +551,7 @@ def ShortenIngredientList(sorted_list, count):
 		cnt = count
 		if( len(sorted_list[i][1]) >= cnt ):
 			short_list[i][1] = sorted_list[i][1][:cnt]
+			short_list[i][2] = []
 		else:
 			cnt -= len(sorted_list[i][1])
 			short_list[i][2] = sorted_list[i][2][:cnt]
@@ -552,10 +565,7 @@ def search_result(request):
 
 	user_ingredient_ids_with_qty = {}
 
-	#print("##"+is_redirected)
-	# logged in
-	if request.session['user'] is not None:		#change to if redirected form ingredients
-	#if is_redirected == "redirected":
+	if request.session.get("search_from_pantry") == True:
 		ingrs_from_checkboxes = False
 		with connection.cursor() as cursor:
 			cursor.execute("SELECT ingr_id, qty FROM cust_ingredients where cust_id={0}".format(request.session['id']))
@@ -587,7 +597,7 @@ def search_result(request):
 		sorted_list = ShortenIngredientList(sorted_list, 5)
 
 		#return HttpResponse(str(sorted_list)+'<br><br>'+error_message)
-		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": True,"message1": "From your pantry", "message2": "to manually select ingredient to make a recipe click ", "link1": "/ingredients"})
+		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": True,"message1": "From your pantry", "message2": "To manually select ingredient to make a recipe, click ", "link1": "/SearchFromCheckboxes"})
 	else:
 		#fetch posted data & convert it to a dictionary
 		data = request.POST
@@ -619,7 +629,7 @@ def search_result(request):
 		sorted_list = ShortenIngredientList(sorted_list, 5)
 
 		#return HttpResponse(str(sorted_list)+'<br><br>'+error_message)
-		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": False, "message1":"From selected ingredients", "message2": "You can also add ingredients to your pantry, click ", "link1": "/list"})
+		return render(request, 'search_result.html', {"sorted_list": sorted_list, "error_message": error_message, "qty_specified": False, "message1":"From selected ingredients", "message2": "You can also search using ingredients of your pantry, click ", "link1": "/SearchFromPantry"})
 
 def customers(request):
 	with connection.cursor() as cursor:
