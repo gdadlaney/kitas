@@ -181,23 +181,6 @@ def single(request, rec_name):
 		recipe_info = list(cursor.fetchone())
 		print("Recipe basic info = ", recipe_info)
 
-		sorted_list = request.session.get('sorted_list')
-		error_message = request.session.get('error_message')
-		#print("sorted_list = ", sorted_list)
-		if error_message is not None:
-			print("error_message = ", error_message)
-
-		# making space for ingredients matching & missing lists
-		recipe_info.append(recipe_info[1])
-		recipe_info.append(recipe_info[2])
-
-		for temp in sorted_list:
-			if recipe_info[0] == temp[0]:
-				recipe_info[1] = temp[1]
-				recipe_info[2] = temp[2]
-			else:
-				print("No matching recipe name in DB")
-
 		print("Final recipe_info = ", recipe_info)
 		# Final recipe_info =  ['CHAPATI (PHULKA)', 'Put flour in a large bowl with half the water. Blend the two together until it holds. Beat and knead well until it forms a compact ball.<br><br>Knead dough until it is smooth and elastic. Set aside for 30 minutes.<br><br>Knead and divide dough into 4 to 6 parts. Roll each ball into a tortilla like flat, about 1/8&Prime; thick. Heat an ungreased skillet. <br><br>Put phulka on it, and let it cook for about 1 minute (The top should just start to look dry and small bubbles should just start to form). <br><br>Turn and cook the second side for 2/3 minutes until small bubbles form. <br><br>Turn again and cook the first side pressed lightly with a towel. It should puff. Serve warm (maybe slightly buttered).<br> ', datetime.datetime(2017, 11, 5, 16, 23, 59), 'Put flour in a large bowl with half the water. Blend the two together until it holds. Beat and knead well until it forms a compact ball.<br><br>Knead dough until it is smooth and elastic. Set aside for 30 minutes.<br><br>Knead and divide dough into 4 to 6 parts. Roll each ball into a tortilla like flat, about 1/8&Prime; thick. Heat an ungreased skillet. <br><br>Put phulka on it, and let it cook for about 1 minute (The top should just start to look dry and small bubbles should just start to form). <br><br>Turn and cook the second side for 2/3 minutes until small bubbles form. <br><br>Turn again and cook the first side pressed lightly with a towel. It should puff. Serve warm (maybe slightly buttered).<br> ', datetime.datetime(2017, 11, 5, 16, 23, 59)]
 
