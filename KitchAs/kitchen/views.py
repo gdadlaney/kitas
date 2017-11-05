@@ -1,3 +1,4 @@
+import copy
 import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -180,9 +181,9 @@ def single(request, rec_name):
 		recipe_info = list(cursor.fetchone())
 		print("Recipe basic info = ", recipe_info)
 
-		sorted_list = request.session.get('sorted_list')
+		sorted_list_copy = request.session.get('sorted_list_copy')
 		error_message = request.session.get('error_message')
-		#print("sorted_list = ", sorted_list)
+		print("sorted_list_copy = ", sorted_list_copy)
 		if error_message is not None:
 			print("error_message = ", error_message)
 
@@ -190,7 +191,7 @@ def single(request, rec_name):
 		recipe_info.append(recipe_info[1])
 		recipe_info.append(recipe_info[2])
 
-		for temp in sorted_list:
+		for temp in sorted_list_copy:
 			if recipe_info[0] == temp[0]:
 				recipe_info[1] = temp[1]
 				recipe_info[2] = temp[2]
@@ -591,7 +592,10 @@ def search_result(request):
 	if not ingrs_from_checkboxes:
 		(sorted_list, error_message) = search_func(user_ingredient_ids_with_qty)
 
-		request.session['sorted_list'] = sorted_list[:]	#a reference would change, hence a copy ( performance penalty? )
+		#sorted_list_copy = sorted_list[:]	**This a shallow copy, this will not work for a list inside a list
+		sorted_list_copy = copy.deepcopy(sorted_list)
+		print("sorted_list copy created = ", (sorted_list_copy is not sorted_list) )
+		request.session['sorted_list_copy'] = sorted_list_copy	#a reference would change, hence a copy ( performance penalty? )
 		request.session['error_message'] = error_message
 
 		sorted_list = ShortenIngredientList(sorted_list, 5)
@@ -623,7 +627,10 @@ def search_result(request):
 
 		(sorted_list, error_message) = search_func(user_ingredient_ids_with_qty)
 
-		request.session['sorted_list'] = sorted_list[:]	#a reference would change, hence a copy ( performance penalty? )
+		#sorted_list_copy = sorted_list[:]	**This a shallow copy, this will not work for a list inside a list
+		sorted_list_copy = copy.deepcopy(sorted_list)
+		print("sorted_list copy created = ", (sorted_list_copy is not sorted_list) )
+		request.session['sorted_list_copy'] = sorted_list_copy	#a reference would change, hence a copy ( performance penalty? )
 		request.session['error_message'] = error_message
 
 		sorted_list = ShortenIngredientList(sorted_list, 5)
