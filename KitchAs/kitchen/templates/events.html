@@ -22,15 +22,15 @@
 			{% for recipe in recipes %}
 				<div class="events-bottom">
 					<div class="col-md-5 events-bottom1 animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<a href="/single"><img src="{% static 'images/ev.jpg' %}" alt="" class="img-responsive"></a>
+						<a href="/single/{{ recipe.0 }}"><img src="{% static 'images/ev.jpg' %}" alt="" class="img-responsive"></a>
 					</div>
 					<div class="col-md-7 events-bottom2 animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-						<h3>{{ recipe.0 | safe}}</h3>
+						<h3><a href="/single/{{ recipe.0 }}">{{ recipe.0 | safe}}</a></h3>
 						<label><i class="glyphicon glyphicon-menu-up"></i></label>
 						<p>{{ recipe.1 | safe }}
 						</p>
 						<div class="read-more">						
-							<a class="link link-yaku" href="/single">
+							<a class="link link-yaku" href="/single/{{ recipe.0 }}">
 								<span>R</span><span>e</span><span>a</span><span>d</span> <span>M</span><span>o</span><span>r</span><span>e</span>					
 							</a>
 						</div>

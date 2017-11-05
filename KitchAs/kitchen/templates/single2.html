@@ -1,0 +1,137 @@
+{% extends "template.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<!--content-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa {
+		font-size: 50px;
+		cursor: pointer;
+		user-select: none;
+		color : grey;
+}
+</style>
+<!-- <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i> -->
+<script>
+function myFunction(x) {
+	if(x.style.color!="blue")
+			x.style.color="blue";
+	else
+		x.style.color="grey";
+}
+</script>
+
+<style type="text/css">
+	
+	.lone-line p::before {
+		content: none
+	}
+
+	.lone-line .double-inverted-commas p::before {
+			content: "";
+			background: url({% static "images/qu3.png" %}) no-repeat;
+			width: 30px;
+			height: 24px;
+			display: inline-block;
+			padding-right: 2.3em;
+	}
+
+</style>
+
+
+<div class="blog">
+	<div class="container">
+		
+		<div class="col-md-9 ">
+			
+				<div class="single">
+					
+					<div class="single-top">
+						<img class="img-responsive wow fadeInUp animated" data-wow-delay=".5s" src="{% static 'images/ss.jpg' %}"/>
+						<div class="lone-line">
+							<h4>{{ recipe_info.0 }}</h4>
+								<ul class="grid-blog">
+									<li><span><i class="glyphicon glyphicon-time"> </i>{{ recipe_info.4 }}</span></li>
+
+									<li>
+									<i title="Like" onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+									</li>
+								</ul>
+
+								<p>
+									<span style="color: green">Ingredients Present:</span>
+									<table class="table">
+										<tbody>
+											{% for ingredient_list in recipe_info.1 %}
+
+												<tr>
+													<td title="{{ ingredient_list.0 }}">
+													{% if ingredient_list.0 is not None %}
+													{{ ingredient_list.0 }}
+													{% endif %}
+													</td>
+													<td title="{{ ingredient_list.1 }}">{{ ingredient_list.1 }}</td>
+													{% if ingredient_list.3 is not None %}
+													<td title="{{ ingredient_list.2 }} : {{ ingredient_list.3 }}">{{ ingredient_list.3 }} required </td>
+													{% endif %}
+												</tr>
+															
+											{% endfor %}
+										</tbody>
+									</table>
+								</p>
+								<p>
+									<span style="color: red">Missing ingredients:</span>
+									<table class="table">
+										<tbody>
+											{% for ingredient_list in recipe_info.2 %}
+
+												<tr>
+													<td title="{{ ingredient_list.0 }}">
+													{% if ingredient_list.0 is not None %}
+													{{ ingredient_list.0 }}
+													{% endif %}
+													</td>
+													<td title="{{ ingredient_list.1 }}">{{ ingredient_list.1 }}
+													</td>
+													<td title="{{ ingredient_list.2 }} : {{ ingredient_list.3 }}">
+													{% if ingredient_list.3 is not None %}
+													{{ ingredient_list.3 }} required
+													{% endif %}
+													</td>
+												</tr>
+															
+											{% endfor %}
+										</tbody>
+									</table>
+								</p>
+
+								<br>
+								<h2>Recipe</h2>
+								<br>
+
+								<div class="double-inverted-commas">
+								<p class="wow fadeInLeft animated" data-wow-delay=".5s">
+									{{ recipe_info.3 | safe }}
+								</p>
+								</div>
+						</div>
+					</div>
+					
+				</div>
+		</div>
+		
+		
+	</div>
+	{% if request.session.user != None  %}
+			<a href="/makearecipe/{{ recipe_info.0 }}"><button class="button btn btn-primary" style="margin: 70px;"> Make a recipe </button></a>
+		{% endif %}
+		
+
+
+<!--//content-->
+
+{% endblock %}
+

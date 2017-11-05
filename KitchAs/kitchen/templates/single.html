@@ -53,34 +53,12 @@ function myFunction(x) {
 						<div class="lone-line">
 							<h4>{{ recipe_info.0 }}</h4>
 								<ul class="grid-blog">
-									<li><span><i class="glyphicon glyphicon-time"> </i>{{ recipe_info.4 }}</span></li>
+									<li><span><i class="glyphicon glyphicon-time"> </i>{{ recipe_info.2 }}</span></li>
 
 									<li>
 									<i title="Like" onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
 									</li>
 								</ul>
-
-								<p>
-									<span style="color: green">Ingredients Present:</span>
-									{% for ingredient_list in recipe_info.1 %}
-										<p title="{{ ingredient_list.0 }}: {{ ingredient_list.1 }}">{{ ingredient_list.0 }}
-										{% if ingredient_list.1 is not None and qty_specified %}
-											: {{ ingredient_list.1 }} missing
-										{% endif %}
-										</p>
-									{% endfor %}
-								</p>
-								<p>
-									<span style="color: red">Missing ingredients:</span>
-									{% for ingredient_list in recipe_info.2 %}
-										<p title="{{ ingredient_list.0 }}: {{ ingredient_list.1 }}">
-										{{ ingredient_list.0 }}
-										{% if ingredient_list.1 is not None and qty_specified %}
-											: {{ ingredient_list.1 }} missing
-										{% endif %}
-										</p>
-									{% endfor %}
-								</p>
 
 								<br>
 								<h2>Recipe</h2>
@@ -88,7 +66,7 @@ function myFunction(x) {
 
 								<div class="double-inverted-commas">
 								<p class="wow fadeInLeft animated" data-wow-delay=".5s">
-									{{ recipe_info.3 | safe }}
+									{{ recipe_info.1 | safe }}
 								</p>
 								</div>
 						</div>
