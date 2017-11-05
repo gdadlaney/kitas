@@ -4,8 +4,8 @@ rec_id	qty_string	ingr_string	qty	ingr_id
 2	1 cup	Whole wheat flour	150g	1
 2	NULL	Ghee	NULL	3
 2	NULL	Water	NULL	NULL
-3	1 packet	Bhel mix or Sev	NULL	4
-3	2	2 Mashed boiled potatoes (mashed coarsely and then salted)	2	6
+3	1 packet	Bhel mix or Sev	NULL	5
+3	2	Mashed boiled potatoes (mashed coarsely and then salted)	2	6
 3	1/2 cup	Chopped fresh coriander leaves (a.k.a Chinese parsley)	75g	9
 3	3 tsp	Freshly roasted and ground cumin	15g	10
 3	to taste	Green chilies	NULL	11
@@ -19,13 +19,13 @@ rec_id	qty_string	ingr_string	qty	ingr_id
 4	3/4 tsp	Salt	NULL	17
 4	1/2 tsp	Garam Masala	2g	18
 4	(optional)	paprika	NULL	19
-4	1	1 Small onion	1	7
-4	1	1 Potato	1	6
+4	1	Small onion	1	7
+4	1	Potato	1	6
 4	NULL	A few spinach leaves 	NULL	20
 4	NULL	Oil for deep frying	NULL	4
 5	1 can	Chick peas (also called garbanzo beans)	410g	21
 5	1	large Onion chopped finely	1	7
-5	2	medium sized  Potatoes (optional)	2	6
+5	2	medium sized Potatoes (optional)	2	6
 5	1 tsp	Mustard seeds	5g	22
 5	2 or 3 pods	Cardamom	2	26
 5	1 tsp	Coriander powder	5g	23

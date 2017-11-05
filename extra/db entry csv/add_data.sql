@@ -1,9 +1,13 @@
--- run as 
+
+
+-- run -> mysql -u root -p kitas < add_data.sql 
 
 \W	-- show warnings enabled --
 
 -- deleting previous data --
 
+delete from cust_activity;
+delete from cust_fav;
 delete from cust_ingredients;
 delete from rec_ingredients;
 delete from ingredients;
@@ -22,7 +26,10 @@ load data local infile "rec_categories.csv"
 into table rec_categories
 fields terminated by "\t"
 LINES TERMINATED BY '\n'
-ignore 1 lines;
+ignore 1 lines
+(id, name, @my_description)
+SET
+description = nullif(@my_description, 'NULL');
 
 load data local infile "ingr_categories.csv"
 into table ingr_categories
