@@ -22,10 +22,13 @@ def category(request):
 	return render(request, 'category.html', {})
 '''
 
-
 def favrecipe(request):
-	print(request.POST.get('name'))
-	return render(request, 'index.html', {})
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT id FROM rec_categories WHERE name='Snacks'")
+		id = cursor.fetchone()
+		cursor.execute("SELECT name, directions FROM recipes WHERE category={0}".format(id[0]))
+		recipes = cursor.fetchall()
+	return render(request, 'events.html', {'recipes':recipes})
 
 def categories(request):
 	with connection.cursor() as cursor:
