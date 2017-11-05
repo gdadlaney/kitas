@@ -2,24 +2,32 @@
 
 {% load staticfiles %}
 {% block content %}
+
+
 <center>
-	<div class="w3-container" style="border: 1px solid #eee; width: 70%; text-align: center;" align="center">
-    <table class="w3-table w3-centered w3-bordered w3-striped w3-border test w3-hoverable ">
-      <thead class="w3-green">
-        <tr>
-          <th><b>Ingredient</b></th>
-          <th><b>Quantity</b></th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for i in list_ingredient %}
-        <tr class="">
-          <td>{{ i.0 }}</td>
-          <td>{{ i.1 }}</td>
-        </tr>
-       {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  </center>
+	<br>
+	<div class="menu-left">
+		<h3 style="	font-size: 3em;" >My Pantry</h3>
+		<label><i class="glyphicon glyphicon-menu-down"></i></label>
+	</div>
+
+	<div class="w3-container" style="margin: 40px 0; border: 1px solid #eee; width: 70%; text-align: center;" align="center">
+		<table class="w3-table w3-centered w3-bordered w3-striped w3-border test w3-hoverable ">
+			<thead class="w3-green">
+				<tr>
+					<th><b>Ingredient</b></th>
+					<th><b>Quantity</b></th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for i in list_ingredient %}
+				<tr class="">
+					<td>{{ i.0 }}</td>
+					<td>{{ i.1 }}</td>
+				</tr>
+			 {% endfor %}
+			</tbody>
+		</table>
+	</div>
+</center>
 {% endblock %}
