@@ -1,4 +1,3 @@
-import copy
 import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -22,13 +21,10 @@ def category(request):
 	return render(request, 'category.html', {})
 '''
 
+
 def favrecipe(request):
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT id FROM rec_categories WHERE name='Snacks'")
-		id = cursor.fetchone()
-		cursor.execute("SELECT name, directions FROM recipes WHERE category={0}".format(id[0]))
-		recipes = cursor.fetchall()
-	return render(request, 'events.html', {'recipes':recipes})
+	print(request.POST.get('name'))
+	return render(request, 'index.html', {})
 
 def categories(request):
 	with connection.cursor() as cursor:
@@ -184,60 +180,26 @@ def single(request, rec_name):
 		recipe_info = list(cursor.fetchone())
 		print("Recipe basic info = ", recipe_info)
 
-		print("Final recipe_info = ", recipe_info)
-		# Final recipe_info =  ['CHAPATI (PHULKA)', 'Put flour in a large bowl with half the water. Blend the two together until it holds. Beat and knead well until it forms a compact ball.<br><br>Knead dough until it is smooth and elastic. Set aside for 30 minutes.<br><br>Knead and divide dough into 4 to 6 parts. Roll each ball into a tortilla like flat, about 1/8&Prime; thick. Heat an ungreased skillet. <br><br>Put phulka on it, and let it cook for about 1 minute (The top should just start to look dry and small bubbles should just start to form). <br><br>Turn and cook the second side for 2/3 minutes until small bubbles form. <br><br>Turn again and cook the first side pressed lightly with a towel. It should puff. Serve warm (maybe slightly buttered).<br> ', datetime.datetime(2017, 11, 5, 16, 23, 59), 'Put flour in a large bowl with half the water. Blend the two together until it holds. Beat and knead well until it forms a compact ball.<br><br>Knead dough until it is smooth and elastic. Set aside for 30 minutes.<br><br>Knead and divide dough into 4 to 6 parts. Roll each ball into a tortilla like flat, about 1/8&Prime; thick. Heat an ungreased skillet. <br><br>Put phulka on it, and let it cook for about 1 minute (The top should just start to look dry and small bubbles should just start to form). <br><br>Turn and cook the second side for 2/3 minutes until small bubbles form. <br><br>Turn again and cook the first side pressed lightly with a towel. It should puff. Serve warm (maybe slightly buttered).<br> ', datetime.datetime(2017, 11, 5, 16, 23, 59)]
-
-	return render(request, 'single.html', {'recipe_info':recipe_info})
-
-
-def single2(request, rec_name):
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT name, directions, time_modified, id FROM recipes where name='{0}'".format(rec_name))
-		recipe_info = list(cursor.fetchone())
-		print("\n Recipe basic info = ", recipe_info)
-
-		recipe_id = recipe_info[3]
-		recipe_info.pop()		#recipe id not needed further
-
-		cursor.execute("SELECT name_english, qty_string, ingr_string FROM rec_ingredients, ingredients where rec_ingredients.ingr_id=ingredients.id and rec_ingredients.rec_id='{0}'".format(recipe_id))
-		recipe_str = list(cursor.fetchall())
-		print("\n Recipe user display string = ", recipe_str)
-
-		sorted_list_copy = request.session.get('sorted_list_copy')
+		sorted_list = request.session.get('sorted_list')
 		error_message = request.session.get('error_message')
-		print("\n sorted_list_copy = ", sorted_list_copy)
+		#print("sorted_list = ", sorted_list)
 		if error_message is not None:
-			print("\n error_message = ", error_message)
+			print("error_message = ", error_message)
 
 		# making space for ingredients matching & missing lists
-		#recipe_info.append(recipe_info[1])
-		#recipe_info.append(recipe_info[2])
+		recipe_info.append(recipe_info[1])
+		recipe_info.append(recipe_info[2])
 
-		for temp in sorted_list_copy:
+		for temp in sorted_list:
 			if recipe_info[0] == temp[0]:
-				recipe_info.insert(1, temp[1])
-				recipe_info.insert(2, temp[2])
+				recipe_info[1] = temp[1]
+				recipe_info[2] = temp[2]
 			else:
-				print("**No matching recipe name in DB**")
+				print("No matching recipe name in DB")
 
-		print("\n Intermediate recipe_info = ", recipe_info)
+		print("Final recipe_info = ", recipe_info)
 
-
-		for i in [1, 2]:
-			for j in range(len(recipe_info[i])):
-				flag = False
-				for temp in recipe_str:
-					if temp[0] == recipe_info[i][j][0]:
-						flag = True
-						recipe_info[i][j].insert(0, temp[1])
-						recipe_info[i][j].insert(1, temp[2])
-				if flag is False:
-					print("**Error in last part of 'single2'**")
-
-		print("\n Final recipe_info = ", recipe_info)
-		# Final recipe_info =  ['BHEL', [['1 packet', 'Bhel mix or Sev', 'puffed rice', None]], [['2', 'Mashed boiled potatoes (mashed coarsely and then salted)', 'potato', '2'], ['1/2 cup', 'Chopped fresh coriander leaves (a.k.a Chinese parsley)', 'coriander leaves', '75g'], ['3 tsp', 'Freshly roasted and ground cumin', 'cumin', '15g'], ['to taste', 'Green chilies', 'green chillies', None], ['1-2 tsp', 'Freshly ground black pepper', 'black pepper', '5g'], ['to taste', 'Tamarind', 'tamarind', None], ['to taste', 'Jaggery (or Brown Sugar)', 'jaggery', None], ['1 cup', 'Chopped onions.', 'onion', '150g']], 'First boil the potatoes, mash them, salt them, and add pepper to taste. Add some coriander leaves too. <br><br>Roast the cumin and grind it.<br><br>Dissolve about 4 Tbsp of tamarind concentrate in 1 cup of hot water, and let it simmer and thicken gradually. Dissolve the jaggery (or sugar) until the sauce becomes tart and slightly sweet. (You may add some salt<br>and ground red paprika, if you want to.) The sauce should be of a consistency slightly thinner than maple syrup. Pour into a serving container (like a creamer). Mix the puffed rice and sev/bhel mix in a large bowl. <br><br>On a plate, serve the rice-bhel mixture, add the potatoes, then the onions, chilies, and then dust the cumin powder over it. Next pour on the sauce and top with the coriander garnish. (Add salt/pepper to<br>taste). <br><br>Mix the ingredients on the plate and eat. <br>', datetime.datetime(2017, 11, 5, 16, 23, 59)]
-
-	return render(request, 'single2.html', {'recipe_info':recipe_info})
+	return render(request, 'single.html', {'recipe_info':recipe_info})
 
 #add user recipes
 @csrf_protect
@@ -389,8 +351,6 @@ def logout(request):
 	request.session['id']=None
 
 	request.session['search_from_pantry']=False
-	request.session['sorted_list_copy'] = None
-	request.session['error_message']	= None
 
 	return render(request, 'index.html', {"message":"Thank you, we miss you already "+user})
 
@@ -631,10 +591,7 @@ def search_result(request):
 	if not ingrs_from_checkboxes:
 		(sorted_list, error_message) = search_func(user_ingredient_ids_with_qty)
 
-		#sorted_list_copy = sorted_list[:]	**This a shallow copy, this will not work for a list inside a list
-		sorted_list_copy = copy.deepcopy(sorted_list)
-		print("sorted_list copy created = ", (sorted_list_copy is not sorted_list) )
-		request.session['sorted_list_copy'] = sorted_list_copy	#a reference would change, hence a copy ( performance penalty? )
+		request.session['sorted_list'] = sorted_list[:]	#a reference would change, hence a copy ( performance penalty? )
 		request.session['error_message'] = error_message
 
 		sorted_list = ShortenIngredientList(sorted_list, 5)
@@ -666,10 +623,7 @@ def search_result(request):
 
 		(sorted_list, error_message) = search_func(user_ingredient_ids_with_qty)
 
-		#sorted_list_copy = sorted_list[:]	**This a shallow copy, this will not work for a list inside a list
-		sorted_list_copy = copy.deepcopy(sorted_list)
-		print("sorted_list copy created = ", (sorted_list_copy is not sorted_list) )
-		request.session['sorted_list_copy'] = sorted_list_copy	#a reference would change, hence a copy ( performance penalty? )
+		request.session['sorted_list'] = sorted_list[:]	#a reference would change, hence a copy ( performance penalty? )
 		request.session['error_message'] = error_message
 
 		sorted_list = ShortenIngredientList(sorted_list, 5)
@@ -694,7 +648,7 @@ def delRecipeUser(request, rec_name):
 	else:
 		userid = request.session['id']
 		with connection.cursor() as cursor:
-			cursor.execute("SELECT id FROM recipes where name='{0}' and cust_id={1}".format(rec_name, userid))
+			cursor.execute("SELECT id FROM recipes where name='{0}'".format(rec_name))
 			recid=cursor.fetchone()
 			cursor.execute("DELETE from rec_ingredients where rec_id={0}".format(recid[0]))
 			cursor.execute("DELETE from recipes where id={0}".format(recid[0]))
